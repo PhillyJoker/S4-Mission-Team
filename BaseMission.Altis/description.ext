@@ -1,3 +1,7 @@
+// 3DEN Settings That don't take.
+onLoadName = "NAMEOFMISSION";
+respawnOnStart = 0; // 0 for Task Force Missions, 1 for Template's
+
 #define SET(VAR,VAL,TYPE) class ace_##VAR { \
     value = VAL; \
     typeName = #TYPE; \
@@ -8,20 +12,25 @@
 
 class ACE_Settings {
     class ace_common_checkPBOsWhitelist {
-        value = "['st_sthud','st_sthud_usermenu', 'stui_core', 'stui_grouphud', 'bgimprovedsizeofcompassandgps','bg_compassa3','tao_foldmap_a3','BABE_MIDTEX','BABE_MIDTEX_ALTIS','gdtmod_grass','ace_noidle','ace_goggles','cw_9liners_and_notepad']";
+        value = "['st_sthud','st_sthud_usermenu', 'stui_core', 'stui_grouphud', 'bgimprovedsizeofcompassandgps','bg_compassa3','tao_foldmap_a3','BABE_MIDTEX','BABE_MIDTEX_ALTIS','gdtmod_grass','ace_noidle','ace_goggles','cw_9liners_and_notepad','ocap']";
         typeName = "STRING";
         force = 1;
     };
-    SETB(advanced_fatigue_enabled,0)
+    // Check .PBO
     SETB(common_checkPBOsCheckAll,1)
     SETS(common_checkPBOsAction,0)
+    // Pointing
     SETB(finger_enabled,1)
+    // Respawn Options
     SETB(respawn_savePreDeathGear,1)
     SETB(respawn_removeDeadBodiesDisconnected,1)
+    // Weather - disabled
     SETB(weather_useACEWeather,0)
+    // Repair Settings
     SETS(repair_engineerSetting_repair,0)
     SETS(repair_fullRepairLocation,0)
     SETS(repair_engineerSetting_fullRepair,0)
+    // Medical
     SETS(medical_enableRevive,1)
     SETS(medical_maxReviveTime,420)
     SETS(medical_level,2)
@@ -38,6 +47,13 @@ class ACE_Settings {
     SETS(medical_useLocation_PAK,0)
     SETS(medical_useLocation_SurgicalKit,0)
     SETB(medical_healHitPointAfterAdvBandage,1)
+    // Advanced Fatigue
+	SETB(advanced_fatigue_enabled,0)
+	SETS(advanced_fatigue_performanceFactor,2)
+	SETS(advanced_fatigue_recoveryFactor,2)
+	SETS(advanced_fatigue_loadFactor,1) // can omit since 1 is the default value.
+	SETS(advanced_fatigue_terrainGradientFactor,0.7)
+    // Clientside settings that cannot be changed, removes from settings
     SETB(ui_allowSelectiveUI,0)
     SETB(ui_ammoCount,0)
     SETB(ui_ammoType,1)
@@ -75,6 +91,7 @@ class ACE_Settings {
     SETB(ui_zeroing,1)
 };
 
+// Adding Wheels & Tracks to all placed LAV, M1A1's
 class Extended_Init_EventHandlers {
     class Cha_LAV25 {
         class MEU_addSpareParts {
@@ -88,6 +105,7 @@ class Extended_Init_EventHandlers {
     };
 };
 
+// Call sign modifier "Ctrl + Shift + V" default
 class CfgFunctions {
     class MEU {
         class callsign {
