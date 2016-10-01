@@ -12,7 +12,7 @@ respawnOnStart = 0; // 0 for Task Force Missions, 1 for Template's
 
 class ACE_Settings {
     class ace_common_checkPBOsWhitelist {
-        value = "['st_sthud','st_sthud_usermenu', 'stui_core', 'stui_grouphud', 'bgimprovedsizeofcompassandgps','bg_compassa3','tao_foldmap_a3','BABE_MIDTEX','BABE_MIDTEX_ALTIS','gdtmod_grass','ace_noidle','ace_goggles','cw_9liners_and_notepad','ocap']";
+        value = "['st_sthud','st_sthud_usermenu','stui_core','stui_grouphud','bgimprovedsizeofcompassandgps','bg_compassa3','tao_foldmap_a3','BABE_MIDTEX','BABE_MIDTEX_ALTIS','gdtmod_grass','ace_noidle','ace_goggles','cw_9liners_and_notepad','ocap']";
         typeName = "STRING";
         force = 1;
     };
@@ -48,11 +48,11 @@ class ACE_Settings {
     SETS(medical_useLocation_SurgicalKit,0)
     SETB(medical_healHitPointAfterAdvBandage,1)
     // Advanced Fatigue
-	SETB(advanced_fatigue_enabled,0)
-	SETS(advanced_fatigue_performanceFactor,2)
-	SETS(advanced_fatigue_recoveryFactor,2)
-	SETS(advanced_fatigue_loadFactor,1) // can omit since 1 is the default value.
-	SETS(advanced_fatigue_terrainGradientFactor,0.7)
+    SETB(advanced_fatigue_enabled,0)
+    SETS(advanced_fatigue_performanceFactor,2)
+    SETS(advanced_fatigue_recoveryFactor,2)
+    SETS(advanced_fatigue_loadFactor,1) // can omit since 1 is the default value.
+    SETS(advanced_fatigue_terrainGradientFactor,0.7)
     // Clientside settings that cannot be changed, removes from settings
     SETB(ui_allowSelectiveUI,0)
     SETB(ui_ammoCount,0)
@@ -91,7 +91,7 @@ class ACE_Settings {
     SETB(ui_zeroing,1)
 };
 
-// Adding Wheels & Tracks to all placed LAV, M1A1's
+// Adding Wheels & Tracks to all LAVs, M1A1s
 class Extended_Init_EventHandlers {
     class Cha_LAV25 {
         class MEU_addSpareParts {
