@@ -1,6 +1,6 @@
 // 3DEN Settings That don't take.
 onLoadName = "NAMEOFMISSION";
-respawnOnStart = 0; // 0 for Task Force Missions, 1 for Template's
+respawnOnStart = -1; // -1 for Task Force Missions, 1 for Template's
 
 #define SET(VAR,VAL,TYPE) class ace_##VAR { \
     value = VAL; \
