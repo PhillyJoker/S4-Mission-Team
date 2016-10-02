@@ -1,9 +1,11 @@
 _callSign = ctrlText 13;
 
 _callSigns = allGroups apply {toLower groupId _x};
+_callSigns = _callSigns - [toLower groupId group player];
 
-if ((toLower _callSign) in _callSigns) exitWith {
-    hint "THAT CALL SIGN IS ALREADY IN USE!";
+_i = _callSigns find (toLower _callSign);
+if (_i != -1 && {(count units ((allGroups - [group player]) select _i)) > 0}) exitWith {
+    hint format ["CALL SIGN ""%1"" IS ALREADY IN USE!", _callSign];
 };
 
 hint format ["NEW CALLSIGN ""%1"" SET", _callSign];
