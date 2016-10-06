@@ -27,6 +27,7 @@ class ACE_Settings {
     SETS(repair_fullRepairLocation,0)
     SETS(repair_engineerSetting_fullRepair,0)
 // Medical
+    SETS(medical_enablefor, 1)
     SETS(medical_enableRevive,1)
     SETS(medical_maxReviveTime,420)
     SETS(medical_level,2)
