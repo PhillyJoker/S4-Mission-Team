@@ -12,21 +12,21 @@ class ACE_Settings {
         typeName = "STRING";
         force = 1;
     };
-    // Check .PBO
+// Check .PBO
     SETB(common_checkPBOsCheckAll,1)
     SETS(common_checkPBOsAction,0)
-    // Pointing
+// Pointing
     SETB(finger_enabled,1)
-    // Respawn Options
+// Respawn Options
     SETB(respawn_savePreDeathGear,1)
     SETB(respawn_removeDeadBodiesDisconnected,1)
-    // Weather - disabled
+// Weather - disabled
     SETB(weather_useACEWeather,0)
-    // Repair Settings
+// Repair Settings
     SETS(repair_engineerSetting_repair,0)
     SETS(repair_fullRepairLocation,0)
     SETS(repair_engineerSetting_fullRepair,0)
-    // Medical
+// Medical
     SETS(medical_enableRevive,1)
     SETS(medical_maxReviveTime,420)
     SETS(medical_level,2)
@@ -43,13 +43,13 @@ class ACE_Settings {
     SETS(medical_useLocation_PAK,0)
     SETS(medical_useLocation_SurgicalKit,0)
     SETB(medical_healHitPointAfterAdvBandage,1)
-    // Advanced Fatigue
+// Advanced Fatigue
     SETB(advanced_fatigue_enabled,0)
     SETS(advanced_fatigue_performanceFactor,2)
     SETS(advanced_fatigue_recoveryFactor,2)
     SETS(advanced_fatigue_loadFactor,1) // can omit since 1 is the default value.
     SETS(advanced_fatigue_terrainGradientFactor,0.7)
-    // Clientside settings that cannot be changed, removes from settings
+// Clientside settings that cannot be changed, removes from settings
     SETB(ui_allowSelectiveUI,0)
     SETB(ui_ammoCount,0)
     SETB(ui_ammoType,1)
