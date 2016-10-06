@@ -1,0 +1,3 @@
+Formations course finish
+Remove some targets from MOUT. Add Obsticales for targets.
+Hescos on grenade range to much space?
