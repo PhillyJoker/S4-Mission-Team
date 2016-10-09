@@ -3,8 +3,7 @@
 REM project root
 set pr=%~dp0..
 
-if not exist "%pr%\builds" md "%pr%\builds"
-del /s /q "%pr%\builds\*.*"
+del /s /q "%pr%\*.pbo"
 
-cd "%pr%\missions"
-for /d %%d in (*.*) do "%pr%\tools\PBOConsole" -pack "%pr%\missions\%%d" "%pr%\builds\%%d.pbo"
+cd "%pr%"
+for /d %%d in (*.*) do if /I not %%d==tools "%pr%\tools\PBOConsole" -pack "%pr%\%%d" "%pr%\%%d.pbo"
