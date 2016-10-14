@@ -1,14 +1,18 @@
+// null = [this] execVM "box_resupply.sqf"
 
-/*
-null = [this] execVM "box_resupply.sqf"
-*/
+if (!isServer) exitWith {
+    diag_log format [
+        "[13th MEU] ERROR: Non-server call to file %2 in mission %1",
+        missionName, __FILE__
+    ];
+};
 
 params ["_box"];
 
-clearWeaponCargoGlobal _box;
 clearMagazineCargoGlobal _box;
-clearItemCargoGlobal _box;
 clearBackpackCargoGlobal _box;
+clearWeaponCargoGlobal _box;
+clearItemCargoGlobal _box;
 
 // AT
 _box addWeaponCargoGlobal ["rhs_weap_M136_hp", 2];
@@ -27,8 +31,8 @@ _box addMagazineCargoGlobal ["SmokeShellGreen", 20];
 _box addMagazineCargoGlobal ["HandGrenade", 20];
 
 //Mortars
-_box addMagazineCargoGlobal["ACE_1Rnd_82mm_Mo_HE", 20];
-_box addMagazineCargoGlobal["ACE_1Rnd_82mm_Mo_Smoke", 5];
+_box addMagazineCargoGlobal ["ACE_1Rnd_82mm_Mo_HE", 20];
+_box addMagazineCargoGlobal ["ACE_1Rnd_82mm_Mo_Smoke", 5];
 
 // Medical
 _box addItemCargoGlobal ["ACE_elasticBandage", 200];

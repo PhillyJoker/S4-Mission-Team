@@ -7,7 +7,6 @@ enableSaving [false, false];
 
 // Template Inits
 MEU_templateSeason = "winter"; // "winter" or "summer"
-MEU_templateVersion = 0; // increment each release, no decimals
 
 /* Omitting the template stuff because they're
  * terrain-dependent, doesn't really fit the

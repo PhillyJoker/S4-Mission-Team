@@ -1,37 +1,41 @@
-/*
-null = [this] execVM "scripts\lav_loadout.sqf";
-*/
-if (isServer) exitWith {};
+// null = [this] execVM "scripts\lav_loadout.sqf";
 
-params ["_vehicle"];
+if (!isServer) exitWith {
+    diag_log format [
+        "[13th MEU] ERROR: Non-server call to file %2 in mission %1",
+        missionName, __FILE__
+    ];
+};
 
-clearMagazineCargoGlobal _vehicle;
-clearBackpackCargoGlobal _vehicle;
-clearWeaponCargoGlobal _vehicle;
-clearItemCargoGlobal _vehicle;
+params ["_lav"];
+
+clearMagazineCargoGlobal _lav;
+clearBackpackCargoGlobal _lav;
+clearWeaponCargoGlobal _lav;
+clearItemCargoGlobal _lav;
 
 // AT
-_vehicle addMagazineCargoGlobal ["rhs_mag_smaw_HEAA", 4];
-_vehicle addMagazineCargoGlobal ["rhs_mag_smaw_HEDP", 4];
+_lav addMagazineCargoGlobal ["rhs_mag_smaw_HEAA", 4];
+_lav addMagazineCargoGlobal ["rhs_mag_smaw_HEDP", 4];
 
 // Ammo
-_vehicle addMagazineCargoGlobal ["30Rnd_556x45_Stanag_Tracer_Red", 30];
-_vehicle addMagazineCargoGlobal ["rhsusf_100Rnd_762x51", 5];
-_vehicle addMagazineCargoGlobal ["rhsusf_100Rnd_762x51_m993", 5];
-_vehicle addMagazineCargoGlobal ["DemoCharge_Remote_Mag", 8];
-_vehicle addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 2];
+_lav addMagazineCargoGlobal ["30Rnd_556x45_Stanag_Tracer_Red", 30];
+_lav addMagazineCargoGlobal ["rhsusf_100Rnd_762x51", 5];
+_lav addMagazineCargoGlobal ["rhsusf_100Rnd_762x51_m993", 5];
+_lav addMagazineCargoGlobal ["DemoCharge_Remote_Mag", 8];
+_lav addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 2];
 
 // Equipment
-_vehicle addMagazineCargoGlobal ["SmokeShell", 10];
-_vehicle addMagazineCargoGlobal ["SmokeShellGreen", 10];
-_vehicle addMagazineCargoGlobal ["SmokeShellYellow", 10];
-_vehicle addMagazineCargoGlobal ["HandGrenade", 10];
+_lav addMagazineCargoGlobal ["SmokeShell", 10];
+_lav addMagazineCargoGlobal ["SmokeShellGreen", 10];
+_lav addMagazineCargoGlobal ["SmokeShellYellow", 10];
+_lav addMagazineCargoGlobal ["HandGrenade", 10];
 
 // Medical
-_vehicle addItemCargoGlobal ["ACE_elasticBandage", 60];
-_vehicle addItemCargoGlobal ["ACE_quikclot", 60];
-_vehicle addItemCargoGlobal ["ACE_packingBandage", 60];
-_vehicle addItemCargoGlobal ["ACE_Morphine", 25];
-_vehicle addItemCargoGlobal ["ACE_epinephrine", 10];
-_vehicle addItemCargoGlobal ["ACE_salineIV_500", 10];
-_vehicle addItemCargoGlobal ["ACE_tourniquet", 10];
+_lav addItemCargoGlobal ["ACE_elasticBandage", 60];
+_lav addItemCargoGlobal ["ACE_quikclot", 60];
+_lav addItemCargoGlobal ["ACE_packingBandage", 60];
+_lav addItemCargoGlobal ["ACE_Morphine", 25];
+_lav addItemCargoGlobal ["ACE_epinephrine", 10];
+_lav addItemCargoGlobal ["ACE_salineIV_500", 10];
+_lav addItemCargoGlobal ["ACE_tourniquet", 10];

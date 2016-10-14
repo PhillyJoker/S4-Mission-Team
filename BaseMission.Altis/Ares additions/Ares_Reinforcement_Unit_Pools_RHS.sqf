@@ -1,11 +1,9 @@
 // Prevent stomping on any other existing mission definitions
-if (isNil "Ares_Reinforcement_Mission_Unit_Pools") then
-{
+if (isNil "Ares_Reinforcement_Mission_Unit_Pools") then {
     Ares_Reinforcement_Mission_Unit_Pools = [];
 };
 
-Ares_Reinforcement_Mission_Unit_Pools pushBack
-[
+Ares_Reinforcement_Mission_Unit_Pools pushBack [
     "RUSSIAN", // Name of the faction
     east, // The side of the faction
     "", // The name of the root class for the addon that defines these units (must exist or the side will not show up). Use "" to always show.
@@ -71,8 +69,8 @@ Ares_Reinforcement_Mission_Unit_Pools pushBack
         ]
     ]
 ];
-Ares_Reinforcement_Mission_Unit_Pools pushBack
-[
+
+Ares_Reinforcement_Mission_Unit_Pools pushBack [
     "US ARMY", // Name of the faction
     west, // The side of the faction
     "", // The name of the root class for the addon that defines these units (must exist or the side will not show up). Use "" to always show.
@@ -151,9 +149,9 @@ Ares_Reinforcement_Mission_Unit_Pools pushBack
             "rhsusf_army_ocp_riflemanat"
         ]
     ]
-];
-Ares_Reinforcement_Mission_Unit_Pools pushBack
-[
+]
+
+Ares_Reinforcement_Mission_Unit_Pools pushBack [
     "EASTERN EUROPEAN REBELS", // Name of the faction
     resistance, // The side of the faction
     "", // The name of the root class for the addon that defines these units (must exist or the side will not show up). Use "" to always show.

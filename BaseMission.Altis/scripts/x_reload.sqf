@@ -8,14 +8,14 @@ _object setVehicleAmmo 1;
 
 _object vehicleChat format ["Servicing %1... Please stand by...", _type];
 
-_magazines = getArray(configFile >> "CfgVehicles" >> _type >> "magazines");
+_magazines = getArray (configFile >> "CfgVehicles" >> _type >> "magazines");
 
 if (count _magazines > 0) then {
     _removed = [];
     {
         if (!(_x in _removed)) then {
             _object removeMagazines _x;
-            _removed = _removed + [_x];
+            _removed pushBack _x;
         };
     } forEach _magazines;
     {
@@ -31,12 +31,12 @@ if (_count > 0) then {
     for "_i" from 0 to (_count - 1) do {
         scopeName "xx_reload2_xx";
         _config = (configFile >> "CfgVehicles" >> _type >> "Turrets") select _i;
-        _magazines = getArray(_config >> "magazines");
+        _magazines = getArray (_config >> "magazines");
         _removed = [];
         {
             if (!(_x in _removed)) then {
                 _object removeMagazines _x;
-                _removed = _removed + [_x];
+                _removed pushBack _x;
             };
         } forEach _magazines;
         {
@@ -49,12 +49,12 @@ if (_count > 0) then {
         if (_count_other > 0) then {
             for "_i" from 0 to (_count_other - 1) do {
                 _config2 = (_config >> "Turrets") select _i;
-                _magazines = getArray(_config2 >> "magazines");
+                _magazines = getArray (_config2 >> "magazines");
                 _removed = [];
                 {
                     if (!(_x in _removed)) then {
                         _object removeMagazines _x;
-                        _removed = _removed + [_x];
+                        _removed pushBack _x;
                     };
                 } forEach _magazines;
                 {
