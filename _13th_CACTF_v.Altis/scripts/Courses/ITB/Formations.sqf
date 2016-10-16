@@ -1,6 +1,8 @@
 //Created by: McKelvie
 //Optimzed: 20161016
 
+// This is still in works and is just an early development.
+
 _newGroup = createGroup WEST; _newUnit = _newGroup createUnit ['rhsusf_usmc_marpat_d_rifleman_m4', [14705.5,16729.2,0.00143814], [], 0, 'CAN_COLLIDE']; _newUnit setSkill 0.913386; _newUnit setRank 'PRIVATE'; _newUnit setFormDir 113.893; _newUnit setDir 113.893; _newUnit setPosASL [14705.5,16729.2,17.9114];
 _newGroup setFormation 'WEDGE'; _newGroup setCombatMode 'YELLOW'; _newGroup setBehaviour 'AWARE'; _newGroup setSpeedMode 'NORMAL';
 Sleep 0.5;
