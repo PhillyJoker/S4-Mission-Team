@@ -1,3 +1,5 @@
+//Created by: McKelvie
+//Optimzed: 20161016
 
 // Gets all the targets within the stated dist from the respawn_west marker.
 _targetList = nearestObjects [(getMarkerPos "Tele_Range_two") , ["TargetP_Inf2_F","TargetP_Inf_F","TargetP_Inf3_F"], 1750];
