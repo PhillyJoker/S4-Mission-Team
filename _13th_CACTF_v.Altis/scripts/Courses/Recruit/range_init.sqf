@@ -96,7 +96,7 @@ uKNDTargestLane20 = [];
 // Unknow distance functions
 
 meuUnkDistMasterArray = [uKNDTargestLane1,uKNDTargestLane2,uKNDTargestLane3,uKNDTargestLane4,uKNDTargestLane5,uKNDTargestLane6,uKNDTargestLane7,uKNDTargestLane8,uKNDTargestLane9,uKNDTargestLane10,uKNDTargestLane11,uKNDTargestLane12,uKNDTargestLane13,uKNDTargestLane14,uKNDTargestLane15,uKNDTargestLane16,uKNDTargestLane17,uKNDTargestLane18,uKNDTargestLane19,uKNDTargestLane20];
-
+/*
 // Add some actions to range master.
 rc1 addAction ["200m Targets Up","[[0],'meu_Func_200_targets',false,false] spawn BIS_fnc_MP;",1];
 rc1 addAction ["200m Targets Down","[[1],'meu_Func_200_targets',false,false] spawn BIS_fnc_MP;",1];
@@ -110,3 +110,4 @@ rc1 addAction ["Clear All Scores","[[[]],'meu_Func_clear_all_scores',false,false
 rc2 addAction ["Clear Score","[[player],'meu_Func_clear_my_score',false,false] spawn BIS_fnc_MP;"];
 rc2 addAction ["Clear All Scores","[[[]],'meu_Func_clear_all_scores',false,false] spawn BIS_fnc_MP;",1];
 rc2 addAction ["Start Uknown Dist Course","[[],'meu_Func_Ukn_Dst_Random',false,false] spawn BIS_fnc_MP;",1];
+*/
