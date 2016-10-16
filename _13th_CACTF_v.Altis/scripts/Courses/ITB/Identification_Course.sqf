@@ -1,5 +1,5 @@
 //Created by: McKelvie
-//Optimzed: 20160810
+//Optimzed: 20161016
 
 
 _newObject = createVehicle ['rhs_t80um', [14540,16833.2,-0.0794468], [], 0, 'CAN_COLLIDE']; _newObject setPosASL [14540,16833.2,17.8132]; _newObject setVectorDirAndUp [[-0.716705,-0.697371,-0.00260634], [-0.0160635,0.0127722,0.999789]]; _newObject enablesimulation false;
