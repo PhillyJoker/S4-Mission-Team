@@ -1,5 +1,5 @@
 //Created by: McKelvie
-//Optimized: 20160811
+//Optimzed: 20161016
 
 //Training Objects
 _newObject = createVehicle ['TargetP_Inf3_F', [17016.4,17048,-0.0103798], [], 0, 'CAN_COLLIDE']; _newObject setPosASL [17016.5,17048,23.2016]; _newObject setVectorDirAndUp [[-0.82932,-0.551543,-0.0896025], [-0.0572399,-0.0756572,0.99549]];_newObject = createVehicle ['TargetP_Inf3_F', [17017.6,17051.3,-0.00925255], [], 0, 'CAN_COLLIDE']; _newObject setPosASL [17017.7,17051.3,23.4602]; _newObject setVectorDirAndUp [[-0.820779,-0.566644,-0.0723708], [-0.0466163,-0.0598273,0.99712]];_newObject = createVehicle ['TargetP_Inf2_F', [17019.4,17055.2,-0.00396729], [], 0, 'CAN_COLLIDE']; _newObject setPosASL [17019.5,17055.3,23.7275]; _newObject setVectorDirAndUp [[-0.915901,-0.40058,-0.0257203], [-0.0239912,-0.00933204,0.999669]];
