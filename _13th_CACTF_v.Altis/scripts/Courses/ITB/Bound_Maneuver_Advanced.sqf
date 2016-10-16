@@ -1,3 +1,5 @@
+//Created by: McKelvie
+//Optimzed: 20161016
 
 // Bounding Objects
 	_newObject = createVehicle ['Land_d_House_Small_02_V1_F', [16929.3,17200,0.00297737], [], 0, 'CAN_COLLIDE']; _newObject setPosASL [16929.7,17197.7,22.1179]; _newObject setVectorDirAndUp [[-0.995575,-0.0939654,0], [0,0,1]];_newObject = createVehicle ['Land_Wreck_Heli_Attack_02_F', [16905.2,17235.7,-0.0525532], [], 0, 'CAN_COLLIDE']; _newObject setPosASL [16906,17236.1,21.5897]; _newObject setVectorDirAndUp [[0.969975,-0.241749,0.0265707], [-0.0373063,-0.0399389,0.998505]];_newObject = createVehicle ['Land_Metal_Shed_F', [16958.2,17235.5,-0.00819778], [], 0, 'CAN_COLLIDE']; _newObject setPosASL [16957.4,17236.8,23.1253]; _newObject setVectorDirAndUp [[-0.482554,0.875866,0], [0,0,1]];
