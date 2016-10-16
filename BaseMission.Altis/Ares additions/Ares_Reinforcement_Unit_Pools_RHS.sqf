@@ -149,7 +149,7 @@ Ares_Reinforcement_Mission_Unit_Pools pushBack [
             "rhsusf_army_ocp_riflemanat"
         ]
     ]
-]
+];
 
 Ares_Reinforcement_Mission_Unit_Pools pushBack [
     "EASTERN EUROPEAN REBELS", // Name of the faction

@@ -1,9 +1,9 @@
-// null = [this] execVM "box_resupply.sqf"
+// null = [this] execVM "scripts\box_resupply.sqf"
 
 if (!isServer) exitWith {
     diag_log format [
-        "[13th MEU] ERROR: Non-server call to file %2 in mission %1",
-        missionName, __FILE__
+        "[13th MEU] ERROR: Non-server call to file %1 in mission %2",
+         __FILE__, missionName
     ];
 };
 
