@@ -46,6 +46,8 @@ if (player == player) then {
 		[player,"GrenadeCourse"] call BIS_fnc_addCommMenuItem;
 		[player,"IDCourse"] call BIS_fnc_addCommMenuItem;
 		[player,"MOUTCourse"] call BIS_fnc_addCommMenuItem;
+		[player,"FormationsCourse"] call BIS_fnc_addCommMenuItem;
+		[player,"VehicleWeaponsCourse"] call BIS_fnc_addCommMenuItem;
 	};
 	
 	if (player iskindof "B_CTRG_soldier_M_medic_F") then {
@@ -66,6 +68,8 @@ if (player == player) then {
 		[player,"IDCourse"] call BIS_fnc_addCommMenuItem;
 		[player,"MOUTCourse"] call BIS_fnc_addCommMenuItem;
 		[player,"RRCourse"] call BIS_fnc_addCommMenuItem;
+		[player,"FormationsCourse"] call BIS_fnc_addCommMenuItem;
+		[player,"VehicleWeaponsCourse"] call BIS_fnc_addCommMenuItem;
 	};
 
 	if ((player iskindof "rhsusf_usmc_marpat_wd_squadleader") ||
@@ -77,6 +81,8 @@ if (player == player) then {
 		[player,"IDCourse"] call BIS_fnc_addCommMenuItem;
 		[player,"MOUTCourse"] call BIS_fnc_addCommMenuItem;
 		[player,"RRCourse"] call BIS_fnc_addCommMenuItem;
+		[player,"FormationsCourse"] call BIS_fnc_addCommMenuItem;
+		[player,"VehicleWeaponsCourse"] call BIS_fnc_addCommMenuItem;
 	};
 
 	if (player iskindof "rhsusf_usmc_marpat_wd_helicrew") then {
