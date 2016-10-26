@@ -502,7 +502,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     _dialogResult params ["_dialogPool", "_dialogVehicleClass"];
     _spawnPosition = _this select 0;
 
-    // Choose the LZ based on what the user indicated
+    // To make sure that it can only be used for the PLA, because of crew vehicle
     if (_dialogPool != 5) exitWith {
         [objNull, "Only Used for PLA Forces"] call BIS_fnc_showCuratorFeedbackMessage;
     };
