@@ -1,4 +1,4 @@
-// this addAction ["Clear Loadout", "scripts\clear_loadout.sqf", [], 6, true, true, "", "_this distance _target < 5"];
+// this addAction ["Clear Loadout", "scripts\clear_loadout.sqf", [], 6, true, true, "", "true", 5];
 
 removeAllWeapons player;
 removeAllAssignedItems player;
