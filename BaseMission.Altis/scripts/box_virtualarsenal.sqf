@@ -1,4 +1,4 @@
-// null = [this, "summer/winter/both"] execVM "scripts\box_virtualarsenal.sqf";
+// null = [this] execVM "scripts\box_virtualarsenal.sqf";
 
 params ["_crate"];
 _season = MEU_templateSeason;
