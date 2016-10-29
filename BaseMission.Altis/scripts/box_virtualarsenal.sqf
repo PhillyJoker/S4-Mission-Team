@@ -1,4 +1,4 @@
-// null = [this, "summer/winter/both"] execVM "scripts\box_virtualarsenal.sqf";
+// null = [this] execVM "scripts\box_virtualarsenal.sqf";
 
 waitUntil {!isNil "MEU_templateSeason"};
 
