@@ -5,15 +5,12 @@ _s3passedArguement = _this select 0;
 
 if(_s3passedArguement == "displayHC") then
 {
-	_HCid = if (isNil "HC_1") then {2} else {owner HC_1;};
+	_HCid1 = if (isNil "HC_1") then {2} else {owner HC_1;};
+	_HCid2 = if (isNil "HC_2") then {2} else {owner HC_2;};
+	_HCid3 = if (isNil "HC_3") then {2} else {owner HC_3;};
+	_HCid = [_HCid1,_HCid2,_HCid3];
 	Pub_HCOwner = _HCid;
 	publicVariable "Pub_HCOwner";
-};
-if(_s3passedArguement == "displayHC2") then
-{
-	_HCid2 = if (isNil "HC_2") then {2} else {owner HC_2;};
-	Pub_HCOwner2 = _HCid2;
-	publicVariable "Pub_HCOwner2";
 };
 if(_s3passedArguement == "displayPC") then
 {
