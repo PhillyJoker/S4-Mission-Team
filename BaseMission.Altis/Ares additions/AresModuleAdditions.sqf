@@ -608,4 +608,38 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
         // Add infantry to curator
         [units _infantryGroup] call Ares_fnc_AddUnitsToCurator;
     };
+	["Arsenal", " Add 13th Arsenal",
+	{
+		params ["_pos","_object"];
+		
+		if (isNull _object) exitWith
+		{
+			[objnull, "No object under cursor."] call bis_fnc_showCuratorFeedbackMessage;
+		};
+		_dialogResult = ["Choose Arsenal Type",
+			[
+				["Type", ["Summer","Winter","Both"]]
+			]
+		] call Ares_fnc_ShowChooseDialog;
+
+		if (_dialogResult isEqualTo []) exitWith{};
+		
+		_choice = ["summer","winter","both"] select (_dialogResult select 0);
+		_arsenalData = [_choice] call TIAD_fnc_Arsenal;
+		[_object, _arsenalData, true] call Ares_fnc_ArsenalSetup;
+		[objNull, "Arsenal objects added."] call bis_fnc_showCuratorFeedbackMessage;
+	}
+	] call Ares_fnc_RegisterCustomModule;
+	["Arsenal", " Add 13th Box Equipment",
+	{
+		params ["_pos","_object"];
+		
+		if (isNull _object) exitWith
+		{
+			[objnull, "No object under cursor."] call bis_fnc_showCuratorFeedbackMessage;
+		};
+		_null = [_object] execVM "scripts\box_equipment.sqf";
+		[objNull, "Box Equipment added to object."] call bis_fnc_showCuratorFeedbackMessage;
+	}
+	] call Ares_fnc_RegisterCustomModule;
 }] call Ares_fnc_RegisterCustomModule;
