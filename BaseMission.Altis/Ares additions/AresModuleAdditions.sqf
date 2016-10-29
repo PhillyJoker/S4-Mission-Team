@@ -1,11 +1,15 @@
-if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
+#include "\z\ace\addons\main\script_macros.hpp"
+
+if !(["Ares"] call EFUNC(common,isModLoaded)) exitWith {};
 // Ares is loaded, register the custom modules.
+
+#define ZEUS_MSG(MSG) ([ARR_2(objNull,MSG)] call BIS_fnc_showCuratorFeedbackMessage)
 
 ["AI Behaviours", "Turn Engine On/Off", {
     params ["_pos", "_object"];
 
     if !(_object isKindOf "Car" || {_object isKindOf "Ship"} || {_object isKindOf "Air"}) exitWith {
-        [objNull, "Object is not a vehicle."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Object is not a vehicle.");
     };
 
     _dialogResult = ["Engine", [["Mode:", ["On", "Off"]]]] call Ares_fnc_ShowChooseDialog;
@@ -14,7 +18,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
         _state = [true, false] select (_dialogResult select 0);
         _object engineOn _state;
     } else {
-        [objNull, "No input given, engine not adjusted."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("No input given, engine not adjusted.");
     };
 }] call Ares_fnc_RegisterCustomModule;
 
@@ -22,7 +26,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     params ["_pos", "_object"];
 
     if ((crew _object) isEqualTo []) exitWith {
-        [objNull, "Object has no units."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Object has no units.");
     };
 
     _dialogResult = [
@@ -41,7 +45,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
 
         _units orderGetIn false;
     } else {
-        [objNull, "No input given, no dismounts."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("No input given, no dismounts.");
     };
 }] call Ares_fnc_RegisterCustomModule;
 
@@ -49,21 +53,43 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     params ["_pos", "_object"];
 
     if (isNull _object) exitWith {
-        [objnull, "No object under cursor."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("No object under cursor.");
     };
 
     [
         _object,
         ["Clear Loadout", "scripts\clear_loadout.sqf", [], 6, true, true, "", "true", 5]
     ] remoteExec ["addAction", 0, true];
-    [objNull, "'Clear Loadout' action added to object."] call BIS_fnc_showCuratorFeedbackMessage;
+    ZEUS_MSG("'Clear Loadout' action added to the object.");
+}] call Ares_fnc_RegisterCustomModule;
+
+["Arsenal", "Add 13th Arsenal", {
+    params ["_pos", "_object"];
+
+    if (isNull _object) exitWith {
+        ZEUS_MSG("No object under cursor.");
+    };
+
+    [_object] execVM "scripts\box_virtualarsenal.sqf";
+    ZEUS_MSG("Arsenal added to the object.");
+}] call Ares_fnc_RegisterCustomModule;
+
+["Arsenal", "Add 13th Box Equipment", {
+    params ["_pos", "_object"];
+
+    if (isNull _object) exitWith {
+        ZEUS_MSG("No object under cursor.");
+    };
+
+    [_object] execVM "scripts\box_equipment.sqf";
+    ZEUS_MSG("Box Equipment added to the object.");
 }] call Ares_fnc_RegisterCustomModule;
 
 ["AI Behaviours", "Drop All Weapons", {
     params ["_pos", "_object"];
 
     if ((weapons _object) isEqualTo []) exitWith {
-        [objNull, "Object has no weapons."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Object has no weapons.");
     };
 
     {
@@ -79,7 +105,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     params ["_pos", "_object"];
 
     if !(_object isKindOf "Air") exitWith {
-        [objNull, "Object isn't a air unit."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Object isn't a air unit.");
     };
 
     _dialogResult = [
@@ -88,7 +114,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     ] call Ares_fnc_ShowChooseDialog;
 
     if (_dialogResult isEqualTo []) exitWith {
-        [objNull, "No input given, height not set."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("No input given, height not set.");
     };
 
     _height = [50, 100, 200, 300] select (_dialogResult select 0);
@@ -99,7 +125,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     params ["_pos", "_object"];
 
     if !(_object isKindOf "Air") exitWith {
-        [objNull, "Object isn't a air unit."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Object isn't a air unit.");
     };
     _object land "LAND";
 }] call Ares_fnc_RegisterCustomModule;
@@ -110,7 +136,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
         {!(Ares_Reinforcement_Unit_Pools isEqualType [])} ||
         {Ares_Reinforcement_Unit_Pools isEqualTo []}
     ) exitWith {
-        [objNull, "Unable to load unit pools. Is your 'Ares_Reinforcement_Unit_Pools.sqf' file corrupt?"] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Unable to load unit pools. Is your 'Ares_Reinforcement_Unit_Pools.sqf' file corrupt?");
     };
 
     private _allUnitPools = Ares_Reinforcement_Unit_Pools
@@ -120,7 +146,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
 
     _allLzsUnsorted = allMissionObjects "Ares_Module_Reinforcements_Create_Lz";
     if (_allLzsUnsorted isEqualTo []) exitWith {
-        [objNull, "You must have at least one LZ for the transport to head to."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("You must have at least one LZ for the transport to head to.");
     };
     _allLzs = [_allLzsUnsorted, [], {_x getVariable ["SortOrder", 0];}, "ASCEND"] call BIS_fnc_sortBy;
 
@@ -168,10 +194,8 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     ];
     _lzSize = 20; // TODO make this a dialog parameter?
     _rpSize = 20; // TODO make this a dialog parameters?
-    _spawnPosition = [
-        _this select 0,
-        Ares_CuratorObjectPlaces_LastPlacedObjectPosition
-    ] select (!isNil "Ares_CuratorObjectPlaces_LastPlacedObjectPosition");
+    // Replace with CBA 3.2's GETDEF()
+    _spawnPosition = GETMVAR(Ares_CuratorObjectPlaces_LastPlacedObjectPosition,_this select 0);
 
     // Lz's for helicopters get more randomness because they tend to crash into eachother.
     if (_dialogVehicleClass in [7, 8]) then {
@@ -208,7 +232,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     _side = _pool select 1;
 
     if ((_pool select 11) isEqualTo []) exitWith {
-        [objNull, "No infantry squads defined for side."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("No infantry squads defined for side.");
     };
 
     // Spawn a vehicle, send it to the LZ and have it unload the troops before returning home and
@@ -216,7 +240,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     _vehiclePoolIndex = _dialogVehicleClass + 3;
 
     if ((_pool select _vehiclePoolIndex) isEqualTo []) exitWith {
-        [objNull, "Vehicle pool had no vehicles defined for this faction."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Vehicle pool had no vehicles defined for this faction.");
     };
 
     _vehPool = _pool select _vehiclePoolIndex;
@@ -250,7 +274,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     _timeOut = [5, 30, 60, 120] select _dialog2TimeOut;
     (driver (vehicle (leader _vehicleGroup))) setSkill 1;
 
-    if (_vehiclePoolIndex in [7,8]) then {
+    if (_vehiclePoolIndex in [7, 8]) then {
         // Special settings for helicopters. Otherwise they tend to run away instead of land
         // if the LZ is hot.
         {
@@ -280,7 +304,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     _num = _teamNumber;
     if ((_emptyPos / _teamSize) < _teamNumber) then {
         _num = (floor (_emptyPos / _teamSize)) max 1;
-        [objNull, "Number of teams too big for vehicle, set to highest possible"] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Number of teams too big for vehicle, set to highest possible");
     };
 
     for "_i" from 1 to _num do {
@@ -355,9 +379,9 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     };
 
     if !(_allRps isEqualTo []) then {
-        [objNull, "Transport dispatched to LZ. Squad will head to RP."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Transport dispatched to LZ. Squad will head to RP.");
     } else {
-        [objNull, "Transport dispatched to LZ. Squad will stay at LZ."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Transport dispatched to LZ. Squad will stay at LZ.");
     };
 }] call Ares_fnc_RegisterCustomModule;
 
@@ -370,12 +394,12 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
 
     _groupUnderCursor = group _object;
     if (isNull _groupUnderCursor) exitWith {
-        [objnull, "No group under cursor."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("No group under cursor.");
     };
 
     _doesGroupContainAnyPlayer = ({isPlayer _x} count (units _groupUnderCursor)) > 0;
     if (_doesGroupContainAnyPlayer) exitWith {
-        [objnull, "Cannot add patrol for player units."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Cannot add patrol for player units.");
     };
 
     ["BehaviourPatrol: Group under cursor was not null - showing prompt"] call Ares_fnc_LogMessage;
@@ -394,7 +418,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     ["BehaviourPatrol: Prompt complete!"] call Ares_fnc_LogMessage;
 
     if (_dialogResult isEqualTo []) exitWith {
-        [objnull, "No input given, patrol path not set up."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("No input given, patrol path not set up.");
     };
 
     _radius = [50, 100, 150, 250, 500] select (_dialogResult select 0);
@@ -466,7 +490,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     private _waypoint = _groupUnderCursor addWaypoint [_centerPoint getPos [_radius, 0], 5];
     _waypoint setWaypointType "CYCLE";
 
-    [objnull, "Patrol path setup for units."] call BIS_fnc_showCuratorFeedbackMessage;
+    ZEUS_MSG("Patrol path setup for units.");
 }] call Ares_fnc_RegisterCustomModule;
 
 ["PLA", "Spawn Vehicle with Units", {
@@ -475,7 +499,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
         {!(Ares_Reinforcement_Unit_Pools isEqualType [])} ||
         {Ares_Reinforcement_Unit_Pools isEqualTo []}
     ) exitWith {
-        [objNull, "Unable to load unit pools. Is your 'Ares_Reinforcement_Unit_Pools.sqf' file corrupt?"] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Unable to load unit pools. Is your 'Ares_Reinforcement_Unit_Pools.sqf' file corrupt?");
     };
 
     private _allUnitPools = Ares_Reinforcement_Unit_Pools
@@ -504,7 +528,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
 
     // To make sure that it can only be used for the PLA, because of crew vehicle
     if (_dialogPool != 5) exitWith {
-        [objNull, "Only Used for PLA Forces"] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Only Used for PLA Forces");
     };
 
     // Get the unit pool and the side it's associated with
@@ -512,7 +536,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     _side = _pool select 1;
 
     if ((_pool select 11) isEqualTo []) exitWith {
-        [objNull, "No infantry squads defined for side."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("No infantry squads defined for side.");
     };
 
     // Spawn a vehicle, send it to the LZ and have it unload the troops before returning home and
@@ -520,7 +544,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     _vehiclePoolIndex = _dialogVehicleClass + 3;
 
     if ((_pool select _vehiclePoolIndex) isEqualTo []) exitWith {
-        [objNull, "Vehicle pool had no vehicles defined for this faction."] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Vehicle pool had no vehicles defined for this faction.");
     };
 
     _vehPool = _pool select _vehiclePoolIndex;
@@ -584,7 +608,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
     _num = _teamNumber;
     if ((_emptyPos / _teamSize) < _teamNumber) then {
         _num = (floor (_emptyPos / _teamSize)) max 1;
-        [objNull, "Number of teams too big for vehicle, set to highest possible"] call BIS_fnc_showCuratorFeedbackMessage;
+        ZEUS_MSG("Number of teams too big for vehicle, set to highest possible");
     };
 
     for "_i" from 1 to _num do {
@@ -608,38 +632,4 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {};
         // Add infantry to curator
         [units _infantryGroup] call Ares_fnc_AddUnitsToCurator;
     };
-	["Arsenal", " Add 13th Arsenal",
-	{
-		params ["_pos","_object"];
-		
-		if (isNull _object) exitWith
-		{
-			[objnull, "No object under cursor."] call bis_fnc_showCuratorFeedbackMessage;
-		};
-		_dialogResult = ["Choose Arsenal Type",
-			[
-				["Type", ["Summer","Winter","Both"]]
-			]
-		] call Ares_fnc_ShowChooseDialog;
-
-		if (_dialogResult isEqualTo []) exitWith{};
-		
-		_choice = ["summer","winter","both"] select (_dialogResult select 0);
-		_arsenalData = [_choice] call TIAD_fnc_Arsenal;
-		[_object, _arsenalData, true] call Ares_fnc_ArsenalSetup;
-		[objNull, "Arsenal objects added."] call bis_fnc_showCuratorFeedbackMessage;
-	}
-	] call Ares_fnc_RegisterCustomModule;
-	["Arsenal", " Add 13th Box Equipment",
-	{
-		params ["_pos","_object"];
-		
-		if (isNull _object) exitWith
-		{
-			[objnull, "No object under cursor."] call bis_fnc_showCuratorFeedbackMessage;
-		};
-		_null = [_object] execVM "scripts\box_equipment.sqf";
-		[objNull, "Box Equipment added to object."] call bis_fnc_showCuratorFeedbackMessage;
-	}
-	] call Ares_fnc_RegisterCustomModule;
 }] call Ares_fnc_RegisterCustomModule;

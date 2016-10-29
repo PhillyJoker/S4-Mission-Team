@@ -408,7 +408,7 @@ _availableWeapons = [
 ];
 
 // Populate with predefined items
-[_crate, _availableBackpacks + _SeasonBackpacks] call BIS_fnc_addVirtualBackpackCargo;
-[_crate, _availableItemCargo + _SeasonItemCargo] call BIS_fnc_addVirtualItemCargo;
+[_crate, _availableBackpacks + _seasonBackpacks] call BIS_fnc_addVirtualBackpackCargo;
+[_crate, _availableItemCargo + _seasonItemCargo] call BIS_fnc_addVirtualItemCargo;
 [_crate, _availableMagazines] call BIS_fnc_addVirtualMagazineCargo;
 [_crate, _availableWeapons] call BIS_fnc_addVirtualWeaponCargo;
