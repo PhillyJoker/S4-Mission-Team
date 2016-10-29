@@ -83,3 +83,13 @@ class ACE_Settings {
     SETB(ui_weaponNameBackground,1)
     SETB(ui_zeroing,1)
 };
+class CfgFunctions
+{
+	class TIAD
+	{
+		class Arsenal
+		{
+			class Arsenal {file = "scripts\ares_virtualarsenal.sqf";};
+		};
+	};
+};
