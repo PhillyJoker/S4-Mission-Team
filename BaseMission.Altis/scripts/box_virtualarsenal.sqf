@@ -1,5 +1,7 @@
 // null = [this, "summer/winter/both"] execVM "scripts\box_virtualarsenal.sqf";
 
+waitUntil {!isNil "MEU_templateSeason"};
+
 params ["_crate"];
 _season = MEU_templateSeason;
 _seasonBackpacks = [];

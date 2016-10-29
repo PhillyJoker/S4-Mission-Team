@@ -8,6 +8,8 @@ enableSaving [false, false];
 // Template Inits
 MEU_templateSeason = "winter"; // "winter" or "summer"
 
+MEU_isTemplate = (getMissionConfigValue "respawnOnStart") == 0;
+
 /* Omitting the template stuff because they're
  * terrain-dependent, doesn't really fit the
  * Base Mission

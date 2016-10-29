@@ -1,4 +1,6 @@
 * text=auto
+*.ext text eol=lf
+*.sqf text eol=lf
 *.png binary
 *.jpg binary
 *.paa binary
