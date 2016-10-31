@@ -46,6 +46,3 @@ if (_s3passedArguement == "displayAres") then
     Pub_AresOwner = _AresOwner;
     publicVariable "Pub_AresOwner";
 };
-
-
-

@@ -60,8 +60,6 @@ if (_s3logic in _s3curators) then
     removeAllActions tccc;
     tccc addAction ["Open Testing Menu", "template\ryan_menu.sqf", "init"]
     };
-} 
-else 
-{
+} else {
     Hint "You are not in the Zeus Slot, Access Denied."
 };
