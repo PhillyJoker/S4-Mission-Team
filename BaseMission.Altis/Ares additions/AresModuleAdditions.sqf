@@ -88,10 +88,12 @@ if !(["Ares"] call EFUNC(common,isModLoaded)) exitWith {};
 ["AI Behaviours", "Drop All Weapons", {
     params ["_pos", "_object"];
 
-    if ((weapons _object) isEqualTo []) exitWith {
+    if (isNull _object) exitWith {
+        ZEUS_MSG("No object under cursor.");
+    };
+     if ((weapons _object) isEqualTo []) exitWith {
         ZEUS_MSG("Object has no weapons.");
     };
-
     {
         _pos = getPosASL _object;
         _object removeWeapon _x;
