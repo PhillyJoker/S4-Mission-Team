@@ -44,9 +44,9 @@ if (isServer) then {
         ["land_flush_light_yellow_f", [12, -22.5, 17.4], 0, "air_check"],
         ["flag_us_f", [31, -68, 17.5], 0, "tp_f_1"],
         ["box_nato_ammoveh_f", [5, -40, 7.1], 0, "arsenal_0"],
-        ["box_nato_ammoveh_f", [-5, -40, 7.1], 0, "arsenal_00"],
+        ["box_nato_ammoveh_f", [-5, -40, 7.1], 0, "arsenal_1"],
         ["b_cargonet_01_ammo_f", [10, -40, 7], 0, "equipment_0"],
-        ["b_cargonet_01_ammo_f", [-10, -40, 7], 0, "equipment_00"],
+        ["b_cargonet_01_ammo_f", [-10, -40, 7], 0, "equipment_1"],
         ["b_slingload_01_ammo_f", [35, -100, 17.5], 0, "resupply_veh"],
         ["b_cargonet_01_ammo_f", [25, -95, 17.5], 0, "resupply_0"],
         ["b_cargonet_01_ammo_f", [25, -105, 17.5], 0, "resupply_0"]
@@ -54,78 +54,70 @@ if (isServer) then {
 
     _n_pos_z = (getPosASL nimitz_1) select 2;
     {
-        _x params ["_type", "_pos", "_dir", "_name"];
+        _x params ["_type", "_pos", "_dir", ["_name", ""]];
         temp_obj = createVehicle [_type, [0, 0, 0], [], 0, "CAN_COLLIDE"];
         [nimitz_1, temp_obj, _pos, _dir] call BIS_fnc_relPosObject;
-        _obj_rel = getPosASL temp_obj;
-        temp_obj setPosASL (_obj_rel vectorAdd [0, 0, _n_pos_z]);
+        temp_obj setPosASL ((getPosASL temp_obj) vectorAdd [0, 0, _n_pos_z]);
 
         switch (_type) do {
             case "rhsusf_ch53e_usmc": {temp_obj animateDoor ["mainRotor_folded", 1, true];};
             case "rhs_uh1y": {[temp_obj] call ace_fastroping_fnc_equipFRIES;};
         };
 
+        if (_name == "") exitWith {};
+
         if (_name == "resupply_0") exitWith {
             [temp_obj] execVM "scripts\box_resupply.sqf";
         };
 
-        call compile format ["'%1' = %2; publicVariable '%2';", _name, temp_obj];
+        call compile format ["%1 = temp_obj; publicVariable '%1';", _name];
     } forEach _b_list;
     temp_obj = nil;
 
     // Gets position of all specialty objects and deletes them
-    pos_cop_blue = [typeOf cop_blue, getPosASL cop_blue, getPosASL cop_blue, vectorDir cop_blue, vectorUp cop_blue];
+    pos_cop_blue = [typeOf cop_blue, getPosASL cop_blue, vectorDir cop_blue, vectorUp cop_blue];
     deleteVehicle cop_blue;
 
-    pos_menu_ground = [typeOf menu_ground, getPosASL menu_ground, getPosASL menu_ground, vectorDir menu_ground, vectorUp menu_ground];
+    pos_menu_ground = [typeOf menu_ground, getPosASL menu_ground, vectorDir menu_ground, vectorUp menu_ground];
     deleteVehicle menu_ground;
 
-    pos_ground_check = [typeOf ground_check, getPosASL ground_check, getPosASL ground_check, vectorDir ground_check, vectorUp ground_check];
+    pos_ground_check = [typeOf ground_check, getPosASL ground_check, vectorDir ground_check, vectorUp ground_check];
     deleteVehicle ground_check;
 
-    pos_arsenal_1 = [typeOf arsenal_1, getPosASL arsenal_1, getPosASL arsenal_1, vectorDir arsenal_1, vectorUp arsenal_1];
+    pos_arsenal_1 = [typeOf arsenal_1, getPosASL arsenal_1, vectorDir arsenal_1, vectorUp arsenal_1];
     deleteVehicle arsenal_1;
 
-    pos_equipment_1 = [typeOf equipment_1, getPosASL equipment_1, getPosASL equipment_1, vectorDir equipment_1, vectorUp equipment_1];
+    pos_equipment_1 = [typeOf equipment_1, getPosASL equipment_1, vectorDir equipment_1, vectorUp equipment_1];
     deleteVehicle equipment_1;
 
-    pos_remoteBuilder = [typeOf remoteBuilder, getPosASL remoteBuilder, getPosASL remoteBuilder, vectorDir remoteBuilder, vectorUp remoteBuilder];
+    pos_remoteBuilder = [typeOf remoteBuilder, getPosASL remoteBuilder, vectorDir remoteBuilder, vectorUp remoteBuilder];
     deleteVehicle remoteBuilder;
 
-    pos_cop_marker = getMarkerPos "cop_redoctober";
-
-    //Get all objects within 200m of the COP then save & delete them.
+    // Get all objects within 200m of the COP then save & delete them.
     building_array = [];
     _spCheck = nearestObjects [getMarkerPos "cop_redoctober", [], 200];
     aresmod addCuratorEditableObjects [_spCheck, false];
     _sp2Check = curatorEditableObjects aresmod;
-    {
-        _tempArr = [typeOf _x, getPosASL _x, getPosASL _x, vectorDir _x, vectorUp _x];
-        building_array pushback _tempArr;
-    } forEach _sp2Check;
-
+    building_array = _sp2Check apply {[typeOf _x, getPosASL _x, vectorDir _x, vectorUp _x]};
     {deleteVehicle _x} forEach _sp2Check;
 
-    //Rebuild Remote Builder
+    // Rebuild Remote Builder
     remoteBuilder = createVehicle [pos_remoteBuilder select 0, pos_remoteBuilder select 1, [], 0, "CAN_COLLIDE"];
-    remoteBuilder setPosASL (pos_remoteBuilder select 2);
-    remoteBuilder setVectorDirAndUp [pos_remoteBuilder select 3, pos_remoteBuilder select 4];
+    remoteBuilder setPosASL (pos_remoteBuilder select 1);
+    remoteBuilder setVectorDirAndUp [pos_remoteBuilder select 2, pos_remoteBuilder select 3];
 
-    //Replace the markers.
+    // Replace the markers.
     deleteMarker "cop_redoctober";
     deleteMarker "cop_redoctober_text";
+    pos_cop_marker = getMarkerPos "cop_redoctober";
     _newMarker = createMarker ["cop_redoctober_no", pos_cop_marker];
     _newMarker setMarkerShape "ICON";
     _newMarker setMarkerType "flag_USA";
-    _newMarker setMarkerDir 0;
     _newMarker setMarkerColor "Default";
-    _newMarker setMarkerAlpha 1;
     _newMarker = createMarker ["cop_redoctober_text_no", pos_cop_marker];
     _newMarker setMarkerShape "ICON";
     _newMarker setMarkerType "selector_selectable";
-    _newMarker setMarkerDir 0;
     _newMarker setMarkerColor "ColorRed";
-    _newMarker setMarkerAlpha 1;
     _newMarker setMarkerText "COP Red October (Not Built)";
 };
 
@@ -135,11 +127,11 @@ tccc_1 addAction ["Open Mission Menu", "template\tccc_menu.sqf", "init"];
 fob_blue_1 addAction ["To COP Red October", "template\tpto_cop_blue.sqf"];
 fob_blue_1 addAction ["To Lower Deck", "template\tpto_fob_blue.sqf"];
 arsenal_0 addAction ["Clear Loadout", "scripts\clear_loadout.sqf", [], 6, true, true, "", "true", 5];
-arsenal_00 addAction ["Clear Loadout", "scripts\clear_loadout.sqf", [], 6, true, true, "", "true", 5];
+arsenal_1 addAction ["Clear Loadout", "scripts\clear_loadout.sqf", [], 6, true, true, "", "true", 5];
 [arsenal_0] execVM "scripts\box_virtualarsenal.sqf";
 [arsenal_00] execVM "scripts\box_virtualarsenal.sqf";
 [equipment_0] execVM "scripts\box_equipment.sqf";
-[equipment_00] execVM "scripts\box_equipment.sqf";
+[equipment_1] execVM "scripts\box_equipment.sqf";
 [remoteBuilder, ["Build COP Red October", "template\tccc_menu.sqf", "buildROremote"]] remoteExec ["addAction", 0, true];
 remoteBuilder allowDamage false;
 remoteBuilder setFuel 0;

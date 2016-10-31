@@ -3,14 +3,14 @@
 menu_ground addAction ["Air Vehicle Menu", "template\menu_ground.sqf", "init"];
 */
 _s3passedArguement = _this select 3; 
-_season = template_season;
+_season = MEU_templateSeason;
 _buildLocation = getPos ground_check;
 _obj_x = _buildLocation select 0;
 _obj_y = _buildLocation select 1;
 _obj_z = _buildLocation select 2;
 _obj_dir = getDir ground_check;
 
-    if(_s3passedArguement == "init") then
+    if (_s3passedArguement == "init") then
     {
     removeAllActions menu_ground;
     menu_ground addAction ["Build RG-33", "template\menu_ground.sqf", "buildRG33"];
@@ -22,48 +22,48 @@ _obj_dir = getDir ground_check;
     menu_ground addAction ["Close Ground Vehicle Menu", "template\menu_ground.sqf", "end"];
     };
     
-    if(_s3passedArguement == "end") then
+    if (_s3passedArguement == "end") then
     {
     removeAllActions menu_ground;
     menu_ground addAction ["Ground Vehicle Menu", "template\menu_ground.sqf", "init"];
     };
-    if(_s3passedArguement == "delete_any") then
+    if (_s3passedArguement == "delete_any") then
     {
         _spCheck = nearestObjects[(getPos ground_check),["AllVehicles"],5]; 
         {deleteVehicle _x}forEach _spCheck;
     };
     
-if((ground_check distance nearestObject [ground_check,"AllVehicles"]) > 5) then
+if ((ground_check distance nearestObject [ground_check,"AllVehicles"]) > 5) then
 {
-    if(_s3passedArguement == "buildRG33") then
+    if (_s3passedArguement == "buildRG33") then
     {
-        if(_season == "winter") then 
+        if (_season == "winter") then 
         {
             _newVehicle = createVehicle ['rhsusf_rg33_usmc_wd', [_obj_x,_obj_y,_obj_z], [], 0, 'CAN_COLLIDE']; 
             _newVehicle setDir _obj_dir;
         };
-        if(_season == "summer") then 
+        if (_season == "summer") then 
         {
             _newVehicle = createVehicle ['rhsusf_rg33_usmc_d', [_obj_x,_obj_y,_obj_z], [], 0, 'CAN_COLLIDE']; 
             _newVehicle setDir _obj_dir;
         };
     };
-    if(_s3passedArguement == "buildRG33M2") then
+    if (_s3passedArguement == "buildRG33M2") then
     {
-        if(_season == "winter") then 
+        if (_season == "winter") then 
         {
             _newVehicle = createVehicle ['rhsusf_rg33_m2_usmc_wd', [_obj_x,_obj_y,_obj_z], [], 0, 'CAN_COLLIDE']; 
             _newVehicle setDir _obj_dir;
         };
-        if(_season == "summer") then 
+        if (_season == "summer") then 
         {
             _newVehicle = createVehicle ['rhsusf_rg33_m2_usmc_d', [_obj_x,_obj_y,_obj_z], [], 0, 'CAN_COLLIDE']; 
             _newVehicle setDir _obj_dir;
         };
     };
-    if(_s3passedArguement == "buildM1A1") then
+    if (_s3passedArguement == "buildM1A1") then
     {
-        if(_season == "winter") then 
+        if (_season == "winter") then 
         {
             _newVehicle = createVehicle ['rhsusf_m1a1fep_d', [_obj_x,_obj_y,_obj_z], [], 0, 'CAN_COLLIDE']; 
             _newVehicle setDir _obj_dir;
@@ -76,7 +76,7 @@ if((ground_check distance nearestObject [ground_check,"AllVehicles"]) > 5) then
             _newVehicle addMagazineTurret ["rhs_mag_M830A1",[0],10]; 
             _newVehicle addMagazineTurret ["rhs_mag_M1069",[0],6];
         };
-        if(_season == "summer") then 
+        if (_season == "summer") then 
         {
             _newVehicle = createVehicle ['rhsusf_m1a1fep_d', [_obj_x,_obj_y,_obj_z], [], 0, 'CAN_COLLIDE']; 
             _newVehicle setDir _obj_dir;
@@ -95,15 +95,15 @@ if((ground_check distance nearestObject [ground_check,"AllVehicles"]) > 5) then
             _newVehicle addMagazineTurret ["rhs_mag_M1069",[0],6];
         };
     };
-    if(_s3passedArguement == "buildLAV") then
+    if (_s3passedArguement == "buildLAV") then
     {
-        if(_season == "winter") then 
+        if (_season == "winter") then 
         {
             _newVehicle = createVehicle ['Cha_LAV25', [_obj_x,_obj_y,_obj_z], [], 0, 'CAN_COLLIDE']; 
             [_newVehicle] execVM "scripts\lav_loadout.sqf";
             _newVehicle setDir _obj_dir;
         };
-        if(_season == "summer") then 
+        if (_season == "summer") then 
         {
             _newVehicle = createVehicle ['Cha_Des1_LAV25', [_obj_x,_obj_y,_obj_z], [], 0, 'CAN_COLLIDE']; 
             [_newVehicle] execVM "scripts\lav_loadout.sqf";

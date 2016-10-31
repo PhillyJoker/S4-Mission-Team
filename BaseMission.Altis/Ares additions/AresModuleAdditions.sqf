@@ -1,4 +1,4 @@
-#include "\z\ace\addons\main\script_macros.hpp"
+#include "\z\ace\addons\main\script_component.hpp"
 
 if !(["Ares"] call EFUNC(common,isModLoaded)) exitWith {};
 // Ares is loaded, register the custom modules.
@@ -40,7 +40,7 @@ if !(["Ares"] call EFUNC(common,isModLoaded)) exitWith {};
             [driver _object],
             [commander _object],
             [gunner _object],
-            (crew _object) - [driver _object, commander _object, gunner _object],
+            (crew _object) - [driver _object, commander _object, gunner _object]
         ] select (_dialogResult select 0);
 
         _units orderGetIn false;
