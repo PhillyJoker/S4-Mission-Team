@@ -5,8 +5,8 @@ In the initServer.sqf:
 
 if (isServer) then {
     _b_list = [
-        ["rhsusf_ch53e_usmc", [-30, -80, 17.5], 0],
-        ["rhsusf_ch53e_usmc", [-30, -45, 17.5], 0],
+        ["rhsusf_ch53e_usmc", [-30, -80, 17.5]],
+        ["rhsusf_ch53e_usmc", [-30, -45, 17.5]],
         ["rhs_ah1z", [28, -118, 17.5], 330],
         ["rhs_ah1z", [27, -135, 17.5], 330],
         ["rhs_uh1y", [-13, -160, 17.5], 35],
@@ -16,27 +16,27 @@ if (isServer) then {
         ["land_infostand_v1_f", [25, -43, 17.5], 0, "menu_air"],
         ["land_infostand_v1_f", [1, -40, 7], 180, "menu_build"],
         ["land_infostand_v1_f", [-1, -40, 7], 180, "menu_hc"],
-        ["land_flush_light_yellow_f", [7, -35, 17.4], 0],
-        ["land_flush_light_yellow_f", [9, -35, 17.4], 0],
-        ["land_flush_light_yellow_f", [11, -35, 17.4], 0],
-        ["land_flush_light_yellow_f", [13, -35, 17.4], 0],
-        ["land_flush_light_yellow_f", [15, -35, 17.4], 0],
-        ["land_flush_light_yellow_f", [17, -35, 17.4], 0],
-        ["land_flush_light_yellow_f", [17, -30, 17.4], 0],
-        ["land_flush_light_yellow_f", [17, -25, 17.4], 0],
-        ["land_flush_light_yellow_f", [17, -20, 17.4], 0],
-        ["land_flush_light_yellow_f", [17, -15, 17.4], 0],
-        ["land_flush_light_yellow_f", [17, -10, 17.4], 0],
-        ["land_flush_light_yellow_f", [15, -10, 17.4], 0],
-        ["land_flush_light_yellow_f", [13, -10, 17.4], 0],
-        ["land_flush_light_yellow_f", [11, -10, 17.4], 0],
-        ["land_flush_light_yellow_f", [9, -10, 17.4], 0],
-        ["land_flush_light_yellow_f", [7, -10, 17.4], 0],
-        ["land_flush_light_yellow_f", [7, -15, 17.4], 0],
-        ["land_flush_light_yellow_f", [7, -20, 17.4], 0],
-        ["land_flush_light_yellow_f", [7, -25, 17.4], 0],
-        ["land_flush_light_yellow_f", [7, -30, 17.4], 0],
-        ["land_flush_light_yellow_f", [7, -35, 17.4], 0],
+        ["land_flush_light_yellow_f", [7, -35, 17.4]],
+        ["land_flush_light_yellow_f", [9, -35, 17.4]],
+        ["land_flush_light_yellow_f", [11, -35, 17.4]],
+        ["land_flush_light_yellow_f", [13, -35, 17.4]],
+        ["land_flush_light_yellow_f", [15, -35, 17.4]],
+        ["land_flush_light_yellow_f", [17, -35, 17.4]],
+        ["land_flush_light_yellow_f", [17, -30, 17.4]],
+        ["land_flush_light_yellow_f", [17, -25, 17.4]],
+        ["land_flush_light_yellow_f", [17, -20, 17.4]],
+        ["land_flush_light_yellow_f", [17, -15, 17.4]],
+        ["land_flush_light_yellow_f", [17, -10, 17.4]],
+        ["land_flush_light_yellow_f", [15, -10, 17.4]],
+        ["land_flush_light_yellow_f", [13, -10, 17.4]],
+        ["land_flush_light_yellow_f", [11, -10, 17.4]],
+        ["land_flush_light_yellow_f", [9, -10, 17.4]],
+        ["land_flush_light_yellow_f", [7, -10, 17.4]],
+        ["land_flush_light_yellow_f", [7, -15, 17.4]],
+        ["land_flush_light_yellow_f", [7, -20, 17.4]],
+        ["land_flush_light_yellow_f", [7, -25, 17.4]],
+        ["land_flush_light_yellow_f", [7, -30, 17.4]],
+        ["land_flush_light_yellow_f", [7, -35, 17.4]],
         ["land_portablelight_double_f", [15, -10, 7], 45],
         ["land_portablelight_double_f", [-15, -10, 7], -45],
         ["land_portablelight_double_f", [15, -75, 7], 135],
@@ -54,25 +54,25 @@ if (isServer) then {
 
     _n_pos_z = (getPosASL nimitz_1) select 2;
     {
-        _x params ["_type", "_pos", "_dir", ["_name", ""]];
-        temp_obj = createVehicle [_type, [0, 0, 0], [], 0, "CAN_COLLIDE"];
-        [nimitz_1, temp_obj, _pos, _dir] call BIS_fnc_relPosObject;
-        temp_obj setPosASL ((getPosASL temp_obj) vectorAdd [0, 0, _n_pos_z]);
+        _x params ["_type", "_pos", ["_dir", 0], ["_name", ""]];
+        _veh = createVehicle [_type, [0, 0, 0], [], 0, "CAN_COLLIDE"];
+        [nimitz_1, _veh, _pos, _dir] call BIS_fnc_relPosObject;
+        _veh setPosASL ((getPosASL _veh) vectorAdd [0, 0, _n_pos_z]);
 
         switch (_type) do {
-            case "rhsusf_ch53e_usmc": {temp_obj animateDoor ["mainRotor_folded", 1, true];};
-            case "rhs_uh1y": {[temp_obj] call ace_fastroping_fnc_equipFRIES;};
+            case "rhsusf_ch53e_usmc": {_veh animateDoor ["mainRotor_folded", 1, true];};
+            case "rhs_uh1y": {[_veh] call ace_fastroping_fnc_equipFRIES;};
         };
 
         if (_name == "") exitWith {};
 
         if (_name == "resupply_0") exitWith {
-            [temp_obj] execVM "scripts\box_resupply.sqf";
+            [_veh] execVM "scripts\box_resupply.sqf";
         };
 
-        call compile format ["%1 = temp_obj; publicVariable '%1';", _name];
+        missionNamespace setVariable [_name, _veh];
+        publicVariable _name;
     } forEach _b_list;
-    temp_obj = nil;
 
     // Gets position of all specialty objects and deletes them
     pos_cop_blue = [typeOf cop_blue, getPosASL cop_blue, vectorDir cop_blue, vectorUp cop_blue];
@@ -129,7 +129,7 @@ fob_blue_1 addAction ["To Lower Deck", "template\tpto_fob_blue.sqf"];
 arsenal_0 addAction ["Clear Loadout", "scripts\clear_loadout.sqf", [], 6, true, true, "", "true", 5];
 arsenal_1 addAction ["Clear Loadout", "scripts\clear_loadout.sqf", [], 6, true, true, "", "true", 5];
 [arsenal_0] execVM "scripts\box_virtualarsenal.sqf";
-[arsenal_00] execVM "scripts\box_virtualarsenal.sqf";
+[arsenal_1] execVM "scripts\box_virtualarsenal.sqf";
 [equipment_0] execVM "scripts\box_equipment.sqf";
 [equipment_1] execVM "scripts\box_equipment.sqf";
 [remoteBuilder, ["Build COP Red October", "template\tccc_menu.sqf", "buildROremote"]] remoteExec ["addAction", 0, true];

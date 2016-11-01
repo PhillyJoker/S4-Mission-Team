@@ -21,7 +21,6 @@ class ACE_Settings {
     SETB(common_checkPBOsCheckAll,1)
     SETB(finger_enabled,1)
     SETB(respawn_savePreDeathGear,1)
-    SETB(respawn_removeDeadBodiesDisconnected,1)
     SETB(weather_useACEWeather,0)
     SETS(repair_engineerSetting_repair,0)
     SETS(repair_fullRepairLocation,0)

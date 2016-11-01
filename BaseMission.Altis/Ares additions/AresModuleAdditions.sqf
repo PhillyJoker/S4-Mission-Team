@@ -1,7 +1,7 @@
 if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {[objNull, "CUSTOM MODULES NOT LOADED"] call BIS_fnc_showCuratorFeedbackMessage;};
 // Ares is loaded, register the custom modules.
 
-["AI Behaviours", "Turn Engine On/Off", 
+["AI Behaviours", "Turn Engine On/Off",
 {
     params ["_pos", "_object"];
 
@@ -14,13 +14,13 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {[objNull, "CUSTOM
     if (_dialogResult isEqualTo []) exitWith {
         [objNull, "No input given, engine not adjusted."] call BIS_fnc_showCuratorFeedbackMessage;
     };
-    
+
     _state = [true, false] select (_dialogResult select 0);
     _object engineOn _state;
 }
 ] call Ares_fnc_RegisterCustomModule;
 
-["AI Behaviours", "Dismount Vehicle", 
+["AI Behaviours", "Dismount Vehicle",
 {
     params ["_pos", "_object"];
 
@@ -48,7 +48,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {[objNull, "CUSTOM
 }
 ] call Ares_fnc_RegisterCustomModule;
 
-["Arsenal", "Add 'Clear Loadout' Action", 
+["Arsenal", "Add 'Clear Loadout' Action",
 {
     params ["_pos", "_object"];
 
@@ -64,7 +64,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {[objNull, "CUSTOM
 }
 ] call Ares_fnc_RegisterCustomModule;
 
-["Arsenal", " Add 13th Arsenal", 
+["Arsenal", " Add 13th Arsenal",
 {
     params ["_pos","_object"];
 
@@ -99,10 +99,10 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {[objNull, "CUSTOM
 }
 ] call Ares_fnc_RegisterCustomModule;
 
-["AI Behaviours", "Drop All Weapons", 
+["AI Behaviours", "Drop All Weapons",
 {
     params ["_pos", "_object"];
-    
+
     if ((weapons _object) isEqualTo [] || isNull _object) exitWith {
         [objNull, "No object under cursor or Object has no weapons."] call BIS_fnc_showCuratorFeedbackMessage;
     };
@@ -115,7 +115,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {[objNull, "CUSTOM
 }
 ] call Ares_fnc_RegisterCustomModule;
 
-["AI Behaviours", "Set Fly Height", 
+["AI Behaviours", "Set Fly Height",
 {
     params ["_pos", "_object"];
 
@@ -137,7 +137,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {[objNull, "CUSTOM
 }
 ] call Ares_fnc_RegisterCustomModule;
 
-["AI Behaviours", "Land Aircraft", 
+["AI Behaviours", "Land Aircraft",
 {
     params ["_pos", "_object"];
 
@@ -148,7 +148,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {[objNull, "CUSTOM
 }
 ] call Ares_fnc_RegisterCustomModule;
 
-["Reinforcements", "Spawn Units v2", 
+["Reinforcements", "Spawn Units v2",
 {
     if (
         isNil "Ares_Reinforcement_Unit_Pools" ||
@@ -173,16 +173,9 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {[objNull, "CUSTOM
     _allRps = [_allRpsUnsorted, [], {_x getVariable ["SortOrder", 0];}, "ASCEND"] call BIS_fnc_sortBy;
 
     // Generate list of pool names to let user choose from
-    _poolNames = [];
-    _validPools = [];
-    {
-        if ((_x select 2) == "" || isClass(configFile >> "CfgPatches" >> (_x select 2))) then
-        {
-            _poolNames pushBack (_x select 0);
-            _validPools pushBack _x;
-        };
-    } forEach _allUnitPools;
-    
+    _validPools = _allUnitPools select {(_x select 2) == "" || {isClass (configFile >> "CfgPatches" >> (_x select 2))}};
+    _poolNames = _validPools apply {_x select 0};
+
     _lzOptions = ["Random", "Nearest", "Farthest", "Least Used"];
     {
         _lzOptions pushBack (name _x);
@@ -222,7 +215,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {[objNull, "CUSTOM
     _lzSize = 20; // TODO make this a dialog parameter?
     _rpSize = 20; // TODO make this a dialog parameters?
     // Replace with CBA 3.2's GETDEF()
-    _spawnPosition = GETMVAR(Ares_CuratorObjectPlaces_LastPlacedObjectPosition,_this select 0);
+    _spawnPosition = [Ares_CuratorObjectPlaces_LastPlacedObjectPosition] param [0, _this select 0];
 
     // Lz's for helicopters get more randomness because they tend to crash into eachother.
     if (_dialogVehicleClass in [7, 8]) then {
@@ -415,7 +408,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {[objNull, "CUSTOM
 }
 ] call Ares_fnc_RegisterCustomModule;
 
-["AI Behaviours", "Patrol v2", 
+["AI Behaviours", "Patrol v2",
 {
     params ["_pos", "_object"];
 
@@ -536,16 +529,9 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {[objNull, "CUSTOM
     };
 
     // Generate list of pool names to let user choose from
-    _poolNames = [];
-    _validPools = [];
-    {
-        if ((_x select 2) == "" || isClass(configFile >> "CfgPatches" >> (_x select 2))) then
-        {
-            _poolNames pushBack (_x select 0);
-            _validPools pushBack _x;
-        };
-    } forEach _allUnitPools;
-    
+    _validPools = _allUnitPools select {(_x select 2) == "" || {isClass (configFile >> "CfgPatches" >> (_x select 2))}};
+    _poolNames = _validPools apply {_x select 0};
+
     // Show the user the dialog
     _dialogResult = [
         "Create Reinforcements",
