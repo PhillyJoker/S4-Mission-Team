@@ -85,8 +85,8 @@ if (_build == "deleteRO") then {
     remoteBuilder = createVehicle [pos_remoteBuilder select 0, pos_remoteBuilder select 1, [], 0, "CAN_COLLIDE"];
     remoteBuilder setPosASL (pos_remoteBuilder select 1);
     remoteBuilder setVectorDirAndUp [pos_remoteBuilder select 2, pos_remoteBuilder select 3];
-    [remoteBuilder, ["Build COP Red October", "template\tccc_menu.sqf", "buildROremote"]] remoteExec ["addAction", 0, true];
     remoteBuilder allowDamage false;
     remoteBuilder setFuel 0;
     publicVariable "remoteBuilder";
+    [remoteBuilder, ["Build COP Red October", "template\tccc_menu.sqf", "buildROremote"]] remoteExec ["addAction", 0, true];
 };

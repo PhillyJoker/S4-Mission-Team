@@ -36,7 +36,7 @@ class ACE_Settings {
     SETS(medical_playerDamageThreshold,2)
     SETS(medical_enableUnconsciousnessAI,0)
     SETB(medical_preventInstaDeath,1)
-    SETS(medical_litterCleanUpDelay,180)    
+    SETS(medical_litterCleanUpDelay,180)
     SETS(medical_useCondition_PAK,1)
     SETS(medical_useLocation_PAK,0)
     SETS(medical_useLocation_SurgicalKit,0)

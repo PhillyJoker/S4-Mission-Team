@@ -2,9 +2,9 @@
 
 if (!isServer) exitWith {
     diag_log format [
-        "[13th MEU] ERROR: Non-server call to file %1 in mission %2",
-         __FILE__, missionName
-    ];
+        "[13th MEU] ERROR: Non-server call to file %1 in mission %2 - file is marked SERVER_ONLY!",
+        __FILE__, missionName
+    ]
 };
 
 params ["_box"];

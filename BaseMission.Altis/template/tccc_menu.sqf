@@ -2,14 +2,14 @@
 tccc_1 addAction ["Open Testing Menu", "template\tccc_menu.sqf", "init"];
 */
 
-_s3passedArguement = _this select 3; 
+_s3passedArguement = _this select 3;
 
 if (_s3passedArguement == "init") then
 {
 removeAllActions tccc_1;
 tccc_1 addAction ["Build COP Red October", "template\tccc_menu.sqf", "buildRO"];
 tccc_1 addAction ["Delete COP Red October", "template\tccc_menu.sqf", "deleteRO"];
-tccc_1 addAction ["-----------",""];
+tccc_1 addAction ["-----------", ""];
 tccc_1 addAction ["Close Mission Menu", "template\tccc_menu.sqf", "end"];
 };
 
@@ -25,7 +25,7 @@ if (_s3passedArguement == "buildRO") then
     {
         if (alive remoteBuilder) then
         {
-            [["buildRO"],"template\tccc_builder.sqf"] remoteExec ["execVM",2];
+            [["buildRO"], "template\tccc_builder.sqf"] remoteExec ["execVM", 2];
             Hint "COP Red October built!";
         };
         if (!alive remoteBuilder) then
@@ -43,10 +43,10 @@ tccc_1 addAction ["Open Mission Menu", "template\tccc_menu.sqf", "init"];
 
 if (_s3passedArguement == "buildROremote") then
 {
-    [["buildRO"],"template\tccc_builder.sqf"] remoteExec ["execVM",2];
+    [["buildRO"], "template\tccc_builder.sqf"] remoteExec ["execVM", 2];
     Hint "COP Red October built!";
     removeAllActions tccc_1;
-    tccc_1 addAction ["Open Mission Menu", "template\tccc_menu.sqf", "init"];    
+    tccc_1 addAction ["Open Mission Menu", "template\tccc_menu.sqf", "init"];
 };
 
 
@@ -54,7 +54,7 @@ if (_s3passedArguement == "deleteRO") then
 {
     if (player distance (getMarkerpos "cop_redoctober") > 201) then
     {
-        [["deleteRO"],"template\tccc_builder.sqf"] remoteExec ["execVM",2];
+        [["deleteRO"], "template\tccc_builder.sqf"] remoteExec ["execVM", 2];
         Hint "COP Red October Deleted";
     };
     if (player distance (getMarkerpos "cop_redoctober") < 200) then

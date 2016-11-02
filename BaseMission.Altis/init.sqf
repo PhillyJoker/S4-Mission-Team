@@ -7,11 +7,6 @@ enableSaving [false, false];
 
 // Template Inits
 MEU_templateSeason = "winter"; // "winter" or "summer"
-
 MEU_isTemplate = (getMissionConfigValue "respawnOnStart") == 0;
 
-/* Omitting the template stuff because they're
- * terrain-dependent, doesn't really fit the
- * Base Mission
- */
-// [] execVM "template\base_setup.sqf";
+[] execVM (["template\base_setup_client.sqf", "template\base_setup_server.sqf"] select isServer);
