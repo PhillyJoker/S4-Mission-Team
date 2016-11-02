@@ -49,10 +49,12 @@ if (_build == "BuildRO") then {
     _newMarker setMarkerShape 'ICON';
     _newMarker setMarkerType 'flag_USA';
     _newMarker setMarkerColor 'Default';
+    _newMarker setMarkerAlpha 1;
     _newMarker = createMarker ['cop_redoctober_text', pos_cop_marker];
     _newMarker setMarkerShape 'ICON';
     _newMarker setMarkerType 'selector_selectable';
     _newMarker setMarkerColor 'ColorBlack';
+    _newMarker setMarkerAlpha 1;
     _newMarker setMarkerText "COP Red October (Built)";
 };
 

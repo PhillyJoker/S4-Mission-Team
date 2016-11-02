@@ -37,5 +37,5 @@ _class = (switch (_s3passedArguement) do {
 
 _veh = objNull;
 _veh = createVehicle [_class, [0, 0, 0], [], 0, "CAN_COLLIDE"];
-[nimitz_1, _veh, [12, -22.5, 17.5], 0] call BIS_fnc_relPosObject;
+[nimitz_1, _veh, [12, -22.5, 17.5], 0, false, true] call BIS_fnc_relPosObject;
 _veh setPosASL ((getPosASL _veh) vectorAdd [0, 0, (getPosASL nimitz_1) select 2]);

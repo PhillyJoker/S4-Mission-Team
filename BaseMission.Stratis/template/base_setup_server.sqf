@@ -20,39 +20,39 @@ _buildList = [
     ["js_jc_fa18e", [20, 45, 17.5], -5],
     ["js_jc_fa18e", [-2, 42, 17.5], -1],
     ["land_infostand_v1_f", [25, -43, 17.5], 0, "menu_air"],
-    ["land_infostand_v1_f", [1, -40, 7], 180, "tccc_1"],
-    ["land_infostand_v1_f", [-1, -40, 7], 180, "tccc"],
-    ["land_flush_light_yellow_f", [7, -35, 17.4]],
-    ["land_flush_light_yellow_f", [9, -35, 17.4]],
-    ["land_flush_light_yellow_f", [11, -35, 17.4]],
-    ["land_flush_light_yellow_f", [13, -35, 17.4]],
-    ["land_flush_light_yellow_f", [15, -35, 17.4]],
-    ["land_flush_light_yellow_f", [17, -35, 17.4]],
-    ["land_flush_light_yellow_f", [17, -30, 17.4]],
-    ["land_flush_light_yellow_f", [17, -25, 17.4]],
-    ["land_flush_light_yellow_f", [17, -20, 17.4]],
-    ["land_flush_light_yellow_f", [17, -15, 17.4]],
-    ["land_flush_light_yellow_f", [17, -10, 17.4]],
-    ["land_flush_light_yellow_f", [15, -10, 17.4]],
-    ["land_flush_light_yellow_f", [13, -10, 17.4]],
-    ["land_flush_light_yellow_f", [11, -10, 17.4]],
-    ["land_flush_light_yellow_f", [9, -10, 17.4]],
-    ["land_flush_light_yellow_f", [7, -10, 17.4]],
-    ["land_flush_light_yellow_f", [7, -15, 17.4]],
-    ["land_flush_light_yellow_f", [7, -20, 17.4]],
-    ["land_flush_light_yellow_f", [7, -25, 17.4]],
-    ["land_flush_light_yellow_f", [7, -30, 17.4]],
-    ["land_flush_light_yellow_f", [7, -35, 17.4]],
-    ["land_portablelight_double_f", [15, -10, 7], 45],
-    ["land_portablelight_double_f", [-15, -10, 7], -45],
-    ["land_portablelight_double_f", [15, -75, 7], 135],
-    ["land_portablelight_double_f", [-15, -75, 7], -135],
-    ["land_flush_light_yellow_f", [12, -22.5, 17.4], 0, "air_check"],
+    ["land_infostand_v1_f", [1, -40, 7.2], 180, "tccc_1"],
+    ["land_infostand_v1_f", [-1, -40, 7.2], 180, "tccc"],
+    ["land_flush_light_yellow_f", [7, -35, 17.5]],
+    ["land_flush_light_yellow_f", [9, -35, 17.5]],
+    ["land_flush_light_yellow_f", [11, -35, 17.5]],
+    ["land_flush_light_yellow_f", [13, -35, 17.5]],
+    ["land_flush_light_yellow_f", [15, -35, 17.5]],
+    ["land_flush_light_yellow_f", [17, -35, 17.5]],
+    ["land_flush_light_yellow_f", [17, -30, 17.5]],
+    ["land_flush_light_yellow_f", [17, -25, 17.5]],
+    ["land_flush_light_yellow_f", [17, -20, 17.5]],
+    ["land_flush_light_yellow_f", [17, -15, 17.5]],
+    ["land_flush_light_yellow_f", [17, -10, 17.5]],
+    ["land_flush_light_yellow_f", [15, -10, 17.5]],
+    ["land_flush_light_yellow_f", [13, -10, 17.5]],
+    ["land_flush_light_yellow_f", [11, -10, 17.5]],
+    ["land_flush_light_yellow_f", [9, -10, 17.5]],
+    ["land_flush_light_yellow_f", [7, -10, 17.5]],
+    ["land_flush_light_yellow_f", [7, -15, 17.5]],
+    ["land_flush_light_yellow_f", [7, -20, 17.5]],
+    ["land_flush_light_yellow_f", [7, -25, 17.5]],
+    ["land_flush_light_yellow_f", [7, -30, 17.5]],
+    ["land_flush_light_yellow_f", [7, -35, 17.5]],
+    ["land_portablelight_double_f", [15, -10, 7.2], 45],
+    ["land_portablelight_double_f", [-15, -10, 7.2], -45],
+    ["land_portablelight_double_f", [15, -75, 7.2], 135],
+    ["land_portablelight_double_f", [-15, -75, 7.2], -135],
+    ["land_flush_light_yellow_f", [12, -22.5, 17.5], 0, "air_check"],
     ["flag_us_f", [31, -68, 17.5], 0, "fob_blue_1"],
-    ["box_nato_ammoveh_f", [5, -40, 7.1], 0, "arsenal_0"],
-    ["box_nato_ammoveh_f", [-5, -40, 7.1], 0, "arsenal_1"],
-    ["b_cargonet_01_ammo_f", [10, -40, 7], 0, "equipment_0"],
-    ["b_cargonet_01_ammo_f", [-10, -40, 7], 0, "equipment_1"],
+    ["box_nato_ammoveh_f", [5, -40, 7.2], 0, "arsenal_0"],
+    ["box_nato_ammoveh_f", [-5, -40, 7.2], 0, "arsenal_1"],
+    ["b_cargonet_01_ammo_f", [10, -40, 7.2], 0, "equipment_0"],
+    ["b_cargonet_01_ammo_f", [-10, -40, 7.2], 0, "equipment_1"],
     ["b_slingload_01_ammo_f", [35, -100, 17.5], 0, "resupply_veh"],
     ["b_cargonet_01_ammo_f", [25, -95, 17.5], 0, "resupply_0"],
     ["b_cargonet_01_ammo_f", [25, -105, 17.5], 0, "resupply_0"]
@@ -62,8 +62,13 @@ _nimitzZ = (getPosASL nimitz_1) select 2;
 {
     _x params ["_type", "_pos", ["_dir", 0], ["_name", ""]];
     _veh = createVehicle [_type, [0, 0, 0], [], 0, "CAN_COLLIDE"];
-    [nimitz_1, _veh, _pos, _dir] call BIS_fnc_relPosObject;
-    _veh setPosASL ((getPosASL _veh) vectorAdd [0, 0, _nimitzZ]);
+
+    _localPos = (nimitz_1 worldToModel (getPosASL nimitz_1)) vectorAdd _pos;
+    _worldPos = nimitz_1 modelToWorld _localPos;
+
+    _veh setPosASL _worldPos;
+    _veh setDir ((getDir nimitz_1) + _dir);
+
     switch (_type) do {
         case "rhsusf_ch53e_usmc": {_veh animateDoor ["mainRotor_folded", 1, true];};
         case "rhs_uh1y": {[_veh] call ace_fastroping_fnc_equipFRIES;};
@@ -71,14 +76,13 @@ _nimitzZ = (getPosASL nimitz_1) select 2;
         case "equipment_1": {[_veh] execVM "scripts\box_equipment.sqf";};
     };
 
-    if (_name == "") exitWith {};
+    if (_name != "") then {
+        if (_name == "resupply_0") exitWith {
+            [_veh] execVM "scripts\box_resupply.sqf";
+        };
 
-    if (_name == "resupply_0") exitWith {
-        [_veh] execVM "scripts\box_resupply.sqf";
+        missionNamespace setVariable [_name, _veh, true];
     };
-
-    missionNamespace setVariable [_name, _veh];
-    publicVariable _name;
 } forEach _buildList;
 
 // Gets position of all specialty objects and deletes them
@@ -123,10 +127,12 @@ _newMarker = createMarker ["cop_redoctober_no", pos_cop_marker];
 _newMarker setMarkerShape "ICON";
 _newMarker setMarkerType "flag_USA";
 _newMarker setMarkerColor "Default";
+_newMarker setMarkerAlpha 0;
 _newMarker = createMarker ["cop_redoctober_text_no", pos_cop_marker];
 _newMarker setMarkerShape "ICON";
 _newMarker setMarkerType "selector_selectable";
 _newMarker setMarkerColor "ColorRed";
+_newMarker setMarkerAlpha 0;
 _newMarker setMarkerText "COP Red October (Not Built)";
 
 MEU_baseSetupComplete = true;

@@ -9,4 +9,9 @@ enableSaving [false, false];
 MEU_templateSeason = "winter"; // "winter" or "summer"
 MEU_isTemplate = (getMissionConfigValue "respawnOnStart") == 0;
 
-[] execVM (["template\base_setup_client.sqf", "template\base_setup_server.sqf"] select isServer);
+if (isServer) then {
+    [] execVM "template\base_setup_server.sqf";
+};
+if (hasInterface) then {
+    [] execVM "template\base_setup_client.sqf";
+};
