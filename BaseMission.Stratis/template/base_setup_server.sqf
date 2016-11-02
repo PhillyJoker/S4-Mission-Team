@@ -72,13 +72,14 @@ _nimitzZ = (getPosASL nimitz_1) select 2;
     switch (_type) do {
         case "rhsusf_ch53e_usmc": {_veh animateDoor ["mainRotor_folded", 1, true];};
         case "rhs_uh1y": {[_veh] call ace_fastroping_fnc_equipFRIES;};
-        case "equipment_0": {[_veh] execVM "scripts\box_equipment.sqf";};
-        case "equipment_1": {[_veh] execVM "scripts\box_equipment.sqf";};
     };
 
     if (_name != "") then {
         if (_name == "resupply_0") exitWith {
             [_veh] execVM "scripts\box_resupply.sqf";
+        };
+        if (_name in ["equipment_0", "equipment_1"]) then {
+            [_veh] execVM "scripts\box_equipment.sqf";
         };
 
         missionNamespace setVariable [_name, _veh, true];
