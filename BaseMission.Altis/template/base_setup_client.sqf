@@ -1,4 +1,4 @@
-#define ADD_ACT(OBJ, DNAME, SCRIPT, ARGS, PRIO, HIDE) OBJ addAction [DNAME, SCRIPT, ARGS, PRIO, true, HIDE, "", "true", 5]
+#define ADD_ACT(OBJ,DNAME,SCRIPT,ARGS,PRIO,HIDE) OBJ addAction [DNAME,SCRIPT,ARGS,PRIO,true,HIDE,"","true",5]
 
 waitUntil {!isNil "MEU_baseSetupComplete"};
 
