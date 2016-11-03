@@ -1,9 +1,8 @@
-if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
-    [objNull, "CUSTOM MODULES NOT LOADED"] call BIS_fnc_showCuratorFeedbackMessage;
-};
+if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {[objNull, "CUSTOM MODULES NOT LOADED"] call BIS_fnc_showCuratorFeedbackMessage;};
 // Ares is loaded, register the custom modules.
 
-["AI Behaviours", "Turn Engine On/Off", {
+["AI Behaviours", "Turn Engine On/Off", 
+{
     params ["_pos", "_object"];
 
     if !(_object isKindOf "Car" || {_object isKindOf "Ship"} || {_object isKindOf "Air"}) exitWith {
@@ -15,12 +14,14 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
     if (_dialogResult isEqualTo []) exitWith {
         [objNull, "No input given, engine not adjusted."] call BIS_fnc_showCuratorFeedbackMessage;
     };
-
+    
     _state = [true, false] select (_dialogResult select 0);
     _object engineOn _state;
-}] call Ares_fnc_RegisterCustomModule;
+}
+] call Ares_fnc_RegisterCustomModule;
 
-["AI Behaviours", "Dismount Vehicle", {
+["AI Behaviours", "Dismount Vehicle", 
+{
     params ["_pos", "_object"];
 
     if ((crew _object) isEqualTo []) exitWith {
@@ -44,9 +45,11 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
     ] select (_dialogResult select 0);
 
     _units orderGetIn false;
-}] call Ares_fnc_RegisterCustomModule;
+}
+] call Ares_fnc_RegisterCustomModule;
 
-["Arsenal", "Add 'Clear Loadout' Action", {
+["Arsenal", "Add 'Clear Loadout' Action", 
+{
     params ["_pos", "_object"];
 
     if (isNull _object) exitWith {
@@ -58,9 +61,11 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
         ["Clear Loadout", "scripts\clear_loadout.sqf", [], 6, true, true, "", "true", 5]
     ] remoteExec ["addAction", 0, true];
     [objNull, "'Clear Loadout' action added to object."] call BIS_fnc_showCuratorFeedbackMessage;
-}] call Ares_fnc_RegisterCustomModule;
+}
+] call Ares_fnc_RegisterCustomModule;
 
-["Arsenal", " Add 13th Arsenal", {
+["Arsenal", " Add 13th Arsenal", 
+{
     params ["_pos","_object"];
 
     if (isNull _object) exitWith
@@ -78,9 +83,11 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
     _choice = ["summer","winter","both"] select (_dialogResult select 0);
     [_object, _choice] execVM "scripts\box_virtualarsenal.sqf";
     [objNull, "13th Arsenal objects added."] call bis_fnc_showCuratorFeedbackMessage;
-}] call Ares_fnc_RegisterCustomModule;
+}
+] call Ares_fnc_RegisterCustomModule;
 
-["Arsenal", " Add 13th Box Equipment", {
+["Arsenal", " Add 13th Box Equipment",
+{
     params ["_pos","_object"];
 
     if (isNull _object) exitWith
@@ -89,23 +96,27 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
     };
     _null = [_object] execVM "scripts\box_equipment.sqf";
     [objNull, "13th Box Equipment added to object."] call bis_fnc_showCuratorFeedbackMessage;
-}] call Ares_fnc_RegisterCustomModule;
+}
+] call Ares_fnc_RegisterCustomModule;
 
-["AI Behaviours", "Drop All Weapons", {
+["AI Behaviours", "Drop All Weapons", 
+{
     params ["_pos", "_object"];
-
+    
     if ((weapons _object) isEqualTo [] || isNull _object) exitWith {
         [objNull, "No object under cursor or Object has no weapons."] call BIS_fnc_showCuratorFeedbackMessage;
     };
     {
-        _pos = getPosASL _object;
+        _pos = getPosATL _object;
         _object removeWeapon _x;
-        _ground = createVehicle ["GroundWeaponHolder", _pos, [], 0, "NONE"];
+        _ground = createVehicle ["GroundWeaponHolder", _pos, [], 1, "Can_collide"];
         _ground addWeaponCargoGlobal [_x, 1];
     } forEach (weapons _object);
-}] call Ares_fnc_RegisterCustomModule;
+}
+] call Ares_fnc_RegisterCustomModule;
 
-["AI Behaviours", "Set Fly Height", {
+["AI Behaviours", "Set Fly Height", 
+{
     params ["_pos", "_object"];
 
     if !(_object isKindOf "Air") exitWith {
@@ -123,19 +134,22 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
 
     _height = [50, 100, 200, 300] select (_dialogResult select 0);
     _object flyInHeight _height;
-}] call Ares_fnc_RegisterCustomModule;
+}
+] call Ares_fnc_RegisterCustomModule;
 
-["AI Behaviours", "Land Aircraft", {
+["AI Behaviours", "Land Aircraft", 
+{
     params ["_pos", "_object"];
 
     if !(_object isKindOf "Air") exitWith {
         [objNull, "Object isn't a air unit."] call BIS_fnc_showCuratorFeedbackMessage;
     };
     _object land "LAND";
-}] call Ares_fnc_RegisterCustomModule;
+}
+] call Ares_fnc_RegisterCustomModule;
 
-["Reinforcements", "Spawn Units v2", {
-
+["Reinforcements", "Spawn Units v2", 
+{
     if (
         isNil "Ares_Reinforcement_Unit_Pools" ||
         {!(Ares_Reinforcement_Unit_Pools isEqualType [])} ||
@@ -144,10 +158,15 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
        [objNull, "Unable to load unit pools. Is your 'Ares_Reinforcement_Unit_Pools.sqf' file corrupt?"] call BIS_fnc_showCuratorFeedbackMessage;
     };
 
-    private _allUnitPools = Ares_Reinforcement_Unit_Pools;
-    if (!isNil "Ares_Reinforcement_Mission_Unit_Pools") then {
-        _allUnitPools append Ares_Reinforcement_Mission_Unit_Pools;
-    };
+	private ["_allUnitPools"];
+	if (isNil "Ares_Reinforcement_Mission_Unit_Pools") then
+	{
+		_allUnitPools = Ares_Reinforcement_Unit_Pools;
+	}
+	else
+	{
+		_allUnitPools = Ares_Reinforcement_Unit_Pools + Ares_Reinforcement_Mission_Unit_Pools;
+	};
 
     _allLzsUnsorted = allMissionObjects "Ares_Module_Reinforcements_Create_Lz";
     if (_allLzsUnsorted isEqualTo []) exitWith {
@@ -159,9 +178,16 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
     _allRps = [_allRpsUnsorted, [], {_x getVariable ["SortOrder", 0];}, "ASCEND"] call BIS_fnc_sortBy;
 
     // Generate list of pool names to let user choose from
-    _validPools = _allUnitPools select {(_x select 2) == "" || {isClass (configFile >> "CfgPatches" >> (_x select 2))}};
-    _poolNames = _validPools apply {_x select 0};
-
+    _poolNames = [];
+    _validPools = [];
+    {
+        if ((_x select 2) == "" || isClass(configFile >> "CfgPatches" >> (_x select 2))) then
+        {
+            _poolNames pushBack (_x select 0);
+            _validPools pushBack _x;
+        };
+    } forEach _allUnitPools;
+    
     _lzOptions = ["Random", "Nearest", "Farthest", "Least Used"];
     {
         _lzOptions pushBack (name _x);
@@ -200,8 +226,11 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
     ];
     _lzSize = 20; // TODO make this a dialog parameter?
     _rpSize = 20; // TODO make this a dialog parameters?
-    // Replace with CBA 3.2's GETDEF()
-    _spawnPosition = [Ares_CuratorObjectPlaces_LastPlacedObjectPosition] param [0, _this select 0];
+    _spawnPosition = _this select 0;
+	if (not isNil "Ares_CuratorObjectPlaces_LastPlacedObjectPosition") then
+	{
+		_spawnPosition = Ares_CuratorObjectPlaces_LastPlacedObjectPosition;
+	};
 
     // Lz's for helicopters get more randomness because they tend to crash into eachother.
     if (_dialogVehicleClass in [7, 8]) then {
@@ -209,7 +238,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
     };
 
     // Choose the LZ based on what the user indicated
-    _lz = _allLzs select (_dialogLzAlgorithm - 4);
+    _lz = objNull;
     switch (_dialogLzAlgorithm) do {
         case 0: { // Random
             _lz = selectRandom _allLzs;
@@ -241,8 +270,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
         [objNull, "No infantry squads defined for side."] call BIS_fnc_showCuratorFeedbackMessage;
     };
 
-    // Spawn a vehicle, send it to the LZ and have it unload the troops before returning home and
-    // deleting itself.
+ 
     _vehiclePoolIndex = _dialogVehicleClass + 3;
 
     if ((_pool select _vehiclePoolIndex) isEqualTo []) exitWith {
@@ -288,10 +316,10 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
         {
             _x allowFleeing 0; // Especially for helicopters... They're very cowardly.
         } forEach (crew (vehicle (leader _vehicleGroup)));
-        _vehicleUnloadWp setWaypointTimeout [_timeOut,_timeOut,_timeOut];
-    } else {
-        _vehicleUnloadWp setWaypointTimeout [_timeOut,_timeOut,_timeOut]; // Give the units some time to get away from truck
     };
+	
+	// Give the units some time to get away from truck
+    _vehicleUnloadWp setWaypointTimeout [_timeOut,_timeOut,_timeOut]; 
 
     // Generate the waypoints for after the transport drops off the troops.
     if (_dialogVehicleBehaviour == 0) then {
@@ -391,9 +419,11 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
     } else {
         [objNull, "Transport dispatched to LZ. Squad will stay at LZ."] call BIS_fnc_showCuratorFeedbackMessage;
     };
-}] call Ares_fnc_RegisterCustomModule;
+}
+] call Ares_fnc_RegisterCustomModule;
 
-["AI Behaviours", "Patrol v2", {
+["AI Behaviours", "Patrol v2", 
+{
     params ["_pos", "_object"];
 
     _groupUnderCursor = group _object;
@@ -495,9 +525,11 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
     _waypoint setWaypointType "CYCLE";
 
    [objnull, "Patrol path setup for units."] call BIS_fnc_showCuratorFeedbackMessage;
-}] call Ares_fnc_RegisterCustomModule;
+}
+] call Ares_fnc_RegisterCustomModule;
 
-["PLA", "Spawn Vehicle with Units", {
+["PLA", "Spawn Vehicle with Units", 
+{
     if (
         isNil "Ares_Reinforcement_Unit_Pools" ||
         {!(Ares_Reinforcement_Unit_Pools isEqualType [])} ||
@@ -506,15 +538,27 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
          [objNull, "Unable to load unit pools. Is your 'Ares_Reinforcement_Unit_Pools.sqf' file corrupt?"] call BIS_fnc_showCuratorFeedbackMessage;
     };
 
-    private _allUnitPools = Ares_Reinforcement_Unit_Pools;
-    if (!isNil "Ares_Reinforcement_Mission_Unit_Pools") then {
-        _allUnitPools append Ares_Reinforcement_Mission_Unit_Pools;
-    };
+	private ["_allUnitPools"];
+	if (isNil "Ares_Reinforcement_Mission_Unit_Pools") then
+	{
+		_allUnitPools = Ares_Reinforcement_Unit_Pools;
+	}
+	else
+	{
+		_allUnitPools = Ares_Reinforcement_Unit_Pools + Ares_Reinforcement_Mission_Unit_Pools;
+	};
 
     // Generate list of pool names to let user choose from
-    _validPools = _allUnitPools select {(_x select 2) == "" || {isClass (configFile >> "CfgPatches" >> (_x select 2))}};
-    _poolNames = _validPools apply {_x select 0};
-
+    _poolNames = [];
+    _validPools = [];
+    {
+        if ((_x select 2) == "" || isClass(configFile >> "CfgPatches" >> (_x select 2))) then
+        {
+            _poolNames pushBack (_x select 0);
+            _validPools pushBack _x;
+        };
+    } forEach _allUnitPools;
+    
     // Show the user the dialog
     _dialogResult = [
         "Create Reinforcements",
@@ -540,12 +584,13 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
     // Get the unit pool and the side it's associated with
     _pool = _validPools select _dialogPool;
     _side = _pool select 1;
-
+	_vehiclePoolIndex = (_dialogVehicleClass + 3);
+	
     if ((_pool select 11) isEqualTo []) exitWith {
         [objNull, "No infantry squads defined for side."] call BIS_fnc_showCuratorFeedbackMessage;
     };
 
-    if ((_pool select (_dialogVehicleClass + 3)) isEqualTo []) exitWith {
+    if ((_pool select _vehiclePoolIndex) isEqualTo []) exitWith {
         [objNull, "Vehicle pool had no vehicles defined for this faction."] call BIS_fnc_showCuratorFeedbackMessage;
     };
 
@@ -636,4 +681,5 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
         // Add infantry to curator
         [units _infantryGroup] call Ares_fnc_AddUnitsToCurator;
     };
-}] call Ares_fnc_RegisterCustomModule;
+}
+] call Ares_fnc_RegisterCustomModule;
