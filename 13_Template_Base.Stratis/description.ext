@@ -1,16 +1,9 @@
 // 3DEN Settings That don't take.
 onLoadName = "NAMEOFMISSION";
-respawnOnStart = 0; // -1 for Task Force Missions, 0 for Template's
 
-#define SET(CORE,VAR,VAL,TYPE) class CORE##_##VAR { \
-    value = VAL; \
-    typeName = #TYPE; \
-    force = 1; \
-};
-#define SETB(A,B) SET(ace,A,B,BOOL)
-#define SETS(A,B) SET(ace,A,B,SCALAR)
-#define XSETB(A,B) SET(acex,A,B,BOOL)
-#define XSETS(A,B) SET(acex,A,B,SCALAR)
+// Uncomment below line for task force missions
+// #define IS_TASK_FORCE
+#include "\meu_mod\config_macros.hpp"
 
 class ACE_Settings {
     class ace_common_checkPBOsWhitelist {
