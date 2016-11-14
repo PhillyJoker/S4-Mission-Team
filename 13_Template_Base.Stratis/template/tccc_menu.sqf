@@ -42,10 +42,12 @@ if (_s3passedArguement == "buildROremote") then {
 };
 
 if (_s3passedArguement == "deleteRO") then {
-    if (player distance (getMarkerpos "cop_redoctober") > 201) then {
-        [["deleteRO"], "template\tccc_builder.sqf"] remoteExec ["execVM", 2];
-        Hint "COP Red October Deleted";
-    };
+	if (!alive remoteBuilder) then {
+		if (player distance (getMarkerpos "cop_redoctober") > 201) then {
+			[["deleteRO"], "template\tccc_builder.sqf"] remoteExec ["execVM", 2];
+			Hint "COP Red October Deleted";
+		};
+	};
     if (player distance (getMarkerpos "cop_redoctober") < 200) then {
         Hint "There is a Player within 200m of the COP. Wait until they have moved out!";
     };

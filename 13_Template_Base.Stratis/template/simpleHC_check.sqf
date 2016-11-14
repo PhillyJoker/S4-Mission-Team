@@ -1,15 +1,19 @@
+/*
+emptyGroup = execVM "scripts\simpleHCgroup.sqf";
+*/
+
 params ["_s3passedArguement"];
 
 _allNonEmptyGroups = allGroups select {count (units _x) > 0};
 
 switch (toLower _s3passedArguement) do {
     case "displayhc": {
-        Pub_HCOwner = [owner HC_1, 2] select (isNil "HC_1");
+        _HCid1 = if (isNil "HC_1") then {2} else {owner HC_1;};
+		_HCid2 = if (isNil "HC_2") then {2} else {owner HC_2;};
+		_HCid3 = if (isNil "HC_3") then {2} else {owner HC_3;};
+		_HCid = [_HCid1,_HCid2,_HCid3];
+		Pub_HCOwner = _HCid;
         publicVariable "Pub_HCOwner";
-    };
-    case "displayhc2": {
-        Pub_HCOwner2 = [owner HC_2, 2] select (isNil "HC_2");
-        publicVariable "Pub_HCOwner2";
     };
     case "displaypc": {
         _playerGroups = _allNonEmptyGroups select {{isPlayer _x} count units _x > 0};

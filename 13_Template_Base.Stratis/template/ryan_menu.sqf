@@ -10,8 +10,7 @@ if (_s3logic in _s3curators) then
     if (_s3passedArguement == "init") then
     {
     removeAllActions tccc;
-    tccc addAction ["Display HC Owner", "template\ryan_menu.sqf", "displayHC"];
-    tccc addAction ["Display HC Owner 2", "template\ryan_menu.sqf", "displayHC2"];
+    tccc addAction ["Display HC Owner(s)", "template\ryan_menu.sqf", "displayHC"];
     tccc addAction ["Display Player Owners", "template\ryan_menu.sqf", "displayPC"];
     tccc addAction ["All AI Owners", "template\ryan_menu.sqf", "displayAI"];
     tccc addAction ["All AI Groups", "template\ryan_menu.sqf", "displayAIgroup"];
@@ -21,15 +20,9 @@ if (_s3logic in _s3curators) then
 
     if (_s3passedArguement == "displayHC") then
     {
-        [["displayHC"], "template\simpleHC_check.sqf"] remoteExec ["execVM", 2];
-        sleep 2;
-        if (Pub_HCOwner == 2) then {Hint str "HC_1 is not connected.";} else {Hint str Pub_HCOwner;};
-    };
-    if (_s3passedArguement == "displayHC2") then
-    {
-        [["displayHC2"], "template\simpleHC_check.sqf"] remoteExec ["execVM", 2];
-        sleep 2;
-        if (Pub_HCOwner2 == 2) then {Hint str "HC_2 is not connected.";} else {Hint str Pub_HCOwner2;};
+		[["displayHC"],"template\simpleHC_check.sqf"] remoteExec ["execVM",2];
+		sleep 2;
+		if (Pub_HCOwner isEqualTo [2,2,2]) then {Hint str "No Headless Client is connected.";} else {Hint str Pub_HCOwner;};
     };
     if (_s3passedArguement == "displayPC") then
     {

@@ -9,12 +9,14 @@ if (_build == "BuildRO") then {
     cop_blue = createVehicle [pos_cop_blue select 0, pos_cop_blue select 1, [], 0, "CAN_COLLIDE"];
     cop_blue setPosASL (pos_cop_blue select 1);
     cop_blue setVectorDirAndUp [pos_cop_blue select 2, pos_cop_blue select 3];
+	sleep 1;
     [cop_blue, ["To Nimitz", "template\tpto_fob_blue.sqf"]] remoteExec ["addAction", 0, true];
     publicVariable "cop_blue";
 
     menu_ground = createVehicle [pos_menu_ground select 0, pos_menu_ground select 1, [], 0, "CAN_COLLIDE"];
     menu_ground setPosASL (pos_menu_ground select 1);
     menu_ground setVectorDirAndUp [pos_menu_ground select 2, pos_menu_ground select 3];
+	sleep 1;
     [menu_ground, ["Ground Vehicle Menu", "template\menu_ground.sqf", "init"]] remoteExec ["addAction", 0, true];
     publicVariable "menu_ground";
 
@@ -23,18 +25,19 @@ if (_build == "BuildRO") then {
     ground_check setVectorDirAndUp [pos_ground_check select 2, pos_ground_check select 3];
     publicVariable "ground_check";
 
-    arsenal_1 = createVehicle [pos_arsenal_1 select 0, pos_arsenal_1 select 1, [], 0, "CAN_COLLIDE"];
-    arsenal_1 setPosASL (pos_arsenal_1 select 1);
-    arsenal_1 setVectorDirAndUp [pos_arsenal_1 select 2, pos_arsenal_1 select 3];
-    [[arsenal_1], "scripts\box_virtualarsenal.sqf"] remoteExec ["execVM", 0, true];
-    [arsenal_1, ["Clear Loadout", "scripts\clear_loadout.sqf", [], 6, true, true, "", "true", 5]] remoteExec ["addAction", 0, true];
-    publicVariable "arsenal_1";
+    arsenal_2 = createVehicle [pos_arsenal_2 select 0, pos_arsenal_2 select 1, [], 0, "CAN_COLLIDE"];
+    arsenal_2 setPosASL (pos_arsenal_2 select 1);
+    arsenal_2 setVectorDirAndUp [pos_arsenal_2 select 2, pos_arsenal_2 select 3];
+    [[arsenal_2], "scripts\box_virtualarsenal.sqf"] remoteExec ["execVM", 0, true];
+	sleep 1;
+    [arsenal_2, ["Clear Loadout", "scripts\clear_loadout.sqf", [], 6, true, true, "", "true", 5]] remoteExec ["addAction", 0, true];
+    publicVariable "arsenal_2";
 
-    equipment_1 = createVehicle [pos_equipment_1 select 0, pos_equipment_1 select 1, [], 0, "CAN_COLLIDE"];
-    equipment_1 setPosASL (pos_equipment_1 select 1);
-    equipment_1 setVectorDirAndUp [pos_equipment_1 select 2, pos_equipment_1 select 3];
-    [equipment_1] execVM "scripts\box_equipment.sqf";
-    publicVariable "equipment_1";
+    equipment_2 = createVehicle [pos_equipment_2 select 0, pos_equipment_2 select 1, [], 0, "CAN_COLLIDE"];
+    equipment_2 setPosASL (pos_equipment_2 select 1);
+    equipment_2 setVectorDirAndUp [pos_equipment_2 select 2, pos_equipment_2 select 3];
+    [equipment_2] execVM "scripts\box_equipment.sqf";
+    publicVariable "equipment_2";
 
     {
         _newObject = createVehicle [_x select 0, _x select 1, [], 0, "CAN_COLLIDE"];
@@ -56,15 +59,22 @@ if (_build == "BuildRO") then {
     _newMarker setMarkerColor 'ColorBlack';
     _newMarker setMarkerAlpha 1;
     _newMarker setMarkerText "COP Red October (Built)";
+	[fob_blue, ["To COP Red October", "template\tpto_cop_blue.sqf",nil,5]] remoteExec ["addAction", 0, true];
+	[fob_blue_1, ["To COP Red October", "template\tpto_cop_blue.sqf",nil,5]] remoteExec ["addAction", 0, true];
 };
 
 if (_build == "deleteRO") then {
+	fob_blue remoteExec ["removeAllActions", 0, true];
+	fob_blue_1 remoteExec ["removeAllActions", 0, true];
+	[fob_blue, ["To Upper Deck","template\tpto_fob_blue_1.sqf"]] remoteExec ["addAction", 0, true];
+	[fob_blue_1, ["To Lower Deck","template\tpto_fob_blue.sqf"]] remoteExec ["addAction", 0, true];
+
     // Delete Special Objects
     deleteVehicle cop_blue;
     deleteVehicle menu_ground;
     deleteVehicle ground_check;
-    deleteVehicle arsenal_1;
-    deleteVehicle equipment_1;
+    deleteVehicle arsenal_2;
+    deleteVehicle equipment_2;
 
     // Delete Remaining Objects
     _spCheck = nearestObjects [getMarkerPos "cop_redoctober", [], 200];
@@ -90,5 +100,6 @@ if (_build == "deleteRO") then {
     remoteBuilder allowDamage false;
     remoteBuilder setFuel 0;
     publicVariable "remoteBuilder";
+	sleep 1;
     [remoteBuilder, ["Build COP Red October", "template\tccc_menu.sqf", "buildROremote"]] remoteExec ["addAction", 0, true];
 };
