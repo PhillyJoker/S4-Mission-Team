@@ -2,17 +2,15 @@
 emptyGroup = execVM "scripts\simpleHCgroup.sqf";
 */
 
+#define GET_HC(ID) [owner ID, 2] select (isNil #ID)
+
 params ["_s3passedArguement"];
 
 _allNonEmptyGroups = allGroups select {count (units _x) > 0};
 
 switch (toLower _s3passedArguement) do {
     case "displayhc": {
-        _HCid1 = if (isNil "HC_1") then {2} else {owner HC_1;};
-		_HCid2 = if (isNil "HC_2") then {2} else {owner HC_2;};
-		_HCid3 = if (isNil "HC_3") then {2} else {owner HC_3;};
-		_HCid = [_HCid1,_HCid2,_HCid3];
-		Pub_HCOwner = _HCid;
+        Pub_HCOwner = [GET_HC(HC_1), GET_HC(HC_2), GET_HC(HC_3)];
         publicVariable "Pub_HCOwner";
     };
     case "displaypc": {

@@ -11,7 +11,7 @@ ADD_ACT(arsenal_1,"Clear Loadout","scripts\clear_loadout.sqf",nil,6,true);
 [arsenal_0] execVM "scripts\box_virtualarsenal.sqf";
 [arsenal_1] execVM "scripts\box_virtualarsenal.sqf";
 
-if (MEU_isTemplate) exitWith {
-ADD_ACT(tccc_1,"Open Mission Menu","template\tccc_menu.sqf","init",6,false);
-ADD_ACT(remoteBuilder,"Build COP Red October","template\tccc_menu.sqf","buildROremote",6,true);
+if (MEU_isTemplate) then {
+    ADD_ACT(tccc_1,"Open Mission Menu","template\tccc_menu.sqf","init",6,false);
+    ADD_ACT(remoteBuilder,"Build COP Red October","template\tccc_menu.sqf","buildROremote",6,true);
 };
