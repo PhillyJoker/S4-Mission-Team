@@ -87,9 +87,9 @@ _nimitzZ = (getPosASL nimitz_1) select 2;
 } forEach _buildList;
 
 if (!MEU_isTemplate) exitWith {
-    deleteVehicle tccc_1;
-    MEU_baseSetupComplete = true;
-    publicVariable "MEU_baseSetupComplete";
+MEU_baseSetupComplete = true;
+deleteVehicle tccc_1;
+publicVariable "MEU_baseSetupComplete";
 };
 
 // Gets position of all specialty objects and deletes them
@@ -113,12 +113,14 @@ deleteVehicle remoteBuilder;
 
 sleep 1;
 // Get all objects within 200m of the COP then save & delete them.
-
+building_array = [];
 _spCheck = nearestObjects [getMarkerPos "cop_redoctober", [], 200];
+_spCheck2 = _spCheck apply {[typeOf _x, getPosASL _x, vectorDir _x, vectorUp _x]};
+{
+_newVar = _x select 0;	if !(_newVar isEqualTo "") then	{building_array pushBack _x;};
+}forEach _spCheck2;
 {deleteVehicle _x} forEach _spCheck;
-_spCheckInfo = _spCheck apply {[typeOf _x, getPosASL _x, vectorDir _x, vectorUp _x]};
-nearBuildings = _spCheckInfo select {(_x select 0) != ""};
-publicVariable "nearBuildings";
+publicVariable "building_array";
 
 // Rebuild Remote Builder
 remoteBuilder = createVehicle [pos_remoteBuilder select 0, pos_remoteBuilder select 1, [], 0, "CAN_COLLIDE"];

@@ -14,7 +14,7 @@ respawnOnStart = 0; // -1 for Task Force Missions, 0 for Template's
 
 class ACE_Settings {
     class ace_common_checkPBOsWhitelist {
-        value ="['ace_noidle','ace_goggles','ace_tracers','BABE_MIDTEX','BABE_MIDTEX_ALTIS','bg_compassa3','bgimprovedsizeofcompassandgps','cw_9liners_and_notepad','dfs_3rdperson','gdtmod_grass','stui_core','stui_grouphud','st_sthud','st_sthud_usermenu','st_map_auto_brightness','st_stamina_bar','stnametags','tao_foldmap_a3','vts_weaponresting','cyp_pushtohear_a3','ocap']";
+        value ="['ace_noidle','ace_goggles','ace_tracers','BABE_MIDTEX','BABE_MIDTEX_ALTIS','bg_compassa3','bgimprovedsizeofcompassandgps','cw_9liners_and_notepad','dfs_3rdperson','gdtmod_grass','stui_core',	'stui_grouphud','st_sthud','st_sthud_usermenu','st_map_auto_brightness','st_stamina_bar','stnametags','tao_foldmap_a3','vts_weaponresting','cyp_pushtohear_a3','ocap']";
         typeName = "STRING";
         force = 1;
     };
@@ -44,9 +44,9 @@ class ACE_Settings {
     SETB(advanced_fatigue_enabled,0)
     XSETB(sitting_enable,1)
     XSETB(headless_enabled,1)
-    XSETS(headless_delay,180)
-    XSETB(headless_endMission,1)
-    XSETB(headless_log,1)
+	XSETS(headless_delay,180)
+	XSETB(headless_endMission,1)
+	XSETB(headless_log,1)
 
     // Clientside settings that cannot be changed, removes clutter from settings
     SETB(ui_allowSelectiveUI,0)
