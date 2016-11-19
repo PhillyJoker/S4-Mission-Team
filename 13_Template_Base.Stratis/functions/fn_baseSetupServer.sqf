@@ -1,15 +1,3 @@
-/*
-In the initServer.sqf:
-[] execVM "template\base_setup.sqf";
-*/
-
-if (!isServer) exitWith {
-    diag_log format [
-        "[13th MEU] ERROR: Non-server call to file %1 in mission %2 - file is marked SERVER_ONLY!",
-        __FILE__, missionName
-    ]
-};
-
 _buildList = [
     ["rhsusf_ch53e_usmc", [-30, -80, 17.4]],
     ["rhsusf_ch53e_usmc", [-30, -45, 17.4]],
@@ -76,10 +64,10 @@ _nimitzZ = (getPosASL nimitz_1) select 2;
 
     if (_name != "") then {
         if (_name == "resupply_0") exitWith {
-            [_veh] execVM "scripts\box_resupply.sqf";
+            [_veh] call MEU_fnc_addResupply;
         };
         if (_name in ["equipment_0", "equipment_1"]) then {
-            [_veh] execVM "scripts\box_equipment.sqf";
+            [_veh] call MEU_fnc_addEquipment;
         };
 
         missionNamespace setVariable [_name, _veh, true];
@@ -110,9 +98,6 @@ deleteVehicle equipment_2;
 
 pos_remoteBuilder = [typeOf remoteBuilder, getPosASL remoteBuilder, vectorDir remoteBuilder, vectorUp remoteBuilder];
 deleteVehicle remoteBuilder;
-
-sleep 1;
-// Get all objects within 200m of the COP then save & delete them.
 
 _spCheck = nearestObjects [getMarkerPos "cop_redoctober", [], 200];
 {deleteVehicle _x} forEach _spCheck;

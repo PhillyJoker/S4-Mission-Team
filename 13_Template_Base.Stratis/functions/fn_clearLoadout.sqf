@@ -1,4 +1,4 @@
-// this addAction ["Clear Loadout", "scripts\clear_loadout.sqf", [], 6, true, true, "", "true", 5];
+// this addAction ["Clear Loadout", MEU_fnc_clearLoadout, [], 6, true, true, "", "true", 5];
 
 if (!hasInterface) exitWith {
     diag_log format [

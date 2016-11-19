@@ -2,6 +2,34 @@
 onLoadName = "13th MEU(SOC) Template v.2";
 respawnOnStart = 0; // -1 for Task Force Missions, 0 for Template's
 
+#define FNC(NAME) class NAME {};
+class CfgFunctions {
+    class MEU {
+        class missions {
+            file = "functions";
+            FNC(addArsenal)
+            FNC(addEquipment)
+            FNC(addResupply)
+            FNC(addZeusEH)
+            FNC(baseSetupClient)
+            FNC(baseSetupServer)
+            FNC(clearLoadout)
+            FNC(deleteEmptyGroups)
+            FNC(lavLoadout)
+            FNC(tpNimitz)
+            FNC(tpNimitzUD)
+            FNC(tpRedOctober)
+        };
+    };
+};
+
+class Extended_PostInit_EventHandlers {
+    class MEU_baseSetupEvent {
+        clientInit = "call MEU_fnc_baseSetupClient";
+        serverInit = "call MEU_fnc_baseSetupServer";
+    };
+};
+
 #define SET(CORE,VAR,VAL,TYPE) class CORE##_##VAR { \
     value = VAL; \
     typeName = #TYPE; \

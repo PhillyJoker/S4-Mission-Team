@@ -10,7 +10,7 @@ if (_build == "BuildRO") then {
     cop_blue setPosASL (pos_cop_blue select 1);
     cop_blue setVectorDirAndUp [pos_cop_blue select 2, pos_cop_blue select 3];
     sleep 1;
-    [cop_blue, ["To Nimitz", "template\tpto_fob_blue.sqf"]] remoteExec ["addAction", 0, true];
+    [cop_blue, ["To Nimitz", MEU_fnc_tpNimitz]] remoteExec ["addAction", 0, true];
     publicVariable "cop_blue";
 
     menu_ground = createVehicle [pos_menu_ground select 0, pos_menu_ground select 1, [], 0, "CAN_COLLIDE"];
@@ -28,15 +28,15 @@ if (_build == "BuildRO") then {
     arsenal_2 = createVehicle [pos_arsenal_2 select 0, pos_arsenal_2 select 1, [], 0, "CAN_COLLIDE"];
     arsenal_2 setPosASL (pos_arsenal_2 select 1);
     arsenal_2 setVectorDirAndUp [pos_arsenal_2 select 2, pos_arsenal_2 select 3];
-    [[arsenal_2], "scripts\box_virtualarsenal.sqf"] remoteExec ["execVM", 0, true];
+    [[arsenal_2], MEU_fnc_addArsenal] remoteExec ["call", 0, true];
     sleep 1;
-    [arsenal_2, ["Clear Loadout", "scripts\clear_loadout.sqf", [], 6, true, true, "", "true", 5]] remoteExec ["addAction", 0, true];
+    [arsenal_2, ["Clear Loadout", MEU_fnc_clearLoadout, [], 6, true, true, "", "true", 5]] remoteExec ["addAction", 0, true];
     publicVariable "arsenal_2";
 
     equipment_2 = createVehicle [pos_equipment_2 select 0, pos_equipment_2 select 1, [], 0, "CAN_COLLIDE"];
     equipment_2 setPosASL (pos_equipment_2 select 1);
     equipment_2 setVectorDirAndUp [pos_equipment_2 select 2, pos_equipment_2 select 3];
-    [equipment_2] execVM "scripts\box_equipment.sqf";
+    [equipment_2] call MEU_fnc_addEquipment;
     publicVariable "equipment_2";
 
     {
@@ -59,15 +59,15 @@ if (_build == "BuildRO") then {
     _newMarker setMarkerColor 'ColorBlack';
     _newMarker setMarkerAlpha 1;
     _newMarker setMarkerText "COP Red October (Built)";
-    [fob_blue, ["To COP Red October", "template\tpto_cop_blue.sqf", nil, 5]] remoteExec ["addAction", 0, true];
-    [fob_blue_1, ["To COP Red October", "template\tpto_cop_blue.sqf", nil, 5]] remoteExec ["addAction", 0, true];
+    [fob_blue, ["To COP Red October", MEU_fnc_tpRedOctober, nil, 5]] remoteExec ["addAction", 0, true];
+    [fob_blue_1, ["To COP Red October", MEU_fnc_tpRedOctober, nil, 5]] remoteExec ["addAction", 0, true];
 };
 
 if (_build == "deleteRO") then {
     fob_blue remoteExec ["removeAllActions", 0, true];
     fob_blue_1 remoteExec ["removeAllActions", 0, true];
-    [fob_blue, ["To Upper Deck", "template\tpto_fob_blue_1.sqf"]] remoteExec ["addAction", 0, true];
-    [fob_blue_1, ["To Lower Deck", "template\tpto_fob_blue.sqf"]] remoteExec ["addAction", 0, true];
+    [fob_blue, ["To Upper Deck", MEU_fnc_tpNimitzUD]] remoteExec ["addAction", 0, true];
+    [fob_blue_1, ["To Lower Deck", MEU_fnc_tpNimitz]] remoteExec ["addAction", 0, true];
 
     // Delete Special Objects
     deleteVehicle cop_blue;

@@ -1,5 +1,3 @@
-// null = [this] execVM "scripts\lav_loadout.sqf";
-
 if (!isServer) exitWith {
     diag_log format [
         "[13th MEU] ERROR: Non-server call to file %1 in mission %2 - file is marked SERVER_ONLY!",
