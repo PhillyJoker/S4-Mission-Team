@@ -1,8 +1,8 @@
 /*
-emptyGroup = execVM "scripts\simpleHCgroup.sqf";
+emptyGroup = execVM "scripts\simpleHC_check.sqf";
 */
 
-#define GET_HC(ID) [owner ID, 2] select (isNil #ID)
+#define GET_HC(ID) if (isNil #ID) then {2} else {owner ID} 
 
 params ["_s3passedArguement"];
 
@@ -25,7 +25,6 @@ switch (toLower _s3passedArguement) do {
     };
     case "displayaigroup": {
         Pub_AIGroups = _allNonEmptyGroups select {{isPlayer _x} count units _x == 0};
-        publicVariable "Pub_AIGroups";
     };
     case "displayares": {
         Pub_AresOwner = [owner aresmod, 2] select (isNil "aresmod");
