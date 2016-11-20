@@ -72,7 +72,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
         [objNull, "No object under cursor."] call BIS_fnc_showCuratorFeedbackMessage;
     };
 
-    [_object] call MEU_fnc_addArsenal;
+    [[_object], MEU_fnc_addArsenal] remoteExec ["call", 0, true];
 
     [objNull, "13th Arsenal objects added."] call BIS_fnc_showCuratorFeedbackMessage;
 }] call Ares_fnc_RegisterCustomModule;
