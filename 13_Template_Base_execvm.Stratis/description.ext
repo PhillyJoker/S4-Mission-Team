@@ -1,0 +1,87 @@
+// 3DEN Settings That don't take.
+onLoadName = "13th MEU(SOC) Template v.2";
+respawnOnStart = 0; // -1 for Task Force Missions, 0 for Template's
+
+#define SET(CORE,VAR,VAL,TYPE) class CORE##_##VAR { \
+    value = VAL; \
+    typeName = #TYPE; \
+    force = 1; \
+};
+#define SETB(A,B) SET(ace,A,B,BOOL)
+#define SETS(A,B) SET(ace,A,B,SCALAR)
+#define XSETB(A,B) SET(acex,A,B,BOOL)
+#define XSETS(A,B) SET(acex,A,B,SCALAR)
+
+class ACE_Settings {
+    class ace_common_checkPBOsWhitelist {
+        value ="['ace_noidle','ace_goggles','ace_tracers','BABE_MIDTEX','BABE_MIDTEX_ALTIS','bg_compassa3','bgimprovedsizeofcompassandgps','cw_9liners_and_notepad','dfs_3rdperson','gdtmod_grass','stui_core',	'stui_grouphud','st_sthud','st_sthud_usermenu','st_map_auto_brightness','st_stamina_bar','stnametags','tao_foldmap_a3','vts_weaponresting','cyp_pushtohear_a3','ocap']";
+        typeName = "STRING";
+        force = 1;
+    };
+    SETB(common_checkPBOsCheckAll,1)
+    SETB(finger_enabled,1)
+    SETB(respawn_savePreDeathGear,1)
+    SETB(weather_useACEWeather,0)
+    SETS(repair_engineerSetting_repair,0)
+    SETS(repair_fullRepairLocation,0)
+    SETS(repair_engineerSetting_fullRepair,0)
+    SETS(medical_enableRevive,1)
+    SETS(medical_maxReviveTime,420)
+    SETS(medical_level,2)
+    SETS(medical_medicSetting,2)
+    SETB(medical_increaseTrainingInLocations,1)
+    SETS(medical_bleedingCoefficient,0.4)
+    SETB(medical_enableAdvancedWounds,1);
+    SETB(medical_enableScreams,0)
+    SETS(medical_playerDamageThreshold,2)
+    SETS(medical_enableUnconsciousnessAI,0)
+    SETB(medical_preventInstaDeath,1)
+    SETS(medical_litterCleanUpDelay,180)
+    SETS(medical_useCondition_PAK,1)
+    SETS(medical_useLocation_PAK,0)
+    SETS(medical_useLocation_SurgicalKit,0)
+    SETB(medical_healHitPointAfterAdvBandage,1)
+    SETB(advanced_fatigue_enabled,0)
+    XSETB(sitting_enable,1)
+    XSETB(headless_enabled,1)
+	XSETS(headless_delay,180)
+	XSETB(headless_endMission,1)
+	XSETB(headless_log,1)
+
+    // Clientside settings that cannot be changed, removes clutter from settings
+    SETB(ui_allowSelectiveUI,0)
+    SETB(ui_ammoCount,0)
+    SETB(ui_ammoType,1)
+    SETB(ui_commandMenu,1)
+    SETB(ui_firingMode,1)
+    SETB(ui_groupBar,0)
+    SETB(ui_gunnerAmmoCount,1)
+    SETB(ui_gunnerAmmoType,1)
+    SETB(ui_gunnerFiringMode,1)
+    SETB(ui_gunnerLaunchableCount,1)
+    SETB(ui_gunnerLaunchableName,1)
+    SETB(ui_gunnerMagCount,1)
+    SETB(ui_gunnerWeaponLowerInfoBackground,1)
+    SETB(ui_gunnerWeaponName,1)
+    SETB(ui_gunnerWeaponNameBackground,1)
+    SETB(ui_gunnerZeroing,1)
+    SETB(ui_magCount,1)
+    SETB(ui_soldierVehicleWeaponInfo,1)
+    SETB(ui_staminaBar,1)
+    SETB(ui_stance,1)
+    SETB(ui_throwableCount,1)
+    SETB(ui_throwableName,1)
+    SETB(ui_vehicleAltitude,1)
+    SETB(ui_vehicleCompass,1)
+    SETB(ui_vehicleDamage,1)
+    SETB(ui_vehicleFuelBar,1)
+    SETB(ui_vehicleInfoBackground,1)
+    SETB(ui_vehicleName,1)
+    SETB(ui_vehicleNameBackground,1)
+    SETB(ui_vehicleRadar,1)
+    SETB(ui_vehicleSpeed,1)
+    SETB(ui_weaponLowerInfoBackground,1)
+    SETB(ui_weaponName,1)
+    SETB(ui_weaponNameBackground,1)
+    SETB(ui_zeroing,1)
+};
