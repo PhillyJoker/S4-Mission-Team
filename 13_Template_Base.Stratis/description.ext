@@ -14,6 +14,7 @@ class CfgFunctions {
             FNC(baseSetupClient)
             FNC(baseSetupServer)
             FNC(clearLoadout)
+            FNC(debug)
             FNC(deleteEmptyGroups)
             FNC(lavLoadout)
             FNC(tpNimitz)
