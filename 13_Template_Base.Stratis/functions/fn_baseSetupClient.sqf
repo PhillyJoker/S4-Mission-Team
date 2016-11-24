@@ -1,6 +1,9 @@
 #define ADD_ACT(OBJ,DNAME,SCRIPT,ARGS,PRIO,HIDE) OBJ addAction [DNAME,SCRIPT,ARGS,PRIO,true,HIDE,"","true",5]
 
-[{!isNil "MEU_baseSetupComplete" && {!isNil "MEU_isTemplate"}}, {
+player removeWeapon "ItemRadio";
+["Preload"] call BIS_fnc_arsenal;
+
+[{!isNil "MEU_baseSetupComplete"}, {
     ADD_ACT(tccc,"Open Testing Menu","template\ryan_menu.sqf","init",6,false);
     ADD_ACT(fob_blue_1,"To Lower Deck",MEU_fnc_tpNimitz,nil,6,false);
     ADD_ACT(menu_air,"Air Vehicle Menu","template\menu_air.sqf","init",6,false);
