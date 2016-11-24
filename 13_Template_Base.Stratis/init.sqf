@@ -8,3 +8,4 @@ call compile preProcessFileLineNumbers "Ares additions\AresModuleAdditions.sqf";
 // Template Inits
 MEU_templateSeason = "winter"; // "winter" or "summer"
 MEU_isTemplate = (getMissionConfigValue "respawnOnStart") == 0;
+["Preload"] call BIS_fnc_arsenal;
