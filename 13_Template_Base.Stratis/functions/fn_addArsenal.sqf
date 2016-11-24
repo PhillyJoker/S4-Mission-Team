@@ -12,9 +12,9 @@ if (!hasInterface) exitWith {
     _season = MEU_templateSeason;
     _seasonBackpacks = [];
     _seasonItemCargo = [];
-    
-    ["AmmoboxInit", [_crate, false, {true}]] spawn BIS_fnc_arsenal;
-    
+
+    ["AmmoboxInit", [_crate]] spawn BIS_fnc_arsenal;
+
     if (_season == "summer") then {
         _seasonBackpacks = [
             "tfw_ilbe_d",
@@ -40,7 +40,7 @@ if (!hasInterface) exitWith {
             "rhs_uniform_FROG01_d"
         ];
     };
-    
+
     if (_season == "winter") then {
         _seasonBackpacks = [
             "tfw_ilbe_wd",
@@ -71,7 +71,7 @@ if (!hasInterface) exitWith {
             "rhs_uniform_FROG01_wd"
         ];
     };
-    
+
     if (_season == "both") then {
         _seasonBackpacks = [
             // "summer"
@@ -125,7 +125,7 @@ if (!hasInterface) exitWith {
             "rhs_uniform_FROG01_wd"
         ];
     };
-    
+
     // Backpacks, Backpack Radio, Parachute, Mortar's
     _availableBackpacks = [
         // Vanilla
@@ -172,7 +172,7 @@ if (!hasInterface) exitWith {
         "13th_Assault_MEF_TN",
         "13th_Tactical_MEF_TN"
     ];
-    
+
     // Helmets, Goggles, Uniform's, Vests, Items, Accessories
     _availableItemCargo = [
         // Helmets
@@ -307,7 +307,7 @@ if (!hasInterface) exitWith {
         "rhs_weap_optic_smaw",
         "tfw_rf3080Item"
     ];
-    
+
     // Magazines, Ammo, Grenades
     _availableMagazines = [
         "30Rnd_556x45_Stanag",
@@ -379,7 +379,7 @@ if (!hasInterface) exitWith {
         "Chemlight_blue",
         "Chemlight_yellow"
     ];
-    
+
     // Weapons
     _availableWeapons = [
         "rhs_weap_m4",
@@ -414,7 +414,7 @@ if (!hasInterface) exitWith {
         "rhsusf_weap_m9",
         "Binocular"
     ];
-    
+
     // Populate with predefined items
     [_crate, _availableBackpacks + _seasonBackpacks] call BIS_fnc_addVirtualBackpackCargo;
     [_crate, _availableItemCargo + _seasonItemCargo] call BIS_fnc_addVirtualItemCargo;
