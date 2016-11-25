@@ -29,4 +29,4 @@ private _msg = switch (_s3passedArguement) do {
 if !(_msg isEqualType "") then {
     _msg = str _msg;
 };
-_msg remoteExec ["hint", _target];
+_msg remoteExec ["hint", _caller];
