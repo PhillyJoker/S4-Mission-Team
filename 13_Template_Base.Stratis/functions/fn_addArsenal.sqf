@@ -1,5 +1,3 @@
-// null = [this] execVM "scripts\box_virtualarsenal.sqf";
-
 if (!hasInterface) exitWith {
     diag_log format [
         "[13th MEU] ERROR: Non-client call to file %1 in mission %2 - file is marked CLIENT_ONLY!",
