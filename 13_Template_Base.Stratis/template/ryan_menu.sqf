@@ -18,6 +18,7 @@ switch (_s3passedArguement) do {
         tccc addAction ["All AI Owners", "template\ryan_menu.sqf", "displayai"];
         tccc addAction ["All AI Groups", "template\ryan_menu.sqf", "displayaigroup"];
         tccc addAction ["Ares Owner", "template\ryan_menu.sqf", "displayares"];
+		tccc addAction ["-----------", ""];
         tccc addAction ["Remove Options", "template\ryan_menu.sqf", "removeaction"];
     };
     case "removeaction" : {

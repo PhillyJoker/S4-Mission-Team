@@ -17,8 +17,8 @@ class CfgFunctions {
             FNC(debug)
             FNC(deleteEmptyGroups)
             FNC(lavLoadout)
-            FNC(tpNimitz)
-            FNC(tpNimitzUD)
+            FNC(tp_fob_blue)
+            FNC(tp_fob_blue_1)
             FNC(tpRedOctober)
         };
     };

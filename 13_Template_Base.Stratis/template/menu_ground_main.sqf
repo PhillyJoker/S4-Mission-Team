@@ -1,35 +1,35 @@
 /*
 [] execVM "template\menu_air.sqf";
-menu_ground addAction ["Air Vehicle Menu", "template\menu_ground.sqf", "init"];
+menu_ground_main addAction ["Air Vehicle Menu", "template\menu_ground_main.sqf", "init"];
 */
 _s3passedArguement = _this select 3;
 
 if (_s3passedArguement == "init") exitWith {
-    removeAllActions menu_ground;
-    menu_ground addAction ["Build RG-33", "template\menu_ground.sqf", "buildRG33"];
-    menu_ground addAction ["Build RG-33 (M-2)", "template\menu_ground.sqf", "buildRG33M2"];
-    menu_ground addAction ["Build M1A1", "template\menu_ground.sqf", "buildM1A1"];
-    menu_ground addAction ["Build LAV", "template\menu_ground.sqf", "buildLAV"];
-    menu_ground addAction ["Delete Vehicle", "template\menu_ground.sqf", "delete_any"];
-    menu_ground addAction ["-----------", ""];
-    menu_ground addAction ["Close Ground Vehicle Menu", "template\menu_ground.sqf", "end"];
+    removeAllActions menu_ground_main;
+    menu_ground_main addAction ["Build RG-33", "template\menu_ground_main.sqf", "buildRG33"];
+    menu_ground_main addAction ["Build RG-33 (M-2)", "template\menu_ground_main.sqf", "buildRG33M2"];
+    menu_ground_main addAction ["Build M1A1", "template\menu_ground_main.sqf", "buildM1A1"];
+    menu_ground_main addAction ["Build LAV", "template\menu_ground_main.sqf", "buildLAV"];
+    menu_ground_main addAction ["Delete Vehicle", "template\menu_ground_main.sqf", "delete_any"];
+    menu_ground_main addAction ["-----------", ""];
+    menu_ground_main addAction ["Close Ground Vehicle Menu", "template\menu_ground_main.sqf", "end"];
 };
 
 if (_s3passedArguement == "end") exitWith {
-    removeAllActions menu_ground;
-    menu_ground addAction ["Ground Vehicle Menu", "template\menu_ground.sqf", "init"];
+    removeAllActions menu_ground_main;
+    menu_ground_main addAction ["Ground Vehicle Menu", "template\menu_ground_main.sqf", "init"];
 };
 
 if (_s3passedArguement == "delete_any") exitWith {
-    _spCheck = nearestObjects [getPos ground_check, ["AllVehicles"], 5];
+    _spCheck = nearestObjects [getPos ground_check_main, ["AllVehicles"], 5];
     {deleteVehicle _x} forEach _spCheck;
 };
 
 _season = MEU_templateSeason;
-_obj_pos = getPos ground_check;
-_obj_dir = getDir ground_check;
+_obj_pos = getPos ground_check_main;
+_obj_dir = getDir ground_check_main;
 
-if ((ground_check distance nearestObject [ground_check, "AllVehicles"]) > 5) then
+if ((ground_check_main distance nearestObject [ground_check_main, "AllVehicles"]) > 5) then
 {
     if (_s3passedArguement == "buildRG33") then
     {

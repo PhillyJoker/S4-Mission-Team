@@ -10,7 +10,7 @@ if (_build == "BuildRO") then {
     cop_blue setPosASL (pos_cop_blue select 1);
     cop_blue setVectorDirAndUp [pos_cop_blue select 2, pos_cop_blue select 3];
     sleep 1;
-    [cop_blue, ["To Nimitz", MEU_fnc_tpNimitz]] remoteExec ["addAction", 0, true];
+    [cop_blue, ["To Respawn", MEU_fnc_tp_fob_blue]] remoteExec ["addAction", 0, true];
     publicVariable "cop_blue";
 
     menu_ground = createVehicle [pos_menu_ground select 0, pos_menu_ground select 1, [], 0, "CAN_COLLIDE"];
@@ -66,8 +66,8 @@ if (_build == "BuildRO") then {
 if (_build == "deleteRO") then {
     fob_blue remoteExec ["removeAllActions", 0, true];
     fob_blue_1 remoteExec ["removeAllActions", 0, true];
-    [fob_blue, ["To Upper Deck", MEU_fnc_tpNimitzUD]] remoteExec ["addAction", 0, true];
-    [fob_blue_1, ["To Lower Deck", MEU_fnc_tpNimitz]] remoteExec ["addAction", 0, true];
+    [fob_blue, ["To Aircraft", MEU_fnc_tp_fob_blue_1]] remoteExec ["addAction", 0, true];
+    [fob_blue_1, ["To Respawn", MEU_fnc_tp_fob_blue]] remoteExec ["addAction", 0, true];
 
     // Delete Special Objects
     deleteVehicle cop_blue;
