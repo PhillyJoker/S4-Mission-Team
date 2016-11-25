@@ -9,5 +9,8 @@ params ["_curator"];
 // Curator Event Handler to add FRIES to Zeus placed Helicopters
 
 _curator addEventHandler ["CuratorObjectPlaced", {
-    [_this select 1] call ace_fastroping_fnc_equipFRIES;
+    _entity = param [1];
+    if (_entity isKindOf "Helicopter") then {
+        [_entity] call ace_fastroping_fnc_equipFRIES;
+    };
 }];

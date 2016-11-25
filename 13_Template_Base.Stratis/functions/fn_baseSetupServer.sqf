@@ -25,10 +25,11 @@
     pos_remoteBuilder = [typeOf remoteBuilder, getPosASL remoteBuilder, vectorDir remoteBuilder, vectorUp remoteBuilder];
     deleteVehicle remoteBuilder;
 	
+	[{isNull equipment_2}, {
     _spCheck = nearestObjects [getMarkerPos "cop_redoctober", [], 200];
     {deleteVehicle _x} forEach _spCheck;
     _spCheckInfo = _spCheck apply {[typeOf _x, getPosASL _x, vectorDir _x, vectorUp _x]};
-    nearBuildings = _spCheckInfo select {(_x select 0) != ""};
+    nearBuildings = _spCheckInfo select {!((_x select 0) isEqualTo "")};
     publicVariable "nearBuildings";
 
     // Rebuild Remote Builder
@@ -54,4 +55,5 @@
 
     MEU_baseSetupComplete = true;
     publicVariable "MEU_baseSetupComplete";
+	}] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_waitUntilAndExecute;
