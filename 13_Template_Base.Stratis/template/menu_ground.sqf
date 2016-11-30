@@ -2,7 +2,7 @@
 [] execVM "template\menu_air.sqf";
 menu_ground addAction ["Air Vehicle Menu", "template\menu_ground.sqf", "init"];
 */
-_s3passedArguement = _this select 3;
+private _s3passedArguement = toLower param [3];
 
 if (_s3passedArguement == "init") exitWith {
     removeAllActions menu_ground;
@@ -21,46 +21,38 @@ if (_s3passedArguement == "end") exitWith {
 };
 
 if (_s3passedArguement == "delete_any") exitWith {
-    _spCheck = nearestObjects [getPos ground_check, ["AllVehicles"], 5];
+    private _spCheck = nearestObjects [getPos ground_check, ["AllVehicles"], 5];
     {deleteVehicle _x} forEach _spCheck;
 };
 
-_season = MEU_templateSeason;
-_obj_pos = getPos ground_check;
-_obj_dir = getDir ground_check;
+private _season = MEU_templateSeason;
+private _obj_pos = getPos ground_check;
+private _obj_dir = getDir ground_check;
 
-if ((ground_check distance nearestObject [ground_check, "AllVehicles"]) > 5) then
-{
-    if (_s3passedArguement == "buildRG33") then
-    {
-        if (_season == "winter") then
-        {
+private "_newVehicle";
+if ((ground_check distance nearestObject [ground_check, "AllVehicles"]) > 5) then {
+    if (_s3passedArguement == "buildRG33") then {
+        if (_season == "winter") then {
             _newVehicle = createVehicle ['rhsusf_rg33_usmc_wd', _obj_pos, [], 0, 'CAN_COLLIDE'];
             _newVehicle setDir _obj_dir;
         };
-        if (_season == "summer") then
-        {
+        if (_season == "summer") then {
             _newVehicle = createVehicle ['rhsusf_rg33_usmc_d', _obj_pos, [], 0, 'CAN_COLLIDE'];
             _newVehicle setDir _obj_dir;
         };
     };
-    if (_s3passedArguement == "buildRG33M2") then
-    {
-        if (_season == "winter") then
-        {
+    if (_s3passedArguement == "buildRG33M2") then {
+        if (_season == "winter") then {
             _newVehicle = createVehicle ['rhsusf_rg33_m2_usmc_wd', _obj_pos, [], 0, 'CAN_COLLIDE'];
             _newVehicle setDir _obj_dir;
         };
-        if (_season == "summer") then
-        {
+        if (_season == "summer") then {
             _newVehicle = createVehicle ['rhsusf_rg33_m2_usmc_d', _obj_pos, [], 0, 'CAN_COLLIDE'];
             _newVehicle setDir _obj_dir;
         };
     };
-    if (_s3passedArguement == "buildM1A1") then
-    {
-        if (_season == "winter") then
-        {
+    if (_s3passedArguement == "buildM1A1") then {
+        if (_season == "winter") then {
             _newVehicle = createVehicle ['rhsusf_m1a1fep_d', _obj_pos, [], 0, 'CAN_COLLIDE'];
             _newVehicle setDir _obj_dir;
             _newVehicle animate ['IFF_Panels_Hide', 1, true];
@@ -72,8 +64,7 @@ if ((ground_check distance nearestObject [ground_check, "AllVehicles"]) > 5) the
             _newVehicle addMagazineTurret ["rhs_mag_M830A1", [0], 10];
             _newVehicle addMagazineTurret ["rhs_mag_M1069", [0], 6];
         };
-        if (_season == "summer") then
-        {
+        if (_season == "summer") then {
             _newVehicle = createVehicle ['rhsusf_m1a1fep_d', _obj_pos, [], 0, 'CAN_COLLIDE'];
             _newVehicle setDir _obj_dir;
             _newVehicle animate ['IFF_Panels_Hide', 1, true];
@@ -91,16 +82,13 @@ if ((ground_check distance nearestObject [ground_check, "AllVehicles"]) > 5) the
             _newVehicle addMagazineTurret ["rhs_mag_M1069", [0], 6];
         };
     };
-    if (_s3passedArguement == "buildLAV") then
-    {
-        if (_season == "winter") then
-        {
+    if (_s3passedArguement == "buildLAV") then {
+        if (_season == "winter") then {
             _newVehicle = createVehicle ['Cha_LAV25', _obj_pos, [], 0, 'CAN_COLLIDE'];
             [_newVehicle] call MEU_fnc_lavLoadout;
             _newVehicle setDir _obj_dir;
         };
-        if (_season == "summer") then
-        {
+        if (_season == "summer") then {
             _newVehicle = createVehicle ['Cha_Des1_LAV25', _obj_pos, [], 0, 'CAN_COLLIDE'];
             [_newVehicle] call MEU_fnc_lavLoadout;
             _newVehicle setDir _obj_dir;

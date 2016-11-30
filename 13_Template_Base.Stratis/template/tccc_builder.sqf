@@ -40,7 +40,7 @@ if (_build == "BuildRO") then {
     publicVariable "equipment_2";
 
     {
-        _newObject = createVehicle [_x select 0, _x select 1, [], 0, "CAN_COLLIDE"];
+        private _newObject = createVehicle [_x select 0, _x select 1, [], 0, "CAN_COLLIDE"];
         _newObject setPosASL (_x select 1);
         _newObject setVectorDirAndUp [_x select 2, _x select 3];
     } forEach nearBuildings;
@@ -48,7 +48,7 @@ if (_build == "BuildRO") then {
     // Markers
     deleteMarker "cop_redoctober_no";
     deleteMarker "cop_redoctober_text_no";
-    _newMarker = createMarker ['cop_redoctober', pos_cop_marker];
+    private _newMarker = createMarker ['cop_redoctober', pos_cop_marker];
     _newMarker setMarkerShape 'ICON';
     _newMarker setMarkerType 'flag_USA';
     _newMarker setMarkerColor 'Default';
@@ -77,13 +77,13 @@ if (_build == "deleteRO") then {
     deleteVehicle equipment_2;
 
     // Delete Remaining Objects
-    _spCheck = nearestObjects [getMarkerPos "cop_redoctober", [], 200];
+    private _spCheck = nearestObjects [getMarkerPos "cop_redoctober", [], 200];
     {deleteVehicle _x} forEach _spCheck;
 
     //Replace the markers.
     deleteMarker "cop_redoctober";
     deleteMarker "cop_redoctober_text";
-    _newMarker = createMarker ['cop_redoctober_no', pos_cop_marker];
+    private _newMarker = createMarker ['cop_redoctober_no', pos_cop_marker];
     _newMarker setMarkerShape 'ICON';
     _newMarker setMarkerType 'flag_USA';
     _newMarker setMarkerColor 'Default';

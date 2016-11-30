@@ -1,9 +1,6 @@
-if (!hasInterface) exitWith {
-    diag_log format [
-        "[13th MEU] ERROR: Non-client call to file %1 in mission %2 - file is marked CLIENT_ONLY!",
-        __FILE__, missionName
-    ]
-};
+#include "\meu_mod\script_macros.hpp"
+
+CLIENT_ONLY;
 
 [{!isNil "MEU_templateSeason"}, {
     params ["_crate"];

@@ -4,10 +4,7 @@ player removeWeapon "ItemRadio";
 ["Preload"] call BIS_fnc_arsenal;
 
 [{!isNil "MEU_baseSetupComplete"}, {
-
-    
-    if (MEU_isTemplate) then {
-        ADD_ACT(tccc_1,"Open Mission Menu","template\tccc_menu.sqf","init",6,false);
-        ADD_ACT(remoteBuilder,"Build COP Red October","template\tccc_menu.sqf","buildROremote",6,true);
-    };
+    if (!MEU_isTemplate) exitWith {};
+    ADD_ACT(tccc_1,"Open Mission Menu","template\tccc_menu.sqf","init",6,false);
+    ADD_ACT(remoteBuilder,"Build COP Red October","template\tccc_menu.sqf","buildROremote",6,true);
 }] call CBA_fnc_waitUntilAndExecute;

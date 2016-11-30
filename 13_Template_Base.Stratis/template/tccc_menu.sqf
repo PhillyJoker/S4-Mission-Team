@@ -2,7 +2,7 @@
 tccc_1 addAction ["Open Testing Menu", "template\tccc_menu.sqf", "init"];
 */
 
-_s3passedArguement = _this select 3;
+private _s3passedArguement = toLower param [3];
 
 if (_s3passedArguement == "init") exitWith {
     removeAllActions tccc_1;

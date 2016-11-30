@@ -1,4 +1,4 @@
-#include "\x\cba\addons\main\script_macros_common.hpp"
+#include "\meu_mod\script_macros.hpp"
 
 // Prevent stomping on any other existing mission definitions
 ISNILS(Ares_Reinforcement_Mission_Unit_Pools,[]);
