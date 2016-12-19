@@ -4,7 +4,7 @@ onLoadName = "3d MRB Base Template  v.3";
 // Uncomment below line for task force missions
 // #define TASK_FORCE
 
-#include "\mrb_mod\mission.hpp"
+#include "mission.hpp"
 
 class CfgFunctions {
     class MRB {
