@@ -47,6 +47,8 @@ class ACE_Settings {
     SETB(finger_enabled,1)
     SETB(respawn_savePreDeathGear,1)
     SETB(weather_useACEWeather,0)
+    SETS(winddeflection_simulationInterval,0.1)
+    SETS(winddeflection_simulationRadius,1500)
     SETS(repair_engineerSetting_repair,0)
     SETS(repair_fullRepairLocation,0)
     SETS(repair_engineerSetting_fullRepair,0)
