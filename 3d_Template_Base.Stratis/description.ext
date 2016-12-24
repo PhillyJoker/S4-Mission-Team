@@ -1,5 +1,5 @@
 // 3DEN Settings That don't take.
-onLoadName = "3d MRB Base Template  v1.0";
+onLoadName = "3d MRB Base Template v1.0";
 
 // Uncomment below line for task force missions
 // #define TASK_FORCE
@@ -39,7 +39,7 @@ class Extended_PostInit_EventHandlers {
 
 class ACE_Settings {
     class ace_common_checkPBOsWhitelist {
-        value ="['ace_noidle','ace_goggles','ace_tracers','BABE_MIDTEX','BABE_MIDTEX_ALTIS','bg_compassa3','bgimprovedsizeofcompassandgps','cw_9liners_and_notepad','dfs_3rdperson','gdtmod_grass','stui_core','stui_grouphud','st_sthud','st_sthud_usermenu','st_map_auto_brightness','st_stamina_bar','stnametags','tao_foldmap_a3','vts_weaponresting','cyp_pushtohear_a3','ocap']";
+        value = "['ace_goggles','ace_noidle','bgimprovedsizeofcompassandgps','cw_9liners_and_notepad','dfs_3rdperson','mrb_sounds','sma_elcan_altzoom_c','stui_core','stui_grouphud','tao_foldmap_a3','vts_weaponresting']";
         typeName = "STRING";
         force = 1;
     };

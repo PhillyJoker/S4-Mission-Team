@@ -1,4 +1,4 @@
-// #define DOUBLES(var1,var2) ##var1##_##var2
+#define DOUBLES(var1,var2) ##var1##_##var2
 #define QUOTE(var1) #var1
 
 #ifdef TASK_FORCE
@@ -7,19 +7,16 @@
     #define RESPAWN_TYPE 0
 #endif
 
-// #define LS(ID) QUOTE(\mrb_mod\data\loadingScreens\DOUBLES(loadingScreen,ID).paa)
-// #define LOADING_SCREEN __EVAL(selectRandom [LS(0), LS(1), LS(2)])
+// #define LS(ID) QUOTE(\mrb_mod\data\loadingScreens\DOUBLES(load,ID).paa)
+// __EXEC(loadingScreen = selectRandom [LS(0), LS(1), LS(2), LS(3), LS(4), LS(5), LS(6)]);
 
-// #define LOADING_MESSAGE __EVAL(selectRandom ["Loading message #1", "Loading message #2", "Loading message #3"])
-
-// #define ADD_LOADING_SCREEN loadScreen = LOADING_SCREEN; \
-// overviewPicture = LOADING_SCREEN
+// __EXEC(loadingMessage = selectRandom ["Loading message #1", "Loading message #2", "Loading message #3"]);
 
 respawnOnStart = RESPAWN_TYPE;
-// loadScreen = LOADING_SCREEN;
-// overviewPicture = LOADING_SCREEN;
-// onLoadMission = LOADING_MESSAGE;
-// onLoadIntro = LOADING_MESSAGE;
+// loadScreen = __EVAL(loadingScreen);
+// overviewPicture = __EVAL(loadingScreen);
+// onLoadMission = __EVAL(loadingMessage)
+// onLoadIntro = __EVAL(loadingMessage)
 
 #define FNC(NAME) class NAME {};
 
