@@ -65,7 +65,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
     [objNull, "'Clear Loadout' action added to object."] call BIS_fnc_showCuratorFeedbackMessage;
 }] call Ares_fnc_RegisterCustomModule;
 
-["Arsenal", " Add 13th Arsenal", {
+["Arsenal", " Add 3d Arsenal", {
     params ["_pos", "_object"];
 
     if (isNull _object) exitWith {
@@ -74,10 +74,10 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
 
     [_object] remoteExecCall ["MRB_fnc_addArsenal", 0, true];
 
-    [objNull, "13th Arsenal objects added."] call BIS_fnc_showCuratorFeedbackMessage;
+    [objNull, "3d Arsenal objects added."] call BIS_fnc_showCuratorFeedbackMessage;
 }] call Ares_fnc_RegisterCustomModule;
 
-["Arsenal", " Add 13th Box Equipment", {
+["Arsenal", " Add 3d Box Equipment", {
     params ["_pos", "_object"];
 
     if (isNull _object) exitWith {
@@ -86,7 +86,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
 
     [_object] call MRB_fnc_addEquipment;
 
-    [objNull, "13th Box Equipment added to object."] call BIS_fnc_showCuratorFeedbackMessage;
+    [objNull, "3d Box Equipment added to object."] call BIS_fnc_showCuratorFeedbackMessage;
 }] call Ares_fnc_RegisterCustomModule;
 
 ["AI Behaviours", "Drop All Weapons",
