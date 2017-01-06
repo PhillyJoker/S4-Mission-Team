@@ -91,8 +91,9 @@ private _availableBackpacks = [
     "tfw_ilbe_coy"
 ];
 
-// Helmets, Goggles, Uniform's, Vests, Items, Accessories
+// Helmets, goggles, uniforms, vests, items, accessories
 private _availableItems = [
+
     // Helmets
     "rhsusf_hgu56p",
     "rhsusf_hgu56p_mask",
@@ -228,7 +229,7 @@ private _availableItems = [
     "Gen3_Ranger",
     "Gen3_Tan",
 
-    //Vests
+    // Vests
     "V_TacVest_oli",
     "V_RebreatherB",
 
@@ -428,7 +429,7 @@ private _availableItems = [
     "MineDetector",
     "TIAD_506th_UAV_Item",
     "ToolKit",
-    //"ItemRadio",
+    // "ItemRadio",
     "tf_anprc152",
     "Laserdesignator",
     "Laserbatteries",
@@ -635,9 +636,8 @@ private _availableItems = [
     "tfw_rf3080Item"
 ];
 
-// Magazines, Ammo, Grenades
+// Magazines, ammo, grenades
 private _availableMagazines = [
-
     // RHS Marksman Magazines
     // M107
     "rhsusf_mag_10Rnd_STD_50BMG_M33",
@@ -655,7 +655,7 @@ private _availableMagazines = [
     "SMA_150Rnd_762_M80A1",
     "SMA_150Rnd_762_M80A1_Tracer",
     "SMA_150Rnd_762_M80A1_Mixed",
-
+    /*
     // SMA M4A1 - MK 18 - SCAR L Magazines
     "SMA_30Rnd_556x45_M855A1",
     "SMA_30Rnd_556x45_M855A1_Tracer",
@@ -666,7 +666,7 @@ private _availableMagazines = [
     "SMA_30Rnd_556x45_Mk262",
     "SMA_30Rnd_556x45_Mk262_Tracer",
     "SMA_30Rnd_556x45_Mk262_IR",
-
+    */
     // SMA SCAR H Magazines
     "SMA_20Rnd_762x51mm_M80A1_EPR",
     "SMA_20Rnd_762x51mm_M80A1_EPR_Tracer",
@@ -699,6 +699,8 @@ private _availableMagazines = [
 
     // MISC Items
     "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+    "30Rnd_556x45_Stanag",
+    "30Rnd_556x45_Stanag_Tracer_Red",
     "ACE_HuntIR_M203",
     "rhs_mag_M433_HEDP",
     "rhs_mag_M441_HE",
@@ -913,6 +915,7 @@ private _availableWeapons = [
     "rhs_weap_sr25_usmc",
     "rhs_weap_sr25_wd",
 
+
     // MISC Weapons
     "rhs_weap_m249_pip_S",
     "rhs_weap_m249_pip_S_para",
@@ -941,7 +944,6 @@ private _availableWeapons = [
     "Binocular"
 ];
 
-// Populate with predefined items
 [_crate, _availableBackpacks] call BIS_fnc_addVirtualBackpackCargo;
 [_crate, _availableItems] call BIS_fnc_addVirtualItemCargo;
 [_crate, _availableMagazines] call BIS_fnc_addVirtualMagazineCargo;
