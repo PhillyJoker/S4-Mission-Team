@@ -18,13 +18,13 @@ if (isServer) then {
 if (hasInterface) then {
     [] call FNC(baseSetupClient);
 
-    MEU_isSpectating = false;
+    MRB_isSpectating = false;
     [
         "ACE3 Common", "toggleSpectator", "Toggle Spectator",
         {
-            if !(player getVariable ["MEU_isSpectator", false]) exitWith {};
-            [["Initialize", "Terminate"] select MEU_isSpectating, [player]] call BIS_fnc_EGSpectator;
-            MEU_isSpectating = !MEU_isSpectating;
+            if !(player getVariable ["MRB_isSpectator", false]) exitWith {};
+            [["Initialize", "Terminate"] select MRB_isSpectating, [player]] call BIS_fnc_EGSpectator;
+            MRB_isSpectating = !MRB_isSpectating;
             true
         }, {false},
         [35, [false, false, true]] // Alt + H
