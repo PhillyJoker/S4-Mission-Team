@@ -5383,7 +5383,7 @@ class Mission
 						rank="CORPORAL";
 						init=" group this setgroupid [""Ares""];";
 						name="controller_1";
-						description="S3 - Zeus Junior Operator 1";
+						description="S-3 - Zeus Junior Operator 1";
 						isPlayable=1;
 					};
 					id=2361;
@@ -5466,7 +5466,7 @@ class Mission
 						rank="CORPORAL";
 						init=" group this setgroupid [""Ares""];";
 						name="controller_2";
-						description="S3 - Zeus Junior Operator 2";
+						description="S-3 - Zeus Junior Operator 2";
 						isPlayable=1;
 					};
 					id=2362;
@@ -5549,7 +5549,7 @@ class Mission
 						rank="CORPORAL";
 						init=" group this setgroupid [""Ares""];";
 						name="controller_3";
-						description="S4 - Senior Server Monitor";
+						description="S-4 - Senior Server Monitor";
 						isPlayable=1;
 					};
 					id=2363;
@@ -5632,7 +5632,7 @@ class Mission
 						rank="CORPORAL";
 						init="group this setgroupid [""Ares""]; ";
 						name="controller_4";
-						description="S4 - Junior Server Monitor";
+						description="S-4 - Junior Server Monitor";
 						isPlayable=1;
 					};
 					id=2364;
@@ -5715,7 +5715,7 @@ class Mission
 						rank="CORPORAL";
 						init="group this setgroupid [""Ares""]; this setVariable [""MRB_isSpectator"", true];";
 						name="controller_6";
-						description="S5 - Senior Photographer";
+						description="S-5 - Senior Photographer";
 						isPlayable=1;
 					};
 					id=2365;
@@ -5798,7 +5798,7 @@ class Mission
 						rank="CORPORAL";
 						init=" group this setgroupid [""Ares""]; this setVariable [""MRB_isSpectator"", true];";
 						name="controller_5";
-						description="S5 - Junior Photographer";
+						description="S-5 - Junior Photographer";
 						isPlayable=1;
 					};
 					id=2366;
