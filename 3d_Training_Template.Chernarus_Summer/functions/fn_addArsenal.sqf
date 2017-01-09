@@ -666,7 +666,7 @@ private _availableMagazines = [
     "SMA_30Rnd_556x45_Mk262",
     "SMA_30Rnd_556x45_Mk262_Tracer",
     "SMA_30Rnd_556x45_Mk262_IR",
-    */
+
     // SMA SCAR H Magazines
     "SMA_20Rnd_762x51mm_M80A1_EPR",
     "SMA_20Rnd_762x51mm_M80A1_EPR_Tracer",
@@ -677,7 +677,7 @@ private _availableMagazines = [
     "SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic",
     "SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_Tracer",
     "SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_IR",
-
+    */
     // Carl Gustov Ammo
     "tf47_m3maaws_HEAT",
     "tf47_m3maaws_HEDP",
@@ -862,8 +862,8 @@ private _availableWeapons = [
     "SMA_Mk16_black",
     "SMA_Mk16_blackQCB",
     "SMA_Mk16_EGLM",
-    "SMA_MK16_EGLM_black",
-    "SMA_MK16_EGLM_Green",
+    // "SMA_MK16_EGLM_black",
+    // "SMA_MK16_EGLM_Green",
     "SMA_Mk16_Green",
     "SMA_Mk16_GreenQCB",
     "SMA_Mk16QCB",

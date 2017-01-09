@@ -1,4 +1,4 @@
-#define DOUBLES(var1,var2) ##var1##_##var2
+// #define DOUBLES(var1,var2) ##var1##_##var2
 #define QUOTE(var1) #var1
 
 #ifdef TASK_FORCE

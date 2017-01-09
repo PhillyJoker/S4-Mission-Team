@@ -2,8 +2,6 @@
 
 #include "\mrb_mod\script_component.hpp"
 
-private _s3passedArguement = param [3, ""];
-
 if (!MRB_isZeus) exitWith {
     hint "You are not in a Zeus slot, access denied.";
 };

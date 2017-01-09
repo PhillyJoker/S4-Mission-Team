@@ -1,17 +1,11 @@
-// this addAction ["Clear Loadout", MRB_fnc_clearLoadout, [], 6, true, true, "", "true", 5];
+removeAllWeapons ace_player;
+removeAllAssignedItems ace_player;
+removeVest ace_player;
+removeBackpack ace_player;
+removeHeadgear ace_player;
+removeBackpack ace_player;
+removeGoggles ace_player;
 
-#include "\mrb_mod\script_component.hpp"
-
-CLIENT_ONLY;
-
-removeAllWeapons player;
-removeAllAssignedItems player;
-removeVest player;
-removeBackpack player;
-removeHeadgear player;
-removeBackpack player;
-removeGoggles player;
-
-private _uniform = uniform player;
-removeUniform player;
-player addUniform _uniform;
+private _uniform = uniform ace_player;
+removeUniform ace_player;
+ace_player addUniform _uniform;
