@@ -93,7 +93,6 @@ private _availableBackpacks = [
 
 // Helmets, goggles, uniforms, vests, items, accessories
 private _availableItems = [
-
     // Helmets
     "rhsusf_hgu56p",
     "rhsusf_hgu56p_mask",
@@ -624,6 +623,9 @@ private _availableItems = [
     "FHQ_optic_TWS3050",
     "optic_tws",
     "optic_tws_mg",
+    "optic_DMS",
+    "optic_AMS",
+    "optic_KHS_blk",
     "rhsusf_acc_premier_anpvs27",
     "rhsusf_acc_premier",
     "rhsusf_acc_harris_bipod",
@@ -633,7 +635,8 @@ private _availableItems = [
     "rhsusf_acc_SF3P556",
     "rhs_weap_optic_smaw",
     "tf47_optic_m3maaws",
-    "tfw_rf3080Item"
+    "tfw_rf3080Item",
+    "TIAD_13th_UAV_Item"
 ];
 
 // Magazines, ammo, grenades
@@ -699,6 +702,7 @@ private _availableMagazines = [
 
     // MISC Items
     "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+    "rhs_mag_30Rnd_556x45_Mk262_Stanag",
     "30Rnd_556x45_Stanag",
     "30Rnd_556x45_Stanag_Tracer_Red",
     "ACE_HuntIR_M203",
@@ -915,7 +919,6 @@ private _availableWeapons = [
     "rhs_weap_sr25_usmc",
     "rhs_weap_sr25_wd",
 
-
     // MISC Weapons
     "rhs_weap_m249_pip_S",
     "rhs_weap_m249_pip_S_para",
@@ -933,6 +936,7 @@ private _availableWeapons = [
     "rhs_weap_m72a7",
     "rhs_weap_smaw_green",
     "rhs_weap_m32_usmc",
+    "rhs_weap_M320",
 
     // Pistols
     "rhsusf_weap_m9",
