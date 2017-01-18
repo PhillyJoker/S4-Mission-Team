@@ -25,7 +25,7 @@ _box addMagazineCargoGlobal ["SmokeShell", 40];
 _box addMagazineCargoGlobal ["SmokeShellGreen", 20];
 _box addMagazineCargoGlobal ["HandGrenade", 20];
 
-//Mortars
+// Mortars
 _box addMagazineCargoGlobal ["ACE_1Rnd_82mm_Mo_HE", 20];
 _box addMagazineCargoGlobal ["ACE_1Rnd_82mm_Mo_Smoke", 5];
 

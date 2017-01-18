@@ -426,7 +426,6 @@ private _availableItems = [
     "ItemCompass",
     "B_UavTerminal",
     "MineDetector",
-    "TIAD_506th_UAV_Item",
     "ToolKit",
     // "ItemRadio",
     "tf_anprc152",
