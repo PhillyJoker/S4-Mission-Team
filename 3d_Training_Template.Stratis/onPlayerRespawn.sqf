@@ -1,1 +1,1 @@
-[] call MRB_fnc_tpFobBlue;
+if hasInterface then MRB_fnc_tpFobBlue

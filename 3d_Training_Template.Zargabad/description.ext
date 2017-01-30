@@ -71,7 +71,11 @@ class ACE_Settings {
     SETS(medical_useLocation_PAK,0)
     SETS(medical_useLocation_SurgicalKit,0)
     SETB(medical_healHitPointAfterAdvBandage,1)
-    SETB(weather_useACEWeather,0) // Mark
+    SETB(weather_enableServerController,0)
+    SETB(weather_useACEWeather,0)
+    SETB(weather_syncRain,0)
+    SETB(weather_syncWind,0)
+    SETB(weather_syncMisc,0)
     SETS(winddeflection_simulationInterval,0.1)
     SETS(winddeflection_simulationRadius,1500)
     XSETB(sitting_enable,1)

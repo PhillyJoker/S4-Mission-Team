@@ -1,6 +1,6 @@
-// Keep wind speed between 9-16.2 kph
-#define RAND (1.8 + random 1.4) * (selectRandom [-1, 1])
-setWind [RAND, RAND];
+#define RAND (2 + random 1.5) * (selectRandom [-1, 1])
+setWind [RAND, RAND, true];
+0 setGusts (0.2 + random 0.2);
 
 if (!MRB_isTemplate) exitWith {
     deleteVehicle tccc_1;
@@ -31,7 +31,7 @@ deleteVehicle remoteBuilder;
     private _spCheck = nearestObjects [getMarkerPos "cop_redoctober", [], 200];
     private _spCheckInfo = _spCheck apply {[typeOf _x, getPosASL _x, vectorDir _x, vectorUp _x]};
     {deleteVehicle _x} forEach _spCheck;
-    nearBuildings = _spCheckInfo select {!((_x select 0) isEqualTo "")};
+    nearBuildings = _spCheckInfo select {(_x select 0) != ""};
     publicVariable "nearBuildings";
 
     // Rebuild Remote Builder

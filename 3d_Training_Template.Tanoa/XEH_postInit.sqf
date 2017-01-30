@@ -23,7 +23,7 @@ if (hasInterface) then {
         "ACE3 Common", "toggleSpectator", "Toggle Spectator",
         {
             if !(player getVariable ["MRB_isSpectator", false]) exitWith {};
-            [["Initialize", "Terminate"] select MRB_isSpectating, [player]] call BIS_fnc_EGSpectator;
+            [["Init", "Exit"] select MRB_isSpectating] call BIS_fnc_camera;
             MRB_isSpectating = !MRB_isSpectating;
             true
         }, {false},
