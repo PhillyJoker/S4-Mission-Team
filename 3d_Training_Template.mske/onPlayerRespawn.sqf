@@ -1,0 +1,1 @@
+if hasInterface then MRB_fnc_tpFobBlue

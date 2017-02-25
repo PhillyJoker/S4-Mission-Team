@@ -18,7 +18,7 @@ if (!MRB_isZeus) exitWith {
     {
         params ["_args", "_lbData"];
         if (_lbData == "") exitWith {};
-        [_lbData, clientOwner] remoteExecCall ["MRB_fnc_debug", 2];
+        [_lbData, clientOwner] remoteExecCall [QFNC(debug), 2];
     },
     [], "TEST"
 ] call FNC(listDialog);

@@ -1,8 +1,3 @@
-if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
-    [objNull, "CUSTOM MODULES NOT LOADED"] call BIS_fnc_showCuratorFeedbackMessage;
-};
-// Ares is loaded, register the custom modules.
-
 ["AI Behaviours", "Turn Engine On/Off",
 {
     params ["_pos", "_object"];
@@ -65,7 +60,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
     [objNull, "'Clear Loadout' action added to object."] call BIS_fnc_showCuratorFeedbackMessage;
 }] call Ares_fnc_RegisterCustomModule;
 
-["Arsenal", " Add 3d Arsenal", {
+["Arsenal", "Add 3d Arsenal", {
     params ["_pos", "_object"];
 
     if (isNull _object) exitWith {
@@ -77,7 +72,7 @@ if (!isClass (configFile >> "CfgPatches" >> "Ares")) exitWith {
     [objNull, "3d Arsenal objects added."] call BIS_fnc_showCuratorFeedbackMessage;
 }] call Ares_fnc_RegisterCustomModule;
 
-["Arsenal", " Add 3d Box Equipment", {
+["Arsenal", "Add 3d Box Equipment", {
     params ["_pos", "_object"];
 
     if (isNull _object) exitWith {

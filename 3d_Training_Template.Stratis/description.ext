@@ -1,5 +1,5 @@
 // 3DEN Settings That don't take.
-onLoadName = "3d MRB Training Template v1.6";
+onLoadName = "3d MRB Training Template v1.7";
 
 // Uncomment below line for task force missions
 // #define TASK_FORCE
