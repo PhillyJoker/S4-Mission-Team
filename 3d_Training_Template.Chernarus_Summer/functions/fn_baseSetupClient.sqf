@@ -1,10 +1,9 @@
-#define ADD_ACT(OBJ,DNAME,ARGS) OBJ addAction [DNAME,"template\tccc_menu.sqf",ARGS,6,true,false,"","true",5]
-
 player removeWeapon "ItemRadio";
 ["Preload"] call BIS_fnc_arsenal;
 
 [{!isNil "MRB_baseSetupComplete"}, {
     if (!MRB_isTemplate) exitWith {};
-    ADD_ACT(tccc_1,"Open Mission Menu","init");
-    ADD_ACT(remoteBuilder,"Build COP Red October","buildROremote");
+
+    tccc_1 addAction ["Open Mission Menu", "template\tccc_menu.sqf", "init", 6, true, false, "", "true", 5];
+    remoteBuilder addAction ["Build COP Red October", "template\tccc_menu.sqf", "buildROremote", 6, true, false, "", "true", 5];
 }] call CBA_fnc_waitUntilAndExecute;

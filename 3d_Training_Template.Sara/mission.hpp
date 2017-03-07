@@ -3,8 +3,10 @@
 
 #ifdef TASK_FORCE
     #define RESPAWN_TYPE -1
+    #define FPS_LOGGING 1
 #else
     #define RESPAWN_TYPE 0
+    #define FPS_LOGGING 0
 #endif
 
 // #define LS(ID) QUOTE(\mrb_mod\data\loadingScreens\DOUBLES(load,ID).paa)
@@ -13,6 +15,7 @@
 // __EXEC(loadingMessage = selectRandom ["Loading message #1", "Loading message #2", "Loading message #3"]);
 
 respawnOnStart = RESPAWN_TYPE;
+fpsLogging = FPS_LOGGING;
 // loadScreen = __EVAL(loadingScreen);
 // overviewPicture = __EVAL(loadingScreen);
 // onLoadMission = __EVAL(loadingMessage)
