@@ -1,5 +1,5 @@
 // 3DEN Settings That don't take.
-onLoadName = "3d MRB Training Template v1.7";
+onLoadName = "3d MRB Training Template v1.8";
 
 // Uncomment below line for task force missions
 // #define TASK_FORCE
@@ -27,6 +27,10 @@ class CfgFunctions {
             FNC(tpFobBlue)
             FNC(tpFobBlue1)
             FNC(tpRedOctober)
+            FNC(vAir_spawnMenu)
+            FNC(vGround_spawnMenu)
+            FNC(vSupport_spawnMenu)
+            FNC(vehicleSpawn)
         };
     };
 };
@@ -39,7 +43,7 @@ class Extended_PostInit_EventHandlers {
 
 class ACE_Settings {
     class ace_common_checkPBOsWhitelist {
-        value = "['ace_goggles','ace_noidle','bgimprovedsizeofcompassandgps','cw_9liners_and_notepad','dfs_3rdperson','mrb_sounds','sma_elcan_altzoom_c','stui_core','stui_grouphud','tao_foldmap_a3','vts_weaponresting']";
+        value = "['ace_goggles','ace_noidle','bgimprovedsizeofcompassandgps','cw_9liners_and_notepad','dfs_3rdperson','mrb_sounds','sma_elcan_altzoom_c','stui_core','stui_grouphud','tao_foldmap_a3','vts_weaponresting','fps_logger']";
         typeName = "STRING";
         force = 1;
     };

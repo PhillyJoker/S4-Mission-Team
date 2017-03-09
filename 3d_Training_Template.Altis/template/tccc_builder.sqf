@@ -13,17 +13,18 @@ if (_build == "BuildRO") then {
     [cop_blue, ["To Respawn", MRB_fnc_tpFobBlue]] remoteExec ["addAction", 0, true];
     publicVariable "cop_blue";
 
-    menu_ground = createVehicle [pos_menu_ground select 0, pos_menu_ground select 1, [], 0, "CAN_COLLIDE"];
-    menu_ground setPosASL (pos_menu_ground select 1);
-    menu_ground setVectorDirAndUp [pos_menu_ground select 2, pos_menu_ground select 3];
+    menu_ground_2 = createVehicle [pos_menu_ground_2 select 0, pos_menu_ground_2 select 1, [], 0, "CAN_COLLIDE"];
+    menu_ground_2 setPosASL (pos_menu_ground_2 select 1);
+    menu_ground_2 setVectorDirAndUp [pos_menu_ground_2 select 2, pos_menu_ground_2 select 3];
     sleep 1;
-    [menu_ground, ["Ground Vehicle Menu", "template\menu_ground.sqf", "init"]] remoteExec ["addAction", 0, true];
-    publicVariable "menu_ground";
+    [menu_ground_2, ["Ground Vehicle Menu", MRB_fnc_vGround_spawnMenu, [], 7, true, true, "", "true", 5]] remoteExec ["addAction", 0, true];
+	[menu_ground_2, ["Support Vehicle Menu", MRB_fnc_vSupport_spawnMenu, [], 6, true, true, "", "true", 5]] remoteExec ["addAction", 0, true];
+    publicVariable "menu_ground_2";
 
-    ground_check = createVehicle [pos_ground_check select 0, pos_ground_check select 1, [], 0, "CAN_COLLIDE"];
-    ground_check setPosASL (pos_ground_check select 1);
-    ground_check setVectorDirAndUp [pos_ground_check select 2, pos_ground_check select 3];
-    publicVariable "ground_check";
+    ground_check_2 = createVehicle [pos_ground_check_2 select 0, pos_ground_check_2 select 1, [], 0, "CAN_COLLIDE"];
+    ground_check_2 setPosASL (pos_ground_check_2 select 1);
+    ground_check_2 setVectorDirAndUp [pos_ground_check_2 select 2, pos_ground_check_2 select 3];
+    publicVariable "ground_check_2";
 
     arsenal_2 = createVehicle [pos_arsenal_2 select 0, pos_arsenal_2 select 1, [], 0, "CAN_COLLIDE"];
     arsenal_2 setPosASL (pos_arsenal_2 select 1);
@@ -71,8 +72,8 @@ if (_build == "deleteRO") then {
 
     // Delete Special Objects
     deleteVehicle cop_blue;
-    deleteVehicle menu_ground;
-    deleteVehicle ground_check;
+    deleteVehicle menu_ground_2;
+    deleteVehicle ground_check_2;
     deleteVehicle arsenal_2;
     deleteVehicle equipment_2;
 
