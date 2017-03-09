@@ -7,24 +7,24 @@ params ["_crate"];
 _crate addAction ["Transfer Loadout", FNC(transferLoadout), [], 0.5, false, true, "", "true", 6];
 
 ["AmmoboxInit", [_crate]] spawn BIS_fnc_arsenal;
-//Backpacks, Backpack Radio, Parachute, Mortar's
+
 private _availableBackpacks = [
-// Vanilla
+    // Ace gunbags
+    "ace_gunbag",
+    "ace_gunbag_tan",
+
+    // Vanilla
     "B_Carryall_cbr",
     "B_Carryall_khk",
     "B_Kitbag_cbr",
     "B_Parachute",
     "B_AssaultPack_rgr",
 
-// ACE BackPacks
-    "ACE_gunbag",
-    "ACE_gunbag_Tan",
-
-// RHS + Modified
+    // RHS + Modified
     "506th_assault_eagleaiii_coy_Medic",
     "rhsusf_assault_eagleaiii_coy",
 
-// 3d MRB Backpacks
+    // 3d MRB Backpacks
     "3d_assault_CM_SA",
     "3d_Assault_MEF_BL",
     "3d_Assault_MEF_CY",
@@ -62,7 +62,7 @@ private _availableBackpacks = [
     "3d_Tactical_MEF_DM",
     "3d_Tactical_MEF_CY",
 
-// MILGP BackPacks
+    // MILGP BackPacks
     "milgp_bp_marciras_Breacher_cb",
     "milgp_bp_marciras_Breacher_khk",
     "milgp_bp_marciras_Breacher_mc",
@@ -80,7 +80,7 @@ private _availableBackpacks = [
     "milgp_bp_marciras_Tomahawk_khk",
     "milgp_bp_marciras_Tomahawk_cb",
 
-// ILBE Radio's
+    // ILBE Radio's
     "tfw_ilbe_d",
     "tfw_ilbe_dd_d",
     "tfw_ilbe_blade_d",
@@ -91,14 +91,14 @@ private _availableBackpacks = [
     "tfw_ilbe_coy"
 ];
 
-//Helmets, Goggles, Uniform's, Vests, Items, Accessories
+// Helmets, goggles, uniforms, vests, items, accessories
 private _availableItems = [
-//Helmets
+    // Helmets
     "rhsusf_hgu56p",
     "rhsusf_hgu56p_mask",
     "RHS_jetpilot_usaf",
 
-// MILGP Helmets
+    // MILGP Helmets
     "milgp_h_airframe_Combat_CB",
     "milgp_h_airframe_Combat_KHK",
     "milgp_h_airframe_Combat_rgr",
@@ -109,7 +109,7 @@ private _availableItems = [
     "milgp_h_airframe_tactical_KHK",
     "milgp_h_airframe_tactical_rgr",
 
-// SOCOM MICH
+    // SOCOM MICH
     "SOCOM_mich_bare_tan_brown",
     "SOCOM_mich_bare_tan_brown_headset",
     "SOCOM_mich_bare_tan_grey",
@@ -117,7 +117,7 @@ private _availableItems = [
     "SOCOM_mich_bare_tan_sand",
     "SOCOM_mich_bare_tan_sand_headset",
 
-// SOCOM Fast
+    // SOCOM Fast
     "SOCOM_opscore_01_sof",
     "SOCOM_opscore_tb_pelt_cam_sof",
     "SOCOM_opscore_tb_pelt_nsw_cam_sof",
@@ -135,7 +135,7 @@ private _availableItems = [
     "SOCOM_opscore_ts_pelt_sof",
     "SOCOM_opscore_ts_sof",
 
-// RHS Ops Core
+    // RHS Ops Core
     "rhsusf_opscore_01",
     "rhsusf_opscore_01_tan",
     "rhsusf_opscore_02",
@@ -155,6 +155,17 @@ private _availableItems = [
     "rhsusf_opscore_fg_pelt",
     "rhsusf_opscore_fg_pelt_cam",
     "rhsusf_opscore_fg_pelt_nsw",
+	"rhsusf_opscore_mar_ut",
+	"rhsusf_opscore_mar_ut_pelt",
+	"rhsusf_opscore_mar_fg",
+	"rhsusf_opscore_mar_fg_pelt",
+	"rhsusf_opscore_mc",
+	"rhsusf_opscore_mc_pelt",
+	"rhsusf_opscore_mc_pelt_nsw",
+	"rhsusf_opscore_mc_cover",
+	"rhsusf_opscore_mc_cover_pelt",
+	"rhsusf_opscore_mc_cover_pelt_nsw",
+	"rhsusf_opscore_mc_cover_pelt_cam",
     "rhsusf_opscore_paint",
     "rhsusf_opscore_paint_pelt",
     "rhsusf_opscore_paint_pelt_nsw",
@@ -167,7 +178,7 @@ private _availableItems = [
     "rhsusf_opscore_ut_pelt_nsw",
     "rhsusf_opscore_ut_pelt_nsw_cam",
 
-// RHS MICH 2000
+    // RHS MICH 2000
     "rhsusf_mich_bare",
     "rhsusf_mich_bare_alt",
     "rhsusf_mich_bare_alt_semi",
@@ -200,9 +211,30 @@ private _availableItems = [
     "rhsusf_mich_bare_semi",
     "rhsusf_mich_bare_semi_headset",
     "rhsusf_mich_bare_tan",
+	
+	//Boonies
+	"H_Booniehat_khk_hs",
+	"H_Booniehat_khk",
+	"H_Booniehat_oli",
+	"H_Booniehat_tan",
+	"rhs_Booniehat_m81",
+	"rhs_booniehat2_marpatd",
+	"rhs_booniehat2_marpatwd",
+	"rhs_8point_marpatd",
+	"rhs_8point_marpatwd",
 
-
-//Goggles
+	//Caps
+	"rhsusf_bowman_cap",
+	"H_Cap_oli_hs",
+	"H_Cap_headphones",
+	
+	//Beanies
+	"H_Watchcap_blk",
+	"H_Watchcap_cbr",
+	"H_Watchcap_camo",
+	"H_Watchcap_khk",
+	
+    // Goggles
     "G_Shades_Black",
     "G_Shades_Blue",
     "G_Shades_Green",
@@ -216,170 +248,185 @@ private _availableItems = [
     "rhs_ess_black",
     "G_B_Diving",
 
-//Uniforms
+    // Uniforms
     "U_B_HeliPilotCoveralls",
     "U_B_Wetsuit",
 
-// SOCOM Uniforms
+    // SOCOM Uniforms
     "SOCOM_uniform_g3_m81_base",
     "SOCOM_uniform_g3_dcu_base",
     "SOCOM_uniform_g3_bdu_base",
     "SOCOM_uniform_g3_d_marpat_base",
+	"SOCOM_uniform_g3_d_marpat_v2_base",
     "SOCOM_uniform_g3_w_marpat_base",
     "Gen3_Ranger",
     "Gen3_Tan",
 
-//Vests
+    // Vests
     "V_TacVest_oli",
     "V_RebreatherB",
 
-// JPC MILGP
+    // JPC MILGP
+	// MILGP Fleece
+	"milgp_u_fleece_grey_g3_field_pants_3CD",
+	"milgp_u_fleece_grey_g3_field_pants_khk",
+	"milgp_u_fleece_grey_g3_field_pants_rgr",
+	"milgp_u_fleece_grey_g3_field_pants_M81",
+	"milgp_u_fleece_khk_g3_field_pants_khk",
+	"milgp_u_fleece_khk_g3_field_pants_3CD",
+	"milgp_u_fleece_rgr_g3_field_pants_rgr",
+	"milgp_u_fleece_rgr_g3_field_pants_M81",
+	
+	//MILGP Field Set Rolled
+	"milgp_u_g3_field_set_rolled_khk",
+	"milgp_u_g3_field_set_rolled_m81",
+	"milgp_u_g3_field_set_rolled_rgr",
+	
     // MILGP JPC Assaulter
-        "milgp_v_jpc_assaulter_belt_cb",
-        "milgp_v_jpc_assaulter_belt_khk",
-        "milgp_v_jpc_assaulter_belt_mc",
-        "milgp_v_jpc_assaulter_belt_rgr",
-        "milgp_v_jpc_assaulter_cb",
-        "milgp_v_jpc_assaulter_khk",
-        "milgp_v_jpc_assaulter_mc",
-        "milgp_v_jpc_assaulter_rgr",
+    "milgp_v_jpc_assaulter_belt_cb",
+    "milgp_v_jpc_assaulter_belt_khk",
+    "milgp_v_jpc_assaulter_belt_mc",
+    "milgp_v_jpc_assaulter_belt_rgr",
+    "milgp_v_jpc_assaulter_cb",
+    "milgp_v_jpc_assaulter_khk",
+    "milgp_v_jpc_assaulter_mc",
+    "milgp_v_jpc_assaulter_rgr",
 
     // MILGP JPC Grenadier
-        "milgp_v_jpc_Grenadier_belt_cb",
-        "milgp_v_jpc_Grenadier_belt_khk",
-        "milgp_v_jpc_Grenadier_belt_mc",
-        "milgp_v_jpc_Grenadier_belt_rgr",
-        "milgp_v_jpc_Grenadier_cb",
-        "milgp_v_jpc_Grenadier_khk",
-        "milgp_v_jpc_Grenadier_mc",
-        "milgp_v_jpc_Grenadier_rgr",
+    "milgp_v_jpc_Grenadier_belt_cb",
+    "milgp_v_jpc_Grenadier_belt_khk",
+    "milgp_v_jpc_Grenadier_belt_mc",
+    "milgp_v_jpc_Grenadier_belt_rgr",
+    "milgp_v_jpc_Grenadier_cb",
+    "milgp_v_jpc_Grenadier_khk",
+    "milgp_v_jpc_Grenadier_mc",
+    "milgp_v_jpc_Grenadier_rgr",
 
     // MILGP JPC Heavy Gunner
-        "milgp_v_jpc_hgunner_belt_cb",
-        "milgp_v_jpc_hgunner_belt_khk",
-        "milgp_v_jpc_hgunner_belt_mc",
-        "milgp_v_jpc_hgunner_belt_rgr",
-        "milgp_v_jpc_hgunner_cb",
-        "milgp_v_jpc_hgunner_khk",
-        "milgp_v_jpc_hgunner_mc",
-        "milgp_v_jpc_hgunner_rgr",
+    "milgp_v_jpc_hgunner_belt_cb",
+    "milgp_v_jpc_hgunner_belt_khk",
+    "milgp_v_jpc_hgunner_belt_mc",
+    "milgp_v_jpc_hgunner_belt_rgr",
+    "milgp_v_jpc_hgunner_cb",
+    "milgp_v_jpc_hgunner_khk",
+    "milgp_v_jpc_hgunner_mc",
+    "milgp_v_jpc_hgunner_rgr",
 
     // MILGP JPC Marksman
-        "milgp_v_jpc_marksman_belt_cb",
-        "milgp_v_jpc_marksman_belt_khk",
-        "milgp_v_jpc_marksman_belt_mc",
-        "milgp_v_jpc_marksman_belt_rgr",
-        "milgp_v_jpc_Marksman_cb",
-        "milgp_v_jpc_Marksman_khk",
-        "milgp_v_jpc_Marksman_mc",
-        "milgp_v_jpc_Marksman_rgr",
+    "milgp_v_jpc_marksman_belt_cb",
+    "milgp_v_jpc_marksman_belt_khk",
+    "milgp_v_jpc_marksman_belt_mc",
+    "milgp_v_jpc_marksman_belt_rgr",
+    "milgp_v_jpc_Marksman_cb",
+    "milgp_v_jpc_Marksman_khk",
+    "milgp_v_jpc_Marksman_mc",
+    "milgp_v_jpc_Marksman_rgr",
 
     // MILGP JPC Medic
-        "milgp_v_jpc_medic_belt_cb",
-        "milgp_v_jpc_medic_belt_khk",
-        "milgp_v_jpc_medic_belt_mc",
-        "milgp_v_jpc_medic_belt_rgr",
-        "milgp_v_jpc_Medic_cb",
-        "milgp_v_jpc_Medic_khk",
-        "milgp_v_jpc_Medic_mc",
-        "milgp_v_jpc_Medic_rgr",
+    "milgp_v_jpc_medic_belt_cb",
+    "milgp_v_jpc_medic_belt_khk",
+    "milgp_v_jpc_medic_belt_mc",
+    "milgp_v_jpc_medic_belt_rgr",
+    "milgp_v_jpc_Medic_cb",
+    "milgp_v_jpc_Medic_khk",
+    "milgp_v_jpc_Medic_mc",
+    "milgp_v_jpc_Medic_rgr",
 
     // MILGP JPC Teamleader
-        "milgp_v_jpc_teamleader_belt_cb",
-        "milgp_v_jpc_teamleader_belt_khk",
-        "milgp_v_jpc_teamleader_belt_mc",
-        "milgp_v_jpc_teamleader_belt_rgr",
-        "milgp_v_jpc_TeamLeader_cb",
-        "milgp_v_jpc_TeamLeader_khk",
-        "milgp_v_jpc_TeamLeader_mc",
-        "milgp_v_jpc_TeamLeader_rgr",
+    "milgp_v_jpc_teamleader_belt_cb",
+    "milgp_v_jpc_teamleader_belt_khk",
+    "milgp_v_jpc_teamleader_belt_mc",
+    "milgp_v_jpc_teamleader_belt_rgr",
+    "milgp_v_jpc_TeamLeader_cb",
+    "milgp_v_jpc_TeamLeader_khk",
+    "milgp_v_jpc_TeamLeader_mc",
+    "milgp_v_jpc_TeamLeader_rgr",
 
     // Marciras MILGP Assaulter
-        "milgp_v_marciras_assaulter_belt_cb",
-        "milgp_v_marciras_assaulter_belt_khk",
-        "milgp_v_marciras_assaulter_belt_mc",
-        "milgp_v_marciras_assaulter_belt_rgr",
-        "milgp_v_marciras_assaulter_cb",
-        "milgp_v_marciras_assaulter_khk",
-        "milgp_v_marciras_assaulter_mc",
-        "milgp_v_marciras_assaulter_rgr",
+    "milgp_v_marciras_assaulter_belt_cb",
+    "milgp_v_marciras_assaulter_belt_khk",
+    "milgp_v_marciras_assaulter_belt_mc",
+    "milgp_v_marciras_assaulter_belt_rgr",
+    "milgp_v_marciras_assaulter_cb",
+    "milgp_v_marciras_assaulter_khk",
+    "milgp_v_marciras_assaulter_mc",
+    "milgp_v_marciras_assaulter_rgr",
 
     // MilGP Marciras Grenadier
-        "milgp_v_marciras_grenadier_belt_cb",
-        "milgp_v_marciras_grenadier_belt_khk",
-        "milgp_v_marciras_grenadier_belt_mc",
-        "milgp_v_marciras_grenadier_belt_rgr",
-        "milgp_v_marciras_grenadier_cb",
-        "milgp_v_marciras_grenadier_khk",
-        "milgp_v_marciras_grenadier_mc",
-        "milgp_v_marciras_grenadier_rgr",
+    "milgp_v_marciras_grenadier_belt_cb",
+    "milgp_v_marciras_grenadier_belt_khk",
+    "milgp_v_marciras_grenadier_belt_mc",
+    "milgp_v_marciras_grenadier_belt_rgr",
+    "milgp_v_marciras_grenadier_cb",
+    "milgp_v_marciras_grenadier_khk",
+    "milgp_v_marciras_grenadier_mc",
+    "milgp_v_marciras_grenadier_rgr",
 
     // MilGP Marciras Heavy Gunner
-        "milgp_v_marciras_hgunner_belt_cb",
-        "milgp_v_marciras_hgunner_belt_khk",
-        "milgp_v_marciras_hgunner_belt_mc",
-        "milgp_v_marciras_hgunner_belt_rgr",
-        "milgp_v_marciras_hgunner_cb",
-        "milgp_v_marciras_hgunner_khk",
-        "milgp_v_marciras_hgunner_mc",
-        "milgp_v_marciras_hgunner_rgr",
+    "milgp_v_marciras_hgunner_belt_cb",
+    "milgp_v_marciras_hgunner_belt_khk",
+    "milgp_v_marciras_hgunner_belt_mc",
+    "milgp_v_marciras_hgunner_belt_rgr",
+    "milgp_v_marciras_hgunner_cb",
+    "milgp_v_marciras_hgunner_khk",
+    "milgp_v_marciras_hgunner_mc",
+    "milgp_v_marciras_hgunner_rgr",
 
     // MilGP Marciras Marksman
-        "milgp_v_marciras_marksman_belt_cb",
-        "milgp_v_marciras_marksman_belt_khk",
-        "milgp_v_marciras_marksman_belt_mc",
-        "milgp_v_marciras_marksman_belt_rgr",
-        "milgp_v_marciras_marksman_cb",
-        "milgp_v_marciras_marksman_khk",
-        "milgp_v_marciras_marksman_mc",
-        "milgp_v_marciras_marksman_rgr",
+    "milgp_v_marciras_marksman_belt_cb",
+    "milgp_v_marciras_marksman_belt_khk",
+    "milgp_v_marciras_marksman_belt_mc",
+    "milgp_v_marciras_marksman_belt_rgr",
+    "milgp_v_marciras_marksman_cb",
+    "milgp_v_marciras_marksman_khk",
+    "milgp_v_marciras_marksman_mc",
+    "milgp_v_marciras_marksman_rgr",
 
     // MilGP Marciras Medic
-        "milgp_v_marciras_medic_belt_cb",
-        "milgp_v_marciras_medic_belt_khk",
-        "milgp_v_marciras_medic_belt_mc",
-        "milgp_v_marciras_medic_belt_rgr",
-        "milgp_v_marciras_medic_cb",
-        "milgp_v_marciras_medic_khk",
-        "milgp_v_marciras_medic_mc",
-        "milgp_v_marciras_medic_rgr",
+    "milgp_v_marciras_medic_belt_cb",
+    "milgp_v_marciras_medic_belt_khk",
+    "milgp_v_marciras_medic_belt_mc",
+    "milgp_v_marciras_medic_belt_rgr",
+    "milgp_v_marciras_medic_cb",
+    "milgp_v_marciras_medic_khk",
+    "milgp_v_marciras_medic_mc",
+    "milgp_v_marciras_medic_rgr",
 
     // MilGP Marciras Teamleader
-        "milgp_v_marciras_teamleader_belt_CB",
-        "milgp_v_marciras_teamleader_belt_KHK",
-        "milgp_v_marciras_teamleader_belt_mc",
-        "milgp_v_marciras_teamleader_belt_RGR",
-        "milgp_v_marciras_teamleader_CB",
-        "milgp_v_marciras_teamleader_KHK",
-        "milgp_v_marciras_teamleader_mc",
-        "milgp_v_marciras_teamleader_RGR",
+    "milgp_v_marciras_teamleader_belt_CB",
+    "milgp_v_marciras_teamleader_belt_KHK",
+    "milgp_v_marciras_teamleader_belt_mc",
+    "milgp_v_marciras_teamleader_belt_RGR",
+    "milgp_v_marciras_teamleader_CB",
+    "milgp_v_marciras_teamleader_KHK",
+    "milgp_v_marciras_teamleader_mc",
+    "milgp_v_marciras_teamleader_RGR",
 
-
-// Ace Items
+    // Ace Items
     // Basic Medical
-        "ACE_bloodIV_250",
-        "ACE_epinephrine",
-        "ACE_fieldDressing",
-        "ACE_morphine",
+    "ACE_bloodIV_250",
+    "ACE_epinephrine",
+    "ACE_fieldDressing",
+    "ACE_morphine",
 
     // Advanced Medical
-        "ACE_atropine",
-        "ACE_elasticBandage",
-        "ACE_quikclot",
-        "ACE_bloodIV",
-        "ACE_bloodIV_500",
-        "ACE_packingBandage",
-        "ACE_personalAidKit",
-        "ACE_plasmaIV",
-        "ACE_plasmaIV_500",
-        "ACE_plasmaIV_250",
-        "ACE_salineIV",
-        "ACE_salineIV_500",
-        "ACE_salineIV_250",
-        "ACE_tourniquet",
-        "ACE_surgicalKit",
+    "ACE_atropine",
+    "ACE_elasticBandage",
+    "ACE_quikclot",
+    "ACE_bloodIV",
+    "ACE_bloodIV_500",
+    "ACE_packingBandage",
+    "ACE_personalAidKit",
+    "ACE_plasmaIV",
+    "ACE_plasmaIV_500",
+    "ACE_plasmaIV_250",
+    "ACE_salineIV",
+    "ACE_salineIV_500",
+    "ACE_salineIV_250",
+    "ACE_tourniquet",
+    "ACE_surgicalKit",
 
-// Ace Items
+    // Ace Items
     "ACE_SpraypaintBlack",
     "ACE_SpraypaintBlue",
     "ACE_SpraypaintGreen",
@@ -402,11 +449,8 @@ private _availableItems = [
     "ACE_VectorDay",
     "ACE_Vector",
     "ACE_muzzle_mzls_smg_01",
-    "ACE_RangeCard",
-    "ACE_ATragMX",
 
-
-// NVG's
+    // NVGs
     "rhsusf_Rhino",
     "rhsusf_ANPVS_14",
     "rhsusf_ANPVS_15",
@@ -418,27 +462,26 @@ private _availableItems = [
     "rhsusf_ANPVS_15_full_ng",
     "rhsusf_ANPVS_14_oval_ng",
 
-//CTAB
+    // CTAB
     "ItemAndroid",
     "ItemMicroDAGR",
     "ItemcTab",
     "ItemcTabHCam",
 
-//Vanilla Items
+    // Vanilla Items
     "ItemWatch",
     "ItemGPS",
     "ItemMap",
     "ItemCompass",
     "B_UavTerminal",
     "MineDetector",
-    "TIAD_13th_UAV_Item",
     "ToolKit",
-    //"ItemRadio",
+    // "ItemRadio",
     "tf_anprc152",
     "Laserdesignator",
     "Laserbatteries",
 
-// SMA Optics and Attachments
+    // SMA Optics and Attachments
     "SMA_ANPEQ15_BLK",
     "SMA_ANPEQ15_TAN",
     "SMA_ANPEQ15_TOP_417BLK",
@@ -599,18 +642,16 @@ private _availableItems = [
     "SMA_supp2TWH_556",
     "SMA_supptan_762",
 
-// Weapon Accessories
+    // Weapon Accessories
     "muzzle_snds_acp",
     "FHQ_optic_LeupoldERT",
     "FHQ_optic_LeupoldERT_tan",
     "optic_LRPS",
-    "optic_DMS",
-    "optic_AMS",
-    "optic_KHS_blk",
     "rhsusf_acc_LEUPOLDMK4",
     "rhsusf_acc_LEUPOLDMK4_2",
     "rhsusf_acc_LEUPOLDMK4_2_d",
     "acc_pointer_IR",
+	"rhsusf_acc_anpas13gv1",
     "rhsusf_acc_anpeq15",
     "rhsusf_acc_anpeq15A",
     "rhsusf_acc_anpeq15_light",
@@ -620,6 +661,10 @@ private _availableItems = [
     "rhsusf_acc_anpeq15_bk_top",
     "rhsusf_acc_anpeq15_bk",
     "rhsusf_acc_anpeq15_bk_light",
+	"rhsusf_acc_ACOG_wd",
+	"rhsusf_acc_ACOG_d",
+	"rhsusf_acc_ACOG_RMR",
+	"rhsusf_acc_ACOG_MDO",
     "rhsusf_acc_ACOG_USMC",
     "rhsusf_acc_ACOG2_USMC",
     "rhsusf_acc_ACOG3_USMC",
@@ -631,6 +676,9 @@ private _availableItems = [
     "FHQ_optic_TWS3050",
     "optic_tws",
     "optic_tws_mg",
+    "optic_DMS",
+    "optic_AMS",
+    "optic_KHS_blk",
     "rhsusf_acc_premier_anpvs27",
     "rhsusf_acc_premier",
     "rhsusf_acc_harris_bipod",
@@ -640,32 +688,31 @@ private _availableItems = [
     "rhsusf_acc_SF3P556",
     "rhs_weap_optic_smaw",
     "tf47_optic_m3maaws",
-    "tfw_rf3080Item"
-
-
+    "tfw_rf3080Item",
+    "TIAD_13th_UAV_Item"
 ];
 
-// Magazines, Ammo, Grenades
+// Magazines, ammo, grenades
 private _availableMagazines = [
-// RHS Marksman Magazines
+    // RHS Marksman Magazines
     // M107
-        "rhsusf_mag_10Rnd_STD_50BMG_M33",
-        "rhsusf_mag_10Rnd_STD_50BMG_mk211",
+    "rhsusf_mag_10Rnd_STD_50BMG_M33",
+    "rhsusf_mag_10Rnd_STD_50BMG_mk211",
     //  M24
-        "rhsusf_5Rnd_762x51_m118_special_Mag",
-        "rhsusf_5Rnd_762x51_m62_Mag",
-        "rhsusf_5Rnd_762x51_m993_Mag",
+    "rhsusf_5Rnd_762x51_m118_special_Mag",
+    "rhsusf_5Rnd_762x51_m62_Mag",
+    "rhsusf_5Rnd_762x51_m993_Mag",
     // Mk. 11 Mod 0
-        "rhsusf_20Rnd_762x51_m118_special_Mag",
-        "rhsusf_20Rnd_762x51_m62_Mag",
-        "rhsusf_20Rnd_762x51_m993_Mag",
+    "rhsusf_20Rnd_762x51_m118_special_Mag",
+    "rhsusf_20Rnd_762x51_m993_Mag",
+    "rhsusf_20Rnd_762x51_m62_Mag",
 
-// SMA Minimi MK3 Magazines
+    // SMA Minimi MK3 Magazines
     "SMA_150Rnd_762_M80A1",
     "SMA_150Rnd_762_M80A1_Tracer",
     "SMA_150Rnd_762_M80A1_Mixed",
-/*
-// SMA M4A1 - MK 18 - SCAR L Magazines
+    /*
+    // SMA M4A1 - MK 18 - SCAR L Magazines
     "SMA_30Rnd_556x45_M855A1",
     "SMA_30Rnd_556x45_M855A1_Tracer",
     "SMA_30Rnd_556x45_M855A1_IR",
@@ -676,7 +723,7 @@ private _availableMagazines = [
     "SMA_30Rnd_556x45_Mk262_Tracer",
     "SMA_30Rnd_556x45_Mk262_IR",
 
-// SMA SCAR H Magazines
+    // SMA SCAR H Magazines
     "SMA_20Rnd_762x51mm_M80A1_EPR",
     "SMA_20Rnd_762x51mm_M80A1_EPR_Tracer",
     "SMA_20Rnd_762x51mm_M80A1_EPR_IR",
@@ -686,27 +733,27 @@ private _availableMagazines = [
     "SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic",
     "SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_Tracer",
     "SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_IR",
-*/
-// Carl Gustov Ammo
+    */
+    // Carl Gustov Ammo
     "tf47_m3maaws_HEAT",
     "tf47_m3maaws_HEDP",
     "tf47_m3maaws_HE",
     "tf47_m3maaws_SMOKE",
     "tf47_m3maaws_ILLUM",
 
-// Pistol Magazines
+    // Pistol Magazines
     // Glock 17 Magazines
-        "rhsusf_mag_17Rnd_9x19_FMJ",
-        "rhsusf_mag_17Rnd_9x19_JHP",
+    "rhsusf_mag_17Rnd_9x19_FMJ",
+    "rhsusf_mag_17Rnd_9x19_JHP",
     // M1911 Magazine
-        "rhsusf_mag_7x45acp_MHP",
+    "rhsusf_mag_7x45acp_MHP",
     // m9 Beretta Magazines
-        "rhsusf_mag_15Rnd_9x19_JHP",
-        "rhsusf_mag_15Rnd_9x19_FMJ",
+    "rhsusf_mag_15Rnd_9x19_JHP",
+    "rhsusf_mag_15Rnd_9x19_FMJ",
     // Custom Covert II
-        "9Rnd_45ACP_Mag",
+    "9Rnd_45ACP_Mag",
 
-// MISC Items
+    // MISC Items
     "rhs_mag_30Rnd_556x45_Mk318_Stanag",
     "rhs_mag_30Rnd_556x45_Mk262_Stanag",
     "30Rnd_556x45_Stanag",
@@ -757,6 +804,7 @@ private _availableMagazines = [
     "ACE_HandFlare_White",
     "ACE_HandFlare_Yellow",
     "rhs_mag_mk84",
+	"rhs_mag_an_m14_th3",
     "HandGrenade",
     "B_IR_Grenade",
     "SmokeShell",
@@ -772,9 +820,8 @@ private _availableMagazines = [
     "Chemlight_yellow"
 ];
 
-//Weapons
 private _availableWeapons = [
-// SMA M4 Variants
+    // SMA M4 Variants
     "SMA_M4_GL",
     "SMA_M4_GL_SM",
     "SMA_M4afg",
@@ -800,8 +847,42 @@ private _availableWeapons = [
     "SMA_MICRO_T2_3XDOWN",
     "SMA_MICRO_T2_3XUP",
     "SMA_MICRO_T2_LM",
+	
+	// SMA HK416
+	"SMA_HK416afg",
+	"SMA_HK416vfg",
+	"SMA_HK416GL",
+	"SMA_HK416afgQCB",
+	"SMA_HK416afgOD",
+	"SMA_HK416MOEOD",
+	"SMA_HK416CQBafgOD",
+	"SMA_HK416CQBMOEOD",
+	"SMA_HK416GLOD",
+	"SMA_HK416CQBGLOD",
+	"SMA_HK416_afg_ODPAINTED",
+	"SMA_HK416_GL_ODPAINTED",
+	"SMA_HK416_vfg_ODPAINTED",
+	"SMA_HK416CQB_vfg_ODPAINTED",
+	"SMA_HK416CUSTOMafg",
+	"SMA_HK416CUSTOMCQBvfg",
+	"SMA_HK416CUSTOMCQBvfgB",
+	"SMA_HK416CUSTOMCQBvfgODP",
+	"SMA_HK416CUSTOMvfg",
+	"SMA_HK416CUSTOMvfgB",
+	"SMA_HK416CUSTOMvfgODP",
+	"SMA_HK416CUSTOMCQBafg",
+	"SMA_HK416CUSTOMCQBafgB",
+	"SMA_HK416CUSTOMCQBafgODP",
+	"SMA_HK416CUSTOMafgB",
+	"SMA_HK416CUSTOMafgODP",
+	"SMA_HK416GLCQB",
+	"SMA_HK416GLCQB_B",
+	"SMA_HK416GLCQB_ODP",
+	"SMA_HK417",
+	"SMA_HK417vfg",
+	"SMA_HK417_16in",
 
-// SMA Minimi Mk3
+    // SMA Minimi Mk3
     "sma_minimi_mk3_762tlb",
     "sma_minimi_mk3_762tlb_des",
     "sma_minimi_mk3_762tlb_wdl",
@@ -809,7 +890,7 @@ private _availableWeapons = [
     "sma_minimi_mk3_762tsb_des",
     "sma_minimi_mk3_762tsb_wdl",
 
-// SMA MK18
+    // SMA MK18
     "SMA_MK18_GL",
     "SMA_MK18_GL_SM",
     "SMA_MK18afg",
@@ -847,17 +928,17 @@ private _availableWeapons = [
     "SMA_MK18TANBLK_GL",
     "SMA_MK18TANBLK_GL_SM",
 
-// RHS M107
+    // RHS M107
     "rhs_weap_M107",
     "rhs_weap_M107_d",
     "rhs_weap_M107_w",
 
-// RHS M24
+    // RHS M24
     "rhs_weap_m24sws",
     "rhs_weap_m24sws_blk",
     "rhs_weap_m24sws_ghillie",
 
-// SMA MK17
+    // SMA MK17
     "SMA_Mk17",
     "SMA_Mk17_16",
     "SMA_Mk17_16_black",
@@ -868,21 +949,122 @@ private _availableWeapons = [
     "SMA_MK17_EGLM_Green",
     "SMA_Mk17_Green",
 
-// SMA MK16
+    // SMA MK16
     "SMA_MK16",
     "SMA_Mk16_black",
     "SMA_Mk16_blackQCB",
     "SMA_Mk16_EGLM",
-    //"SMA_MK16_EGLM_black",
-    //"SMA_MK16_EGLM_Green",
+    // "SMA_MK16_EGLM_black",
+    // "SMA_MK16_EGLM_Green",
     "SMA_Mk16_Green",
     "SMA_Mk16_GreenQCB",
     "SMA_Mk16QCB",
 
-// TF47 M3 MAAWS
+    // TF47 M3 MAAWS
     "tf47_m3maaws",
+	
+	// RHS M4's
+	"rhs_weap_m4",
+	"rhs_weap_m4_m203",
+	"rhs_weap_m4_grip",
+	"rhs_weap_m4_grip2",
+	"rhs_weap_m4_grip3",
+	"rhs_weap_m4_bipod",
+	"rhs_weap_m4_carryhandle",
+	"rhs_weap_m4_carryhandle_pmag",
+	"rhs_weap_m4_m320",
+	"rhs_weap_m4_pmag",
+	"rhs_weap_m4_mstock",
+	"rhs_weap_m4_carryhandle_mstock",
+	"rhs_weap_m4_pmag_grip",
+	"rhs_weap_m4_pmag_grip2",
+	"rhs_weap_m4_pmag_grip3",
+	"rhs_weap_m4_mstock_grip",
+	"rhs_weap_m4_mstock_grip2",
+	"rhs_weap_m4_mstock_grip3",
+	"rhs_weap_m4_carryhandle_grip",
+	"rhs_weap_m4_carryhandle_grip2",
+	"rhs_weap_m4_carryhandle_grip3",
+	"rhs_weap_m4_carryhandle_pmag_grip",
+	"rhs_weap_m4_carryhandle_pmag_grip2",
+	"rhs_weap_m4_carryhandle_pmag_grip3",
+	"rhs_weap_m4_carryhandle_mstock_grip",
+	"rhs_weap_m4_carryhandle_mstock_grip2",
+	"rhs_weap_m4_carryhandle_mstock_grip3",
+	"rhs_weap_m4_m203S",
+	"rhs_m4_compm4",
+	"rhs_m4_acog",
+	"rhs_m4_grip_compm4",
+	"rhs_m4_acog_usmc",
+	"rhs_m4_acog2_usmc",
+	"rhs_m4_grip_acog_usmc",
+	"rhs_m4_grip_acog3_usmc",
+	"rhs_m4_m203_acog_usmc",
+	"rhs_m4_m203s_acog_usmc",
+	
+	// RHS M4A1
+	"rhs_weap_m4a1_m320",
+	"rhs_weap_m4a1_m203",
+	"rhs_weap_m4a1_carryhandle_m203",
+	"rhs_weap_m4a1",
+	"rhs_weap_m4a1_grip",
+	"rhs_weap_m4a1_grip2",
+	"rhs_weap_m4a1_grip3",
+	"rhs_weap_m4a1_bipod",
+	"rhs_weap_m4a1_carryhandle",
+	"rhs_weap_m4a1_carryhandle_grip",
+	"rhs_weap_m4a1_carryhandle_grip2",
+	"rhs_weap_m4a1_carryhandle_grip3",
+	"rhs_weap_m4a1_carryhandle_bipod",
+	"rhs_weap_m4a1_d",
+	"rhs_weap_m4a1_d_grip",
+	"rhs_weap_m4a1_d_grip2",
+	"rhs_weap_m4a1_d_grip3",
+	"rhs_weap_m4a1_d_mstock",
+	"rhs_weap_m4a1_d_mstock_grip",
+	"rhs_weap_m4a1_d_mstock_grip2",
+	"rhs_weap_m4a1_d_mstock_grip3",
+	"rhs_weap_m4a1_m203s_d",
+	"rhs_weap_m4a1_mstock",
+	"rhs_weap_m4a1_pmag",
+	"rhs_weap_m4a1_carryhandle_mstock",
+	"rhs_weap_m4a1_carryhandle_pmag",
+	"rhs_weap_m4a1_pmag_grip",
+	"rhs_weap_m4a1_pmag_grip2",
+	"rhs_weap_m4a1_pmag_grip3",
+	"rhs_weap_m4a1_mstock_grip",
+	"rhs_weap_m4a1_mstock_grip2",
+	"rhs_weap_m4a1_mstock_grip3",
+	"rhs_weap_m4a1_carryhandle_pmag_grip",
+	"rhs_weap_m4a1_carryhandle_pmag_grip2",
+	"rhs_weap_m4a1_carryhandle_pmag_grip3",
+	"rhs_weap_m4a1_carryhandle_mstock_grip",
+	"rhs_weap_m4a1_carryhandle_mstock_grip2",
+	"rhs_weap_m4a1_carryhandle_mstock_grip3",
+	"rhs_weap_m4a1_m203s",
+	"rhs_weap_m4a1_carryhandle_m203S",
+	"rhs_m4a1_compm4",
+	"rhs_m4a1_grip_compm4",
+	"rhs_m4a1_acog",
+	"rhs_m4a1_acog2",
+	"rhs_m4a1_acog3",
+	"rhs_m4a1_grip_acog",
+	"rhs_m4a1_grip_acog2",
+	"rhs_m4a1_m203s_ACOG",
+	"rhs_m4a1_eotech",
+	"rhs_m4a1_acog_usmc",
+	"rhs_m4a1_acog2_usmc",
+	"rhs_m4a1_acog3_usmc",
+	"rhs_m4a1_acog2_usmc_sup",
+	"rhs_m4a1_grip_eotech",
+	"rhs_m4a1_grip_acog_usmc",
+	"rhs_m4a1_grip_acog2_usmc_sup",
+	"rhs_m4a1_grip_acog2_usmc_sup_tan",
+	"rhs_m4a1_grip_acog3_usmc_sup",
+	"rhs_m4a1_m203_acog3_usmc_sup",
+	"rhs_m4a1_grip_eotech_soc",
 
-// RHS M4A1 Block II
+    // RHS M4A1 Block II
     "rhs_weap_m4a1_blockII",
     "rhs_weap_m4a1_blockII_bk",
     "rhs_weap_m4a1_blockII_d",
@@ -914,8 +1096,12 @@ private _availableWeapons = [
     "rhs_weap_m4a1_blockII_wd",
     "rhs_weap_m4a1_blockII_M203_wd",
     "rhs_weap_m4a1_blockII_M203_SU230",
+	
+	// RHS Mk 14 EBR
+	"rhs_weap_m14ebrri",
+	"rhs_weap_m14ebrri_leu",
 
-// RHS Mk 11 Mod 0
+    // RHS Mk 11 Mod 0
     "rhs_weap_sr25",
     "rhs_weap_sr25_d",
     "rhs_weap_sr25_ec",
@@ -926,14 +1112,26 @@ private _availableWeapons = [
     "rhs_weap_sr25_usmc",
     "rhs_weap_sr25_wd",
 
-
-// MISC Weapons
-    "rhs_weap_m249_pip_S",
-    "rhs_weap_m249_pip_S_para",
-    "rhs_weap_m249_pip_S_vfg",
-    "rhs_weap_m249_pip_L",
-    "rhs_weap_m249_pip_L_para",
-    "rhs_weap_m249_pip_L_vfg",
+    // RHS 249 SAW
+	"rhs_weap_m249_pip_S",
+	"rhs_weap_m249_pip_S_para",
+	"rhs_weap_m249_pip_S_vfg",
+	"rhs_weap_m249_pip_L",
+	"rhs_weap_m249_pip_L_para",
+	"rhs_weap_m249_pip_L_vfg",
+	"rhs_weap_m249",
+	"rhs_weap_m249_pip_S_vfg1",
+	"rhs_weap_m249_pip_S_vfg2",
+	"rhs_weap_m249_pip_S_vfg3",
+	"rhs_weap_m249_pip",
+	"rhs_weap_m249_pip_L_vfg1",
+	"rhs_weap_m249_pip_L_vfg2",
+	"rhs_weap_m249_pip_L_vfg3",
+	"rhs_weap_m249_pip_elcan",
+	"rhs_weap_m249_pip_usmc",
+	"rhs_weap_m249_para_usmc",
+	
+	//MISC Weap
     "rhs_weap_m240B",
     "rhs_weap_M590_8RD",
     "rhs_weap_M590_5RD",
@@ -944,14 +1142,16 @@ private _availableWeapons = [
     "rhs_weap_m72a7",
     "rhs_weap_smaw_green",
     "rhs_weap_m32_usmc",
+    "rhs_weap_M320",
 
-// Pistols
+    // Pistols
     "rhsusf_weap_m9",
     "rhsusf_weap_glock17g4",
     "rhsusf_weap_m1911a1",
     "hgun_ACPC2_F",
+	"ACE_VMH3",
 
-// Binos
+    // Binos
     "Binocular"
 ];
 

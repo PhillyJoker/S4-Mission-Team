@@ -12,11 +12,11 @@ if (!MRB_isTemplate) exitWith {
 pos_cop_blue = [typeOf cop_blue, getPosASL cop_blue, vectorDir cop_blue, vectorUp cop_blue];
 deleteVehicle cop_blue;
 
-pos_menu_ground = [typeOf menu_ground, getPosASL menu_ground, vectorDir menu_ground, vectorUp menu_ground];
-deleteVehicle menu_ground;
+pos_menu_ground_2 = [typeOf menu_ground_2, getPosASL menu_ground_2, vectorDir menu_ground_2, vectorUp menu_ground_2];
+deleteVehicle menu_ground_2;
 
-pos_ground_check = [typeOf ground_check, getPosASL ground_check, vectorDir ground_check, vectorUp ground_check];
-deleteVehicle ground_check;
+pos_ground_check_2 = [typeOf ground_check_2, getPosASL ground_check_2, vectorDir ground_check_2, vectorUp ground_check_2];
+deleteVehicle ground_check_2;
 
 pos_arsenal_2 = [typeOf arsenal_2, getPosASL arsenal_2, vectorDir arsenal_2, vectorUp arsenal_2];
 deleteVehicle arsenal_2;
