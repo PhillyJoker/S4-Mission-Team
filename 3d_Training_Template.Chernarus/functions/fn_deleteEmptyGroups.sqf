@@ -3,7 +3,7 @@
  * By Ryan [506th IR], v2 by Miles [13th MEU]
  * Simple script to delete empty group's on a Headless Client.
  * Place the following in init of the HC:
- * 
+ *
  * call MRB_fnc_deleteEmptyGroups;
  */
 

@@ -290,7 +290,7 @@
             _x allowFleeing 0; // Especially for helicopters... They're very cowardly.
         } forEach (crew (vehicle (leader _vehicleGroup)));
     };
-    
+
     // Give the units some time to get away from truck
     _vehicleUnloadWp setWaypointTimeout [_timeOut,_timeOut,_timeOut];
 
@@ -546,7 +546,7 @@
     _pool = _validPools select _dialogPool;
     _side = _pool select 1;
     _vehiclePoolIndex = (_dialogVehicleClass + 3);
-    
+
     if ((_pool select 11) isEqualTo []) exitWith {
         [objNull, "No infantry squads defined for side."] call BIS_fnc_showCuratorFeedbackMessage;
     };
