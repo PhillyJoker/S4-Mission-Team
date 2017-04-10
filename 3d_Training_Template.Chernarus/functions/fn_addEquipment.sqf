@@ -11,6 +11,9 @@ clearItemCargoGlobal _box;
 
 _box addItemCargoGlobal ["ACE_Vector", 50];
 _box addItemCargoGlobal ["ACE_MX2A", 50];
+_box addItemCargoGlobal ["ACE_key_master", 5];
+_box addItemCargoGlobal ["ACE_key_lockpick", 75];
+_box addItemCargoGlobal ["ACE_key_west", 75];
 _box addItemCargoGlobal ["lerca_1200_black", 50];
 _box addItemCargoGlobal ["lerca_1200_tan", 50];
 _box addItemCargoGlobal ["Laserdesignator", 5];
